@@ -2,13 +2,17 @@ package com.example.mysticmindfx;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class HelloController {
     @FXML
-    private Label welcomeText;
+    private TextField MailField;
+    @FXML
+    private TextField PasswordField;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    protected void onSignIn() {
+        System.out.println("Mail: " + MailField.getText());
+        System.out.println("Password: " + PasswordField.getText());
     }
 }

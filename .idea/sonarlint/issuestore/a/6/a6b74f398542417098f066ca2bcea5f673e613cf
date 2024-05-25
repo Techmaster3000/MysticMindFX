@@ -1,0 +1,5 @@
+
+–	java:S116	"TRename this field "MailField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰éŠ´8‚‡³ÿú1J$83a8dfb8-2c1e-4abf-9f55-7adc099b4a86
+š	java:S116"XRename this field "PasswordField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€«³è8‚‡³ÿú1J$7e6fbe73-feb4-486c-b6d5-c1e54fb554be
+
+java:S1128"7Remove this unused import 'javafx.scene.control.Label'.(ö²­žÿÿÿÿÿ8Œ‡³ÿú1J$801b2e0a-e68c-4b2e-b890-547c325ae5ec
