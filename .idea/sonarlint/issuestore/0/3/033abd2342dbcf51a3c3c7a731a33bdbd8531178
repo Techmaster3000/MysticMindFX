@@ -1,0 +1,14 @@
+
+š	java:S116"XRename this field "UsernameField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µÒ²¢8“ÂÍû1J$1a759203-29b7-4350-8fdc-b7edaccb22dd
+œ	java:S116"URename this field "EmailField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤«„ùÿÿÿÿ8“ÂÍû1J$cf1a25b3-eb15-498d-a8e2-9cd600befd2f
+¡	java:S116"ZRename this field "CheckEmailField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıËˆ†øÿÿÿÿ8“ÂÍû1J$ed320d43-3c5a-4dd0-bb37-ea5532ecc75d
+š	java:S116"XRename this field "PasswordField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€«³è8“ÂÍû1J$51a2e223-d5cb-467e-af1d-b1a78fd712a0
+Ÿ	java:S116"]Rename this field "CheckPasswordField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢ïÄÑ8“ÂÍû1J$ba47eb38-a196-4949-82d7-fa89c4ca9f67
+Ÿ	java:S116"XRename this field "EmailDupeText" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Û²ŞÌûÿÿÿÿ8“ÂÍû1J$d470a4b5-6f50-4c10-88e0-b8f7fb86142c
+œ	java:S116"[Rename this field "PasswordDupeText" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞŞ¸8“ÂÍû1J$79fd3e1b-98b2-4aff-a8bb-ce35442a0b0b
+¢	java:S116!"[Rename this field "PasswordReqsText" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïØëüÿÿÿÿ8“ÂÍû1J$52e930f8-3c11-4bdb-8e4a-55103910efa0
+—	java:S116#"URename this field "SignUpText" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èõê³8“ÂÍû1J$2f4faa86-bff1-47e0-a726-4fb1d575b75d
+v
+java:S1128"3Remove this unused import 'javafx.scene.text.Font'.(¾¼¡Ê8£“ÂÍû1J$e76acd24-5ded-4871-b181-ac433756b081
+
+java:S1128"9Remove this unused import 'javafx.scene.text.FontWeight'.(„­Şşÿÿÿÿ8£“ÂÍû1J$c76c2475-8f04-4028-a33d-8c73549e0d19

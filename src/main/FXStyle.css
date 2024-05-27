@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
+.gruppo-regular {
+    font-family: "Gruppo", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    src: url("https://fonts.googleapis.com/css2?family=Gruppo&display=swap");
+}
+.titleText {
+    -fx-font-family: "forma-djr-mono", sans-serif;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+}
+#SignUpText {
+    font-family: "forma-djr-mono", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    src: url("https://use.typekit.net/mms7jgi.css");
+}
+.root {
+    -fx-alignment: center;
+}
