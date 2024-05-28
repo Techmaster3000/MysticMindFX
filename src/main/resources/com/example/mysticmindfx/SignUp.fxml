@@ -32,6 +32,7 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -41,9 +42,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="root" alignment="CENTER" prefHeight="400.0" prefWidth="640.0" styleClass="root" stylesheets="@../../../../FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.SignUpController">
+<VBox fx:id="root" alignment="CENTER" prefHeight="400.0" prefWidth="640.0" stylesheets="@FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.SignUpController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #1c1e30;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="background" VBox.vgrow="ALWAYS">
          <children>
             <VBox layoutX="147.0" layoutY="89.0" prefHeight="214.0" prefWidth="345.0">
                <children>
@@ -59,16 +60,22 @@
                   <Text fx:id="PasswordDupeText" fill="RED" layoutX="10.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                </children>
             </VBox>
-            <Text id="SignUpText" fx:id="SignUpText" fill="WHITE" layoutX="269.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign-Up" textAlignment="CENTER">
+            <Text id="SignUpText" fx:id="SignUpText" fill="WHITE" layoutX="269.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Sign Up" textAlignment="CENTER">
                <font>
                   <Font name="Sylfaen" size="28.0" />
                </font>
             </Text>
-            <Button layoutX="294.0" layoutY="303.0" mnemonicParsing="false" text="Sign-Up">
+            <Button fx:id="SignUpButton" layoutX="294.0" layoutY="303.0" mnemonicParsing="false" onAction="#onSignUp" text="Sign Up">
                <effect>
                   <DropShadow />
                </effect></Button>
+            <Text fill="RED" layoutX="147.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Button fx:id="SignInLink" layoutX="294.0" layoutY="328.0" mnemonicParsing="false" onAction="#onSignInLink" prefHeight="25.0" prefWidth="58.0" styleClass="switchButton" text="Sign In" textAlignment="CENTER" textFill="WHITE" />
          </children>
     </AnchorPane>
   </children>
+   <styleClass>
+      <String fx:value="root" />
+      <String fx:value="background" />
+   </styleClass>
 </VBox>

@@ -1,6 +1,8 @@
 package com.example.mysticmindfx;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -36,7 +38,28 @@ public class SignUpController {
     @FXML
     private VBox root;
     @FXML
+    private Button SignInLink;
+    @FXML
+    private Button SignUpButton;
+    @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         root.setAlignment(javafx.geometry.Pos.CENTER);
     }
+    @FXML
+    protected void onSignInLink() {
+        System.out.println("Sign In Link Clicked");
+        SceneSwitcher.getInstance().switchScene("hello-view.fxml");
+
+    }
+    @FXML
+    protected void onSignUp() {
+        //TODO: Implement function to check account database if email already exists.
+        //checkif any of the fields are empty
+        if (UsernameField.getText().isEmpty() || EmailField.getText().isEmpty() || CheckEmailField.getText().isEmpty() || PasswordField.getText().isEmpty() || CheckPasswordField.getText().isEmpty()) {
+            SignUpText.setText("Please fill in all fields.");
+            return;
+        }
+
+    }
+
 }

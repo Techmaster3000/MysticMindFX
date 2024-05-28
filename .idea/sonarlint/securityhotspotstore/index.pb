@@ -21,3 +21,5 @@ G.idea/sonarlint/issuestore/9/a/9a6720472a85593b4af24339ed07685b2e4bc4f0,e\e\ee
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+i
+9src/main/java/com/example/mysticmindfx/SceneSwitcher.java,4\8\480bb23dde72ba6cf0a835e74329fde999644db3
