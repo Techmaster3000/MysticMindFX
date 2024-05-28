@@ -54,12 +54,14 @@ public class SignUpController {
     @FXML
     protected void onSignUp() {
         //TODO: Implement function to check account database if email already exists.
-        //checkif any of the fields are empty
-        if (UsernameField.getText().isEmpty() || EmailField.getText().isEmpty() || CheckEmailField.getText().isEmpty() || PasswordField.getText().isEmpty() || CheckPasswordField.getText().isEmpty()) {
+        if (checkEmptyFields()) {
             SignUpText.setText("Please fill in all fields.");
             return;
         }
 
+    }
+    protected Boolean checkEmptyFields() {
+        return UsernameField.getText().isEmpty() || EmailField.getText().isEmpty() || CheckEmailField.getText().isEmpty() || PasswordField.getText().isEmpty() || CheckPasswordField.getText().isEmpty()
     }
 
 }

@@ -1,17 +1,6 @@
 
-–	java:S116"TRename this field "MailField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰éŠ´8•Î…óû1J$a71eb99f-31b7-46f1-9191-08b8419d24c6
-š	java:S116"XRename this field "PasswordField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€«³è8•Î…óû1J$581487fd-620b-48c7-9ccf-e9510e318315
-œ	java:S116"URename this field "SignUpLink" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôá‡—ùÿÿÿÿ8•Î…óû1J$490ff013-8a94-43c2-9184-f00137b50281
+–	java:S116"TRename this field "MailField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰éŠ´8¥†®ÿû1J$6a9b7a42-3455-4280-bc0c-8d65aa7ee901
+š	java:S116"XRename this field "PasswordField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€«³è8¦†®ÿû1J$e4b97db0-3129-48e6-8c71-04e14dd21f50
+œ	java:S116"URename this field "SignUpLink" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôá‡—ùÿÿÿÿ8¦†®ÿû1J$f390e673-d2ac-4125-8fe5-c839809659a4
 ´
-java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ÿµÄÇüÿÿÿÿ8ˆÚÁóû1J$c23a819f-2bee-47c3-b6e5-8b228a1e2fdf
-{
-java:S1128"3Remove this unused import 'javafx.fxml.FXMLLoader'.(À‡ô³úÿÿÿÿ8‰ÚÁóû1J$e298cb03-dae0-455b-abc0-c4000d13173f
-r
-java:S1128"/Remove this unused import 'javafx.scene.Scene'.(Õü²8‰ÚÁóû1J$491be10e-2d85-4cc4-9647-076154e94207
-ƒ
-java:S1128";Remove this unused import 'javafx.scene.control.Hyperlink'.(ÍçüÃúÿÿÿÿ8‰ÚÁóû1J$1f702d9e-4a7a-4c5e-aad5-e801894de2c0
-
-java:S1128"7Remove this unused import 'javafx.scene.control.Label'.(ö²­ÿÿÿÿÿ8ŠÚÁóû1J$544a5eed-3fc6-4f5e-9f04-61204b93f561
-w
-java:S1128
-"/Remove this unused import 'javafx.stage.Stage'.(æÄ¸²úÿÿÿÿ8ŠÚÁóû1J$c3278451-f6f4-408b-9e9c-dc2a4bc175cf
+java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ÿµÄÇüÿÿÿÿ8©†®ÿû1J$aae8d3a8-9cc0-48b3-a800-3e569d7361df

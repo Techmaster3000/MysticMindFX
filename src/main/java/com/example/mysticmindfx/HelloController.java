@@ -21,8 +21,10 @@ public class HelloController {
 
     @FXML
     protected void onSignIn() {
-        System.out.println("Mail: " + MailField.getText());
-        System.out.println("Password: " + PasswordField.getText());
+        System.out.println("Sign In Button Clicked");
+        User user = JSONHandler.findUser(MailField.getText());
+        user.checkPassword(PasswordField.getText());
+
     }
     @FXML
     protected void onSignUpLink() throws IOException {
