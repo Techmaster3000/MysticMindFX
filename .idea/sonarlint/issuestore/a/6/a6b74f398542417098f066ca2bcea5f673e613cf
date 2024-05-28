@@ -1,23 +1,6 @@
 
-–	java:S116"TRename this field "MailField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰éŠ´8Â¦‡ü1J$f3020976-c315-4a25-b0c9-552a2419b9f2
-š	java:S116"XRename this field "PasswordField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€«³è8Ä¦‡ü1J$509758c1-f637-4887-bd54-9cbb9e8b358b
-œ	java:S116"URename this field "SignUpLink" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôá‡—ùÿÿÿÿ8Å¦‡ü1J$11711368-e761-4016-bc9c-53bbbfe72b35
+ƒ	java:S125"<This block of commented-out lines of code should be removed.(…‚¶åÿÿÿÿÿ8Öû‡ü1J$675b84e7-c782-435d-a57c-c52937fe077e
 ^
-java:S3626+"Remove this redundant jump.(ûÁİ…8Ç¦‡ü1J$bc7a3b0d-27ee-4b5f-a69a-343ad94c605e
-x
-java:S2209"5Change this instance-reference to a static reference.(§íÕ8È¦‡ü1J$74ba7c8f-6347-4396-a28e-aa2bdde68548
+java:S3626%"Remove this redundant jump.(ûÁİ…8Ç¦‡ü1J$a2300d38-fa2c-4cfd-91b8-b48f31ddb3c1
 u
-java:S1135-"2Complete the task associated to this TODO comment.(Âí”‡8Ë¦‡ü1J$1a39cced-3351-48c6-b6ac-0dbcbb4b9987
-{
-java:S1128"3Remove this unused import 'javafx.fxml.FXMLLoader'.(À‡ô³úÿÿÿÿ8Ì¦‡ü1J$f5e57ef0-ac25-4129-b84f-a2b979767691
-r
-java:S1128"/Remove this unused import 'javafx.scene.Scene'.(Õü²8Ì¦‡ü1J$7c6f26ba-fff0-4125-965d-245f3a8e0407
-w
-java:S1128"/Remove this unused import 'javafx.stage.Stage'.(æÄ¸²úÿÿÿÿ8Ì¦‡ü1J$285e8ff7-0370-410c-b024-dd87b727032b
-x
-java:S1128
-"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8Ì¦‡ü1J$c884cdb0-2bba-47ab-b451-ea7ab70558dd
-{
-java:S1128"8Remove this unused import 'java.security.MessageDigest'.(Œğ²»8Ì¦‡ü1J$ed343b07-ab2d-44ca-9d20-2f9eb86e7032
-‹
-java:S1128"CRemove this unused import 'java.security.NoSuchAlgorithmException'.(ŒòÍ¾şÿÿÿÿ8Ì¦‡ü1J$2b0b0453-3d7d-406c-adda-6f133c89b5f6
+java:S1135'"2Complete the task associated to this TODO comment.(Âí”‡8Ë¦‡ü1J$35fab94d-b455-471c-ac78-b9682e269c46

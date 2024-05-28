@@ -58,12 +58,12 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="MailField" promptText="E-mail" styleClass="gruppo-regular">
+                  <TextField fx:id="mailField" promptText="E-mail" styleClass="gruppo-regular">
                      <VBox.margin>
                         <Insets bottom="2.0" />
                      </VBox.margin>
                   </TextField>
-                  <PasswordField fx:id="PasswordField" promptText="Password" styleClass="gruppo-regular" />
+                  <PasswordField fx:id="passwordField" promptText="Password" styleClass="gruppo-regular" />
                   <Text fx:id="errorText" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" />
                   <Button mnemonicParsing="false" onAction="#onSignIn" prefHeight="25.0" prefWidth="58.0" styleClass="glowing-btn" text="Sign In" textAlignment="CENTER">
                      <VBox.margin>
@@ -72,7 +72,7 @@
                   </Button>
                </children>
             </VBox>
-            <Button fx:id="SignUpLink" layoutX="288.0" layoutY="283.0" mnemonicParsing="false" onAction="#onSignUpLink" prefHeight="25.0" prefWidth="64.0" styleClass="switchButton" text="Sign Up" textAlignment="CENTER" textFill="WHITE" />
+            <Button fx:id="signUpLink" layoutX="288.0" layoutY="283.0" mnemonicParsing="false" onAction="#onSignUpLink" prefHeight="25.0" prefWidth="64.0" styleClass="switchButton" text="Sign Up" textAlignment="CENTER" textFill="WHITE" />
             <ImageView fitHeight="121.0" fitWidth="121.0" layoutX="260.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
