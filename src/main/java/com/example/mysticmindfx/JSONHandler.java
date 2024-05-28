@@ -67,13 +67,14 @@ public class JSONHandler {
             users.add(user1);
         }
         JSONObject root = new JSONObject();
+        //write to a json file
         root.put("users", users);
-        try (FileWriter file = new FileWriter("userdata.json")) {
-            String content = root.toJSONString();
-            file.write(content);
+        try (FileWriter file = new FileWriter("src/main/resources/com/example/mysticmindfx/userdata.json")) {
+            file.write(root.toJSONString());
+            file.flush();
         } catch (IOException e) {
-            System.out.println("An error occurred while writing to the JSON file.");
             e.printStackTrace();
+            readJSON();
         }
     }
 }

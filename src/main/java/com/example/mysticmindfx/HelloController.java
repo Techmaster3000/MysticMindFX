@@ -22,7 +22,7 @@ public class HelloController {
     private Text errorText;
 
     @FXML
-    protected void onSignIn() throws NoSuchAlgorithmException {
+    protected void onSignIn(){
         errorText.setText("");
         System.out.println(MailField.getText());
         User user = JSONHandler.getInstance().findUser(MailField.getText());
