@@ -12,11 +12,22 @@ import java.util.Map;
 public class JSONHandler {
     //read a JSON file
     static ArrayList<User> userList = new ArrayList<>();
+    //singleton pattern
+    private static JSONHandler instance = null;
+    private JSONHandler() {
+        readJSON();
+    }
+    public static JSONHandler getInstance() {
+        if (instance == null) {
+            instance = new JSONHandler();
+        }
+        return instance;
+    }
     public static void readJSON() {
         JSONParser parser = new JSONParser();
         //read a json file with e-mail, username and password
         try {
-            Object obj = parser.parse(new FileReader("userdata.json"));
+            Object obj = parser.parse(new FileReader("src/main/resources/com/example/mysticmindfx/userdata.json"));
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray users = (JSONArray) jsonObject.get("users");
             for (Object user : users) {
@@ -42,7 +53,6 @@ public class JSONHandler {
         return null;
     }
     public static void addJson(String email, String username, String password) {
-        //add a user to the JSON file
         JSONArray users = new JSONArray();
         JSONObject newuser = new JSONObject();
         newuser.put("email", email);

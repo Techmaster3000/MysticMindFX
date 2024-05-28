@@ -1,6 +1,23 @@
 
-–	java:S116"TRename this field "MailField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰éŠ´8¥†®ÿû1J$6a9b7a42-3455-4280-bc0c-8d65aa7ee901
-š	java:S116"XRename this field "PasswordField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€«³è8¦†®ÿû1J$e4b97db0-3129-48e6-8c71-04e14dd21f50
-œ	java:S116"URename this field "SignUpLink" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôá‡—ùÿÿÿÿ8¦†®ÿû1J$f390e673-d2ac-4125-8fe5-c839809659a4
-´
-java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ÿµÄÇüÿÿÿÿ8©†®ÿû1J$aae8d3a8-9cc0-48b3-a800-3e569d7361df
+–	java:S116"TRename this field "MailField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰éŠ´8¹Ä˜†ü1J$cdad5916-82dc-4993-8159-0b0969d8c534
+š	java:S116"XRename this field "PasswordField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€«³è8¹Ä˜†ü1J$f9573899-dd11-47e9-bfd8-efcdcfe5f854
+œ	java:S116"URename this field "SignUpLink" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôá‡—ùÿÿÿÿ8¹Ä˜†ü1J$69ef4d17-3737-4034-a116-208b26cdb419
+^
+java:S3626+"Remove this redundant jump.(ûÁİ…8‘À©†ü1J$e88ea384-2e8a-42a3-a525-03e1960d4d95
+Ç
+java:S1130"Remove the declaration of thrown exception 'java.security.NoSuchAlgorithmException', as it cannot be thrown from method's body.(áĞš…şÿÿÿÿ8‚ÓÑ†ü1J$520cde77-2750-4b69-9ccc-85765623c5ce
+x
+java:S2209"5Change this instance-reference to a static reference.(§íÕ8…ÓÑ†ü1J$1e6da6cb-6f36-40c4-b742-1a6e90251157
+u
+java:S1135-"2Complete the task associated to this TODO comment.(Âí”‡8‡ÓÑ†ü1J$da2b2a0e-f276-42ac-90a6-cbf16182e7e2
+{
+java:S1128"3Remove this unused import 'javafx.fxml.FXMLLoader'.(À‡ô³úÿÿÿÿ8ˆÓÑ†ü1J$b6a32c75-9eca-46fe-aa36-73c2ae659b53
+r
+java:S1128"/Remove this unused import 'javafx.scene.Scene'.(Õü²8ˆÓÑ†ü1J$b22cde3c-56bd-4fdb-b422-d133c9108ccc
+w
+java:S1128"/Remove this unused import 'javafx.stage.Stage'.(æÄ¸²úÿÿÿÿ8ˆÓÑ†ü1J$841e3d9e-e773-4141-ac27-fa3c7715c7d1
+x
+java:S1128
+"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8ˆÓÑ†ü1J$8fe34694-2e33-4f6b-b8ca-90dfad789222
+{
+java:S1128"8Remove this unused import 'java.security.MessageDigest'.(Œğ²»8ˆÓÑ†ü1J$a4d86dc6-aacb-416c-9595-7b4cd097aed1

@@ -3,13 +3,13 @@ package com.example.mysticmindfx;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class HelloController {
     @FXML
@@ -18,16 +18,35 @@ public class HelloController {
     private TextField PasswordField;
     @FXML
     private Button SignUpLink;
+    @FXML
+    private Text errorText;
 
     @FXML
-    protected void onSignIn() {
-        System.out.println("Sign In Button Clicked");
-        User user = JSONHandler.findUser(MailField.getText());
-        user.checkPassword(PasswordField.getText());
+    protected void onSignIn() throws NoSuchAlgorithmException {
+        errorText.setText("");
+        System.out.println(MailField.getText());
+        User user = JSONHandler.getInstance().findUser(MailField.getText());
+        if (user == null) {
+            errorText.setText("Email not found");
+            return;
+        }
+        if (user.checkPassword(org.apache.commons.codec.digest.DigestUtils.sha256Hex(PasswordField.getText()))) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Login Successful");
+            alert.setHeaderText("Welcome " + user.getUsername());
+            alert.setContentText("You have successfully logged in!");
+            alert.showAndWait();
+        }
+        else {
+            errorText.setText("Incorrect Password");
+            PasswordField.clear();
+            return;
+        }
+        //TODO: goto main scene
 
     }
     @FXML
-    protected void onSignUpLink() throws IOException {
+    protected void onSignUpLink() {
         System.out.println("Sign Up Link Clicked");
             SceneSwitcher.getInstance().switchScene("SignUp.fxml");
 
