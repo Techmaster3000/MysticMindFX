@@ -44,7 +44,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" stylesheets="@FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.HelloController">
+<VBox fx:id="sceneRoot" prefHeight="400.0" prefWidth="640.0" stylesheets="@FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.HelloController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="background" stylesheets="@FXStyle.css" VBox.vgrow="ALWAYS">
          <children>
@@ -65,7 +65,7 @@
                   </TextField>
                   <PasswordField fx:id="passwordField" promptText="Password" styleClass="gruppo-regular" />
                   <Text fx:id="errorText" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" />
-                  <Button mnemonicParsing="false" onAction="#onSignIn" prefHeight="25.0" prefWidth="58.0" styleClass="glowing-btn" text="Sign In" textAlignment="CENTER">
+                  <Button fx:id="signInButton" mnemonicParsing="false" onAction="#onSignIn" prefHeight="25.0" prefWidth="58.0" styleClass="glowing-btn" text="Sign In" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -73,7 +73,7 @@
                </children>
             </VBox>
             <Button fx:id="signUpLink" layoutX="288.0" layoutY="283.0" mnemonicParsing="false" onAction="#onSignUpLink" prefHeight="25.0" prefWidth="64.0" styleClass="switchButton" text="Sign Up" textAlignment="CENTER" textFill="WHITE" />
-            <ImageView fitHeight="121.0" fitWidth="121.0" layoutX="260.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logo" fitHeight="121.0" fitWidth="121.0" layoutX="260.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>

@@ -2,6 +2,8 @@ package com.example.mysticmindfx;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 
@@ -10,10 +12,25 @@ public class HelloController {
     private TextField mailField;
     @FXML
     private TextField passwordField;
-    /*@FXML
-    private Button signUpLink;*/
     @FXML
     private Text errorText;
+    @FXML
+    private Button signInButton;
+    @FXML
+    private Button signUpLink;
+    @FXML
+    private ImageView logo;
+    @FXML
+    private VBox sceneRoot;
+
+    public HelloController() {
+    }
+    @FXML
+    public void initialize() {
+        errorText.setText("");
+
+
+    }
 
     @FXML
     protected void onSignIn(){
@@ -36,13 +53,14 @@ public class HelloController {
             passwordField.clear();
             return;
         }
-        //TODO: goto main scene
+        SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind");
+
 
     }
     @FXML
     protected void onSignUpLink() {
         System.out.println("Sign Up Link Clicked");
-            SceneSwitcher.getInstance().switchScene("SignUp.fxml");
+            SceneSwitcher.getInstance().switchScene("SignUp.fxml", "Sign Up");
 
     }
 }

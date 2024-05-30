@@ -41,6 +41,7 @@ public class SignUpController {
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         root.setAlignment(javafx.geometry.Pos.CENTER);
+
     }
    private void resetText() {
         usrNmExistsTxt.setText("");
@@ -53,7 +54,7 @@ public class SignUpController {
     @FXML
     protected void onSignInLink() {
         System.out.println("Sign In Link Clicked");
-        SceneSwitcher.getInstance().switchScene("hello-view.fxml");
+        SceneSwitcher.getInstance().switchScene("hello-view.fxml", "Sign In");
 
     }
     @FXML
