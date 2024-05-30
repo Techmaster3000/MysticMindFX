@@ -10,6 +10,7 @@ module com.example.mysticmindfx {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires json.simple;
 
     opens com.example.mysticmindfx to javafx.fxml;
     exports com.example.mysticmindfx;
