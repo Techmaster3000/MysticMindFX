@@ -11,6 +11,7 @@ module com.example.mysticmindfx {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires json.simple;
+    requires org.apache.commons.codec;
 
     opens com.example.mysticmindfx to javafx.fxml;
     exports com.example.mysticmindfx;
