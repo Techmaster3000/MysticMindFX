@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
         Scene login = new Scene(loginLoader.load());
         //set logo
         stage.getIcons().add(new javafx.scene.image.Image(HelloApplication.class.getResource("logo.png").toString()));
-        stage.setTitle("Hello!");
+        stage.setTitle("Login");
         stage.setScene(login);
         stage.show();
         SceneSwitcher.getInstance().setMainStage(stage);
