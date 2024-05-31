@@ -1,33 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
+
 .gruppo-regular {
     -fx-font-family: "Gruppo", sans-serif;
     -fx-font-weight: 400;
     -fx-font-style: normal;
     -fx-src: url("https://fonts.googleapis.com/css2?family=Gruppo&display=swap");
 }
+
 .titleText {
     -fx-font-family: "forma-djr-mono", sans-serif;
     -fx-font-weight: 300;
     -fx-font-style: normal;
     -fx-src: url("https://use.typekit.net/mms7jgi.css");
 }
+
 #SignUpText {
     font-family: "forma-djr-mono", sans-serif;
     font-weight: 300;
     font-style: normal;
     src: url("https://use.typekit.net/mms7jgi.css");
 }
+
 .root {
     -fx-alignment: center;
 }
+
 .hyperlink:visited {
     -fx-text-fill: white;
 }
+
 .background {
     -fx-background-color: rgb(28, 30, 48);
 }
+
 .switchButton {
     -fx-background-color: transparent;
 }
+.MenuItem {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-background-radius: 0;
+    -fx-border-width: 2px;
+    -fx-border-radius: 1;
+    -fx-pref-height: 36;
+    -fx-pref-width: 127;
+    -fx-margin: 5;
+    -fx-font-family: Dubai;
+    -fx-font-size: 16;
+    -fx-text-alignment: center;
+    -fx-graphic-text-gap: 4;
+    -fx-padding: 0 0 0 0;
+    -fx-alignment: center;
 
+
+}
+.MenuItem:hover {
+    -fx-background-color: rgb(32, 35, 53);
+}
+.toolButton{
+    -fx-background-color: transparent;
+
+}
+.toolButton:hover{
+    -fx-background-color: rgb(32, 35, 53);
+    -fx-border-color: rgb(32, 35, 53);
+}
+.sidebar{
+    -fx-background-color: rgb(17, 20, 31);
+    -fx-text-fill: white;
+}
+.scrollpane{
+    //make the scrollbar fit with the rest of the theme
+    -fx-background-color: rgb(17, 20, 31);}
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="659.0" stylesheets="@FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.MainController">
+   <children>
+      <ScrollPane fx:id="sidebarScroll" hbarPolicy="NEVER" layoutY="-1.0" pickOnBounds="false" prefHeight="365.0" prefWidth="146.0" styleClass="scrollpane" vbarPolicy="ALWAYS">
+         <content>
+            <VBox fx:id="ChatTabBox" prefHeight="365.0" prefWidth="145.0" styleClass="sidebar" />
+         </content>
+      </ScrollPane>
+      <ToolBar fx:id="ToolBar" layoutY="365.0" prefHeight="41.0" prefWidth="146.0" styleClass="background">
+        <items>
+            <ImageView accessibleRole="BUTTON" fitHeight="27.0" fitWidth="28.0" layoutX="10.0" layoutY="12.0" onMouseClicked="#addChat" pickOnBounds="true" preserveRatio="true" styleClass="toolButton">
+               <image>
+                  <Image url="@add_24dp_FILL0_wght400_GRAD0_opsz24.png" />
+               </image>
+            </ImageView>
+            <ImageView accessibleRole="BUTTON" fitHeight="27.0" fitWidth="28.0" onMouseClicked="#openSettings" pickOnBounds="true" preserveRatio="true" styleClass="toolButton">
+               <image>
+                  <Image url="@settings_24dp_FILL0_wght400_GRAD0_opsz24.png" />
+               </image>
+            </ImageView>
+        </items>
+      </ToolBar>
+   </children>
+   <styleClass>
+      <String fx:value="background" />
+      <String fx:value="root" />
+   </styleClass>
+</AnchorPane>

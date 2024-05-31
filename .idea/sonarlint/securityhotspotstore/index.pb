@@ -23,3 +23,7 @@ g
 0src/main/java/com/example/mysticmindfx/User.java,a\c\acebabc8dad36d1308825181cda8a5c7ffd0cb57
 N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
+=
+userdata.json,d\2\d25a65c35e38a393c871f59b44e4fb407f84bcb1
+j
+:src/main/java/com/example/mysticmindfx/MainController.java,9\7\97acad6c906e5039a1a3c98f4f4a13660efbd335

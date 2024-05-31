@@ -25,7 +25,7 @@ public class SceneSwitcher {
         return instance;
     }
 
-    public void switchScene(String sceneName) {
+    public void switchScene(String sceneName, String WindowTitle) {
         try {
             FXMLLoader loader = new FXMLLoader(HelloController.class.getResource(sceneName));
             Scene scene = new Scene(loader.load());
@@ -34,9 +34,14 @@ public class SceneSwitcher {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //set window title
+        mainStage.setTitle(WindowTitle);
     }
 
     public void setMainStage(Stage stage) {
         mainStage = stage;
+    }
+    public Stage getMainStage() {
+        return mainStage;
     }
 }
