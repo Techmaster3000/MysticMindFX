@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="659.0" stylesheets="@FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.MainController">
    <children>
@@ -16,7 +20,7 @@
             <VBox fx:id="ChatTabBox" prefHeight="365.0" prefWidth="145.0" styleClass="sidebar" />
          </content>
       </ScrollPane>
-      <ToolBar fx:id="ToolBar" layoutY="365.0" prefHeight="41.0" prefWidth="146.0" styleClass="background">
+      <ToolBar fx:id="ToolBar" layoutY="365.0" prefHeight="41.0" prefWidth="146.0" styleClass="toolbar">
         <items>
             <ImageView accessibleRole="BUTTON" fitHeight="27.0" fitWidth="28.0" layoutX="10.0" layoutY="12.0" onMouseClicked="#addChat" pickOnBounds="true" preserveRatio="true" styleClass="toolButton">
                <image>
@@ -30,6 +34,57 @@
             </ImageView>
         </items>
       </ToolBar>
+      <TextField fx:id="ChatField" focusTraversable="false" layoutX="146.0" layoutY="371.0" onAction="#onChatMessage" prefHeight="25.0" prefWidth="512.0" promptText="Ask me anything!" styleClass="ChatBox" />
+      <VBox fx:id="ChatHistory" alignment="BOTTOM_CENTER" layoutX="153.0" layoutY="-1.0" prefHeight="365.0" prefWidth="497.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="512.0" styleClass="message">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello Sir.">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Text>
+                  <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="325.0" prefHeight="50.0" prefWidth="512.0" styleClass="response">
+               <children>
+                  <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@profile-user.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello Sir.">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
    </children>
    <styleClass>
       <String fx:value="background" />

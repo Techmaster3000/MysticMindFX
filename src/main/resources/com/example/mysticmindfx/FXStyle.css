@@ -14,6 +14,24 @@
     -fx-src: url("https://use.typekit.net/mms7jgi.css");
 }
 
+.ChatBox {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgb(42, 46, 62);
+    -fx-border-width: 2;
+    -fx-background-color: rgb(42, 46, 62);
+    -fx-text-fill: white;
+    -fx-font-family: "forma-djr-mono", sans-serif;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+}
+
+.toolbar {
+    -fx-background-color: rgb(17, 20, 31);
+    -fx-text-fill: white;
+}
+
 #SignUpText {
     font-family: "forma-djr-mono", sans-serif;
     font-weight: 300;
@@ -36,6 +54,7 @@
 .switchButton {
     -fx-background-color: transparent;
 }
+
 .MenuItem {
     -fx-background-color: transparent;
     -fx-text-fill: white;
@@ -54,22 +73,63 @@
 
 
 }
+
 .MenuItem:hover {
     -fx-background-color: rgb(32, 35, 53);
 }
-.toolButton{
+
+.toolButton {
     -fx-background-color: transparent;
 
 }
-.toolButton:hover{
+
+.toolButton:hover {
     -fx-background-color: rgb(32, 35, 53);
     -fx-border-color: rgb(32, 35, 53);
 }
-.sidebar{
+.message {
+    -fx-background-color: rgb(42, 46, 62);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: rgb(42, 46, 62);
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+    -fx-font-family: "forma-djr-mono", sans-serif;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+    -fx-margin: 10;
+
+}
+.messageText {
+    -fx-font-family: "forma-djr-mono", sans-serif;
+    -fx-font-weight: 300;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-style: normal;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+}
+.sidebar {
     -fx-background-color: rgb(17, 20, 31);
     -fx-text-fill: white;
 }
-.scrollpane{
-    //make the scrollbar fit with the rest of the theme
-    -fx-background-color: rgb(17, 20, 31);}
+.response {
+    -fx-background-color: rgb(42, 46, 62);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: rgb(42, 46, 62);
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+    -fx-margin: 10;
+    -fx-font-family: "forma-djr-mono", sans-serif;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-alignment: center-left;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+
+}
+
+.scrollpane {
+    -fx-background-color: rgb(17, 20, 31);
+}
 

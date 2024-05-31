@@ -1,7 +1,7 @@
 package com.example.mysticmindfx;
 import java.util.Scanner;
 
-public class main {
+public class Main {
 //    static JSONHandler jsonHandler = new JSONHandler();
 
     public static void main(String[] args) {
