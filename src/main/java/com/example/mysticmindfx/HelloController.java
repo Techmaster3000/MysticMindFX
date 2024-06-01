@@ -6,8 +6,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class HelloController {
+
+public class HelloController implements IController{
     @FXML
     private TextField mailField;
     @FXML
@@ -26,10 +29,8 @@ public class HelloController {
     public HelloController() {
     }
     @FXML
-    public void initialize() {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         errorText.setText("");
-
-
     }
 
     @FXML
