@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 .gruppo-regular {
     -fx-font-family: "Gruppo", sans-serif;
     -fx-font-weight: 400;
@@ -12,6 +12,24 @@
     -fx-font-weight: 300;
     -fx-font-style: normal;
     -fx-src: url("https://use.typekit.net/mms7jgi.css");
+}
+
+.ChatBox {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgb(42, 46, 62);
+    -fx-border-width: 2;
+    -fx-background-color: rgb(42, 46, 62);
+    -fx-text-fill: white;
+    -fx-font-family: "forma-djr-mono", sans-serif;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+}
+
+.toolbar {
+    -fx-background-color: rgb(17, 20, 31);
+    -fx-text-fill: white;
 }
 
 #SignUpText {
@@ -36,6 +54,7 @@
 .switchButton {
     -fx-background-color: transparent;
 }
+
 .MenuItem {
     -fx-background-color: transparent;
     -fx-text-fill: white;
@@ -54,22 +73,127 @@
 
 
 }
+
 .MenuItem:hover {
     -fx-background-color: rgb(32, 35, 53);
 }
-.toolButton{
+
+.toolButton {
     -fx-background-color: transparent;
 
 }
-.toolButton:hover{
+
+.toolButton:hover {
     -fx-background-color: rgb(32, 35, 53);
     -fx-border-color: rgb(32, 35, 53);
 }
-.sidebar{
+
+@keyframes spin {
+    0% {
+        -fx-rotate: 0;
+    }
+    50% {
+        -fx-rotate: 180;
+    }
+    75% {
+        -fx-rotate: 270;
+    }
+    100% {
+        -fx-rotate: 360;
+    }
+}
+
+
+.toolButton:pressed {
+    -fx-background-color: rgb(41, 41, 62);
+    -fx-border-color: rgb(32, 35, 53);
+    -fx-animated: spin 2s linear infinite;
+}
+
+.message {
+    -fx-background-color: rgb(42, 46, 62);
+    -fx-border-radius: 10;
+    -fx-alignment: center-right;
+    -fx-background-radius: 10;
+    -fx-border-color: rgb(42, 46, 62);
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+    -fx-margin: 0px 5px 0px 5px;
+    -fx-pref-height: 50;
+    -fx-pref-width: 512;
+    -fx-padding: 5px;
+     margin: 5px;
+
+
+
+}
+
+.messageText {
+    -fx-font-family: "forma-djr-mono", sans-serif;
+    -fx-font-weight: 300;
+    -fx-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-style: normal;
+    -fx-margin: 5 5 5 5;
+    -fx-hbox-margin: 0 5 0 5;
+
+}
+
+.sidebar {
     -fx-background-color: rgb(17, 20, 31);
     -fx-text-fill: white;
 }
-.scrollpane{
-    //make the scrollbar fit with the rest of the theme
-    -fx-background-color: rgb(17, 20, 31);}
+
+.icon-button .button-icon {
+    -fx-fill: #888888;
+}
+.userIcon {
+    -fx-margin: 0 5 0 5;
+}
+/* set default fill of svg path */
+.icon-button:focused {
+    -fx-background-color: rgb(17, 20, 31);
+    -fx-background-radius: 0;
+}
+
+.icon-button {
+    -fx-background-color: transparent, transparent, transparent, transparent, transparent;
+    -fx-pref-height: 27;
+    -fx-pref-width: 27;
+    -fx-max-height: 27;
+    -fx-max-width: 27;
+    -fx-min-height: 27;
+    -fx-min-width: 27;
+}
+.icon-button:hover .button-icon {
+    -fx-fill: #444444;
+}
+
+.icon-button:pressed .button-icon {
+    -fx-fill: #222222;
+    -fx-animated: spin 2s linear infinite;
+}
+
+.response {
+    -fx-background-color: rgb(42, 46, 62);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: rgb(42, 46, 62);
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+    -fx-margin: 10;
+    -fx-font-family: "forma-djr-mono", sans-serif;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-alignment: center-left;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+
+}
+
+.scrollpane {
+    -fx-background-color: rgb(17, 20, 31);
+}
 

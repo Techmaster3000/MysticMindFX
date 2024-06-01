@@ -9,7 +9,7 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SignUpController {
+public class SignUpController implements IController{
     @FXML
     private TextField UsernameField;
     @FXML

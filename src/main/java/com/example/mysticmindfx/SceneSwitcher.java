@@ -31,11 +31,17 @@ public class SceneSwitcher {
             Scene scene = new Scene(loader.load());
             mainStage.setScene(scene);
             mainStage.show();
+           //initialize the controller of the new scene regardless of classtype
+            IController controller = loader.getController();
+            controller.initialize(null, null);
         } catch (IOException e) {
             e.printStackTrace();
         }
         //set window title
         mainStage.setTitle(WindowTitle);
+        //initialize the controller
+
+
     }
 
     public void setMainStage(Stage stage) {
