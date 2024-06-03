@@ -28,10 +28,10 @@ public class ResourceSelector {
     }
     public static String selectDocumentation(String language) {
         if (language.equalsIgnoreCase("java")){
-            return "foundDocumentation2";
+            return "javaFoundDocumentation";
         }
         else if (language.equalsIgnoreCase("python")){
-            return "foundDocumentation1";
+            return "pythonFoundDocumentation";
         }
         return null;
     }

@@ -61,7 +61,7 @@ public class elasticSearch {
         }
         return allKeywords;
     }
-    public static void parseJSONAndPrintDocumentationEs(String filename, List<String> categories) {
+    public static String parseJSONAndPrintDocumentationEs(String filename, List<String> categories) {
         try {
             Object o = new JSONParser().parse(new FileReader(filename));
             org.json.simple.JSONObject j = (org.json.simple.JSONObject) o;
@@ -75,13 +75,14 @@ public class elasticSearch {
 
                 if (categories.stream().anyMatch(cat -> docKeywordsList.contains(cat.toLowerCase()))) {
                     String documentation = (String) docObj.get("documentation");
-                    System.out.println("Documentation: " + documentation);
-                    break;
+                    return documentation;
+
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 }
 
