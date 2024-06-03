@@ -12,6 +12,7 @@ module com.example.mysticmindfx {
     requires com.almasb.fxgl.all;
     requires json.simple;
     requires org.apache.commons.codec;
+    requires org.json;
 
     opens com.example.mysticmindfx to javafx.fxml;
     exports com.example.mysticmindfx;
