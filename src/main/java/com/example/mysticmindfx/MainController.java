@@ -14,7 +14,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 
+import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainController implements IController {
@@ -41,6 +43,68 @@ public class MainController implements IController {
         Button plusButton = createAddButton();
         ToolBar.getItems().add(settingsButton);
         ToolBar.getItems().add(plusButton);
+        setChatHistory();
+
+
+    }
+    private void setChatHistory() {
+        File historyFolder = new File("src/chatHistory");
+
+        HistoryHandler historyHandler = new HistoryHandler();
+        for (File file : historyFolder.listFiles()) {
+            ArrayList<String> chatHistory = historyHandler.retrieveHistory(file);
+            Boolean fromAI = null;
+            ChatTabBox.getChildren().clear();
+            Button chat = new Button(chatHistory.get(0));
+            chat.getStyleClass().add("MenuItem");
+            chat.setStyle("-fx-text-fill: white;");
+            //add the button to the scrollpane
+            ChatTabBox.getChildren().add(chat);
+            //repeat for each file in the folder
+            //delete the first line of the chat history
+            chatHistory.remove(0);
+            for (String line : chatHistory) {
+                HBox chatMessage = new HBox();
+                if (line.startsWith("User: ")) {
+                    chatMessage.setAlignment(Pos.CENTER_RIGHT);
+                    chatMessage.getStyleClass().add("message");
+                    line = line.substring(6);
+                    fromAI = false;
+                } else {
+                    chatMessage.setAlignment(Pos.CENTER_LEFT);
+                    chatMessage.getStyleClass().add("response");
+                    line = line.substring(4);
+                    fromAI = true;
+                }
+                Text messageText = new Text(line);
+                messageText.setStyle("-fx-fill: white;");
+                //add the message to the chat without the user: or AI: prefix
+                if (fromAI) {
+                    ImageView AILogo = new ImageView();
+                    AILogo.setImage(new Image(MainController.class.getResource("/com/example/mysticmindfx/logo.png").toString()));
+                    AILogo.setFitHeight(39);
+                    AILogo.setFitWidth(39);
+                    AILogo.getStyleClass().add("userIcon");
+                    chatMessage.getChildren().add(AILogo);
+                    chatMessage.setSpacing(10);
+                    chatMessage.getChildren().add(messageText);
+                }
+                else {
+                    ImageView user = new ImageView();
+                    user.setImage(new Image(MainController.class.getResource("/com/example/mysticmindfx/profile-user.png").toString()));
+                    user.setFitHeight(39);
+                    user.setFitWidth(39);
+                    user.getStyleClass().add("userIcon");
+                    chatMessage.setSpacing(10);
+                    chatMessage.getChildren().add(messageText);
+                    chatMessage.getChildren().add(user);
+                }
+                ChatHistory.getChildren().add(chatMessage);
+            }
+
+        }
+
+
 
     }
 
@@ -75,6 +139,38 @@ public class MainController implements IController {
         //run the addChat method when the button is clicked
         button.setOnAction(event -> addChat());
         return button;
+    }
+    public void addHistory(ArrayList<String> message, String ChatName) {
+        //create a button to represent the chat
+        Button chatButton = new Button(ChatName);
+        Boolean fromAI = null;
+        //set the style class to the same as the other buttons
+        chatButton.getStyleClass().add("MenuItem");
+        //set the text to white
+        chatButton.setStyle("-fx-text-fill: white;");
+        //add the button to the sidebar
+        ChatTabBox.getChildren().add(chatButton);
+        //add the messages to the chathistory
+        ChatHistory.getChildren().clear();
+        for (String line : message) {
+            HBox chatMessage = new HBox();
+            if (line.startsWith("User: ")) {
+                chatMessage.setAlignment(Pos.CENTER_RIGHT);
+                chatMessage.getStyleClass().add("message");
+                fromAI = false;
+            } else if (line.startsWith("AI: ")){
+                chatMessage.setAlignment(Pos.CENTER_LEFT);
+                chatMessage.getStyleClass().add("response");
+                fromAI = true;
+            }
+            Text messageText = new Text(line);
+            messageText.setStyle("-fx-fill: white;");
+            chatMessage.getChildren().add(messageText);
+
+
+
+
+        }
     }
 
     private Button createSettingsButton() {
