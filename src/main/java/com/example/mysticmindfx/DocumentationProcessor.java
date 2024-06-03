@@ -14,8 +14,8 @@ public class DocumentationProcessor {
         return true;
     }
 
-    public static boolean validateDocumentation(String found, String language) {
-        if (found == null) {
+    public static boolean validateDocumentation(String found,  String language) {
+        if (found == null){
             System.out.println("No documentation found for " + language);
             return false;
         }
