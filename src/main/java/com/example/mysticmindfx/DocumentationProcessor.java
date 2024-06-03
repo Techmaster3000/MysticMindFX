@@ -22,7 +22,7 @@ public class DocumentationProcessor {
         return true;
     }
 
-    public static void parseJSONAndPrintDescription(String filename, String found, String category, String input) {
+    public static String parseJSONAndPrintDescription(String filename, String found, String category, String input) {
         try {
             Object o = new JSONParser().parse(new FileReader(filename));
             JSONObject j = (JSONObject) o;
@@ -38,13 +38,13 @@ public class DocumentationProcessor {
                     String name = (String) ((JSONObject) feature).get("name");
                     String description = (String) ((JSONObject) feature).get("description");
                     if (input.contains(name.toLowerCase())) {
-                        System.out.println("Description: " + description);
-                        break;
+                        return description;
                     }
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 }
