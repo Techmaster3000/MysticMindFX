@@ -130,6 +130,10 @@
 
 
 }
+.selectedChat {
+    -fx-background-color: rgb(35, 35, 35);
+
+}
 .response {
     -fx-background-color: rgb(42, 46, 62);
     -fx-border-radius: 10;

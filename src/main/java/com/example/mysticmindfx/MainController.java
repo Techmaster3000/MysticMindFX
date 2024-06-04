@@ -59,11 +59,10 @@ public class MainController implements IController {
             Boolean fromAI = null;
 
             Button chat = new Button(chatHistory.get(0));
+            chat.setOnAction(event -> loadChat(chat.getText()));
             chat.getStyleClass().add("MenuItem");
             //add the button to the scrollpane
             ChatTabBox.getChildren().add(chat);
-            //repeat for each file in the folder
-            //delete the first line of the chat history
             chatHistory.remove(0);
             for (String line : chatHistory) {
                 HBox chatMessage = new HBox();
@@ -118,9 +117,79 @@ public class MainController implements IController {
         newChat.getStyleClass().add("MenuItem");
         //set the text to white
         newChat.setStyle("-fx-text-fill: white;");
+        newChat.setOnAction(event -> loadChat(newChat.getText()));
         //add the button to the scrollpane
         ChatTabBox.getChildren().add(newChat);
 
+
+    }
+    private void loadChat(String chatName) {
+        //highlight the chat that was clicked
+        for (int i = 0; i < ChatTabBox.getChildren().size(); i++) {
+            Button chat = (Button) ChatTabBox.getChildren().get(i);
+            if (chat.getText().equals(chatName)) {
+                chat.getStyleClass().add("selectedChat");
+            } else {
+                chat.getStyleClass().remove("selectedChat");
+            }
+        }
+        //clear the chat history
+        ChatHistory.getChildren().clear();
+        HistoryHandler historyHandler = new HistoryHandler();
+        //get the file where the first line is the chat name
+        File folder = new File("src/chatHistory");
+        File historyFile = null;
+        for (File file : folder.listFiles()) {
+            ArrayList<String> chatHistory = historyHandler.retrieveHistory(file);
+            if (chatHistory.get(0).equals(chatName)) {
+                historyFile = file;
+                break;
+            }
+        }
+        ArrayList<String> chatHistory = historyHandler.retrieveHistory(historyFile);
+        Boolean fromAI = null;
+
+        Button chat = new Button(chatHistory.get(0));
+        chat.setOnAction(event -> loadChat(chat.getText()));
+        chat.getStyleClass().add("MenuItem");
+        //add the button to the scrollpane
+        chatHistory.remove(0);
+        for (String line : chatHistory) {
+            HBox chatMessage = new HBox();
+            if (line.startsWith("User: ")) {
+                chatMessage.setAlignment(Pos.CENTER_RIGHT);
+                chatMessage.getStyleClass().add("message");
+                line = line.substring(6);
+                fromAI = false;
+            } else {
+                chatMessage.setAlignment(Pos.CENTER_LEFT);
+                chatMessage.getStyleClass().add("response");
+                line = line.substring(4);
+                fromAI = true;
+            }
+            Text messageText = new Text(line);
+            messageText.setStyle("-fx-fill: white;");
+            if (fromAI) {
+                ImageView AILogo = new ImageView();
+                AILogo.setImage(new Image(MainController.class.getResource("/com/example/mysticmindfx/logo.png").toString()));
+                AILogo.setFitHeight(39);
+                AILogo.setFitWidth(39);
+                AILogo.getStyleClass().add("userIcon");
+                chatMessage.getChildren().add(AILogo);
+                chatMessage.setSpacing(10);
+                chatMessage.getChildren().add(messageText);
+            } else {
+                ImageView user = new ImageView();
+                user.setImage(new Image(MainController.class.getResource("/com/example/mysticmindfx/profile-user.png").toString()));
+                user.setFitHeight(39);
+                user.setFitWidth(39);
+                user.getStyleClass().add("userIcon");
+                chatMessage.setSpacing(10);
+                chatMessage.getChildren().add(messageText);
+                chatMessage.getChildren().add(user);
+            }
+            ChatHistory.getChildren().add(chatMessage);
+        }
 
     }
 
@@ -158,10 +227,6 @@ public class MainController implements IController {
             Text messageText = new Text(line);
             messageText.setStyle("-fx-fill: white;");
             chatMessage.getChildren().add(messageText);
-
-
-
-
         }
     }
 
