@@ -44,6 +44,7 @@ public class MainController implements IController {
         ToolBar.getItems().add(settingsButton);
         ToolBar.getItems().add(plusButton);
         setChatHistory();
+        ChatHistory.setSpacing(10);
 
 
     }
@@ -51,10 +52,11 @@ public class MainController implements IController {
         File historyFolder = new File("src/chatHistory");
 
         HistoryHandler historyHandler = new HistoryHandler();
+        ChatTabBox.getChildren().clear();
         for (File file : historyFolder.listFiles()) {
             ArrayList<String> chatHistory = historyHandler.retrieveHistory(file);
             Boolean fromAI = null;
-            ChatTabBox.getChildren().clear();
+
             Button chat = new Button(chatHistory.get(0));
             chat.getStyleClass().add("MenuItem");
             chat.setStyle("-fx-text-fill: white;");
@@ -224,7 +226,7 @@ public class MainController implements IController {
         chatMessage.getChildren().add(user);
         ChatHistory.getChildren().add(chatMessage);
         ChatScroll.setVvalue(1.0);
-        ChatHistory.setSpacing(10);
+
 
     }
 
