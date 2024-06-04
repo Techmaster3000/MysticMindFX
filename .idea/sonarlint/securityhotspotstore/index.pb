@@ -5,6 +5,10 @@ N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
 i
 9src/main/java/com/example/mysticmindfx/elasticSearch.java,d\6\d62e340522dc92e87af4a9030cde12f43d2c4b15
+l
+<src/main/java/com/example/mysticmindfx/HelloApplication.java,5\8\58fdea409e385b7cf1daa7b8f96fd8125c9b06a9
+`
+0src/main/java/com/example/mysticmindfx/main.java,4\a\4a4672a239f4db071acc051130809c1bae2d8b9a
 I
 src/chatHistory/Chat1.txt,3\2\32d4c597b52dbc1eb8eadabfeaa7804068d6ed40
 j
