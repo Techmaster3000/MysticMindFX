@@ -130,6 +130,24 @@
 
 
 }
+.response {
+    -fx-background-color: rgb(42, 46, 62);
+    -fx-border-radius: 10;
+    -fx-alignment: center-left;
+    -fx-background-radius: 10;
+    -fx-border-color: rgb(42, 46, 62);
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+    -fx-margin: 0px 5px 0px 5px;
+    -fx-pref-height: 50;
+    -fx-pref-width: 512;
+    -fx-padding: 5px;
+    margin: 5px;
+
+}
 
 .messageText {
     -fx-font-family: "forma-djr-mono", sans-serif;
