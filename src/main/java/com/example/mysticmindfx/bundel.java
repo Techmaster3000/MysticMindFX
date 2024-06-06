@@ -12,48 +12,62 @@ public class bundel {
         String resource = RSprocessDocumentation(input, filename);
         String elastic = ESprocessDocumentation(input, filename);
 
-        if (resource == null || elastic == null) {
+        if (resource == null && elastic == null) {
             System.out.println("Geen documentatie gevonden.");
         } else {
             System.out.println("Prompt: " + input + "\n" );
-            System.out.println("Resource Selector: " + resource + "\n");
-            System.out.println("Elastic Search: " + elastic);
+            System.out.println(resource);
+            System.out.println(elastic);
         }
     }
 
     public static String RSprocessDocumentation(String input, String filename) {
-        ResourceSelector rs = new ResourceSelector();
+        try {
+            ResourceSelector rs = new ResourceSelector();
 
-        // Splits de invoer in afzonderlijke woorden
-        String[] words = input.split(" ");
+            // Splits de invoer in afzonderlijke woorden
+            String[] words = input.split(" ");
 
-        // Initialiseer de variabelen
-        String language = rs.determineLanguage(words);
-        String category = rs.determineCategory(words);
-        String naam = rs.determineName(words, language, category);
-        String found = rs.selectDocumentation(language);
+            // Initialiseer de variabelen
+            String language = rs.determineLanguage(words);
+            String category = rs.determineCategory(words);
+            String naam = rs.determineName(words, language, category);
+            String found = rs.selectDocumentation(language);
 
-        if (!DocumentationProcessor.validateInputs(language, category, naam)) {
+            if (!DocumentationProcessor.validateInputs(language, category, naam)) {
+                return null;
+            }
+
+            if (!DocumentationProcessor.validateDocumentation(found, language)) {
+                return null;
+            }
+
+            if (filename == null || found == null || category == null){
+                return null;
+            } else {
+                return DocumentationProcessor.parseJSONAndPrintDescription(filename, found, category, input);
+            }
+        } catch (Exception e) {
             return null;
         }
-
-        if (!DocumentationProcessor.validateDocumentation(found, language)) {
-            return null;
-        }
-
-        return DocumentationProcessor.parseJSONAndPrintDescription(filename, found, category, input);
     }
 
     public static String ESprocessDocumentation(String input, String filename) {
-        elasticSearch es = new elasticSearch();
-        List<String> allKeywords = es.safastinkt(filename);
-        // Splits de invoer in afzonderlijke woorden
-        String[] words = input.split(" ");
-        ArrayList<String> category = es.determineCategoryEs(words, allKeywords);
-        String found = "elasticFoundDocumentation";
+        try {
+            elasticSearch es = new elasticSearch();
+            List<String> allKeywords = es.safastinkt(filename);
+            // Splits de invoer in afzonderlijke woorden
+            String[] words = input.split(" ");
+            ArrayList<String> category = es.determineCategoryEs(words, allKeywords);
 
-        System.out.println(category);
-        return es.parseJSONAndPrintDocumentationEs(filename, category);
+            if (filename == null || category == null){
+                return null;
+            } else {
+                return es.parseJSONAndPrintDocumentationEs(filename, category);
+            }
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
 
