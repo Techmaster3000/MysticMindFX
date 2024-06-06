@@ -8,8 +8,6 @@ import org.json.JSONTokener;
 import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class elasticSearch {
@@ -32,11 +30,6 @@ public class elasticSearch {
         return categories.isEmpty() ? null : categories;
     }
 
-        public static void vergelijkInput(ArrayList<String> categories, String input) {
-            for (String category : categories) {
-
-                }
-            }
     public static List<String> safastinkt(String filePath){
         List<String> allKeywords = new ArrayList<>();
 
@@ -74,8 +67,7 @@ public class elasticSearch {
                 List<String> docKeywordsList = (List<String>) docKeywords.stream().map(kw -> ((String) kw).toLowerCase()).collect(Collectors.toList());
 
                 if (categories.stream().anyMatch(cat -> docKeywordsList.contains(cat.toLowerCase()))) {
-                    String documentation = (String) docObj.get("documentation");
-                    return documentation;
+                    return (String) docObj.get("documentation");
 
                 }
             }
