@@ -53,13 +53,29 @@ public class bundel {
     }
 
     public static String ESprocessDocumentation(String input, String filename) {
+        Scanner scanner = new Scanner(System.in);
         try {
             elasticSearch es = new elasticSearch();
             List<String> allKeywords = es.safastinkt(filename);
             // Splits de invoer in afzonderlijke woorden
             String[] words = input.split(" ");
             ArrayList<String> category = es.determineCategoryEs(words, allKeywords);
-
+            if (category.contains("domain-model") && !category.contains("financial-system") && !category.contains("social platform application")){
+                System.out.println("Welk domain model wilt u zien?");
+                System.out.println("1. Financial-system");
+                System.out.println("2. Social platform application");
+                String in = scanner.nextLine().toLowerCase();
+                switch (in){
+                    case "1":
+                        category.add("financial-system");
+                        break;
+                    case "2":
+                        category.add("social platform application");
+                        break;
+                    default:
+                        return null;
+                }
+            }
             if (filename == null || category == null){
                 return null;
             } else {
