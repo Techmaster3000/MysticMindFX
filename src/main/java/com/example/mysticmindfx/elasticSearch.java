@@ -6,7 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.json.simple.parser.JSONParser;
-
+//import org.json.simple.parser.JSONParser;
 import java.io.FileReader;
 import java.util.stream.Collectors;
 
@@ -55,6 +55,9 @@ public class elasticSearch {
         return allKeywords;
     }
     public static String parseJSONAndPrintDocumentationEs(String filename, List<String> categories) {
+        String bestMatchDocumentation = null;
+        int maxMatches = 0;
+
         try {
             Object o = new JSONParser().parse(new FileReader(filename));
             org.json.simple.JSONObject j = (org.json.simple.JSONObject) o;
@@ -66,15 +69,17 @@ public class elasticSearch {
                 org.json.simple.JSONArray docKeywords = (org.json.simple.JSONArray) docObj.get("keywords");
                 List<String> docKeywordsList = (List<String>) docKeywords.stream().map(kw -> ((String) kw).toLowerCase()).collect(Collectors.toList());
 
-                if (categories.stream().anyMatch(cat -> docKeywordsList.contains(cat.toLowerCase()))) {
-                    return (String) docObj.get("documentation");
-
+                int matches = (int) categories.stream().filter(cat -> docKeywordsList.contains(cat.toLowerCase())).count();
+                if (matches > maxMatches) {
+                    maxMatches = matches;
+                    bestMatchDocumentation = (String) docObj.get("documentation");
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+
+        return bestMatchDocumentation;
     }
 }
 
