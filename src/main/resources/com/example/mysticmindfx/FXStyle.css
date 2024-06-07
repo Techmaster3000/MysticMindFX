@@ -198,6 +198,28 @@
     -fx-fill: #222222;
     -fx-animated: spin 2s linear infinite;
 }
+.chatTitlebox {
+    -fx-background-color: rgb(17, 20, 31);
+    -fx-z-index: 1;
+}
+.chatTitle {
+
+}
+
+.rename-button {
+    -fx-background-color: rgb(10, 13, 17);
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+    -fx-text-fill: white;
+}
+.rename-button:hover {
+    -fx-background-color: white;
+    -fx-border-color: rgb(10, 13, 17);
+    -fx-border-width: 0;
+    -fx-border-radius: 4;
+    -fx-text-fill: black;
+}
 
 .response {
     -fx-background-color: rgb(42, 46, 62);
@@ -215,7 +237,29 @@
 
 }
 
-.scrollpane {
+.chatList {
     -fx-background-color: rgb(17, 20, 31);
 }
+.scrollpane {
 
+}
+.increment-arrow, .decrement-arrow {
+    -fx-background-color: transparent;
+
+}
+.increment-button, .decrement-button {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color: rgb(17, 20, 31);
+
+}
+.track-background {
+    -fx-background-color: rgb(17, 20, 31);
+    -fx-border-color: rgb(17, 20, 31);
+}
+.thumb {
+    -fx-background-color: rgb(91, 92, 105);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgb(91, 92, 105);
+    -fx-border-width: 2;
+}

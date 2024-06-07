@@ -9,15 +9,37 @@ l
 <src/main/java/com/example/mysticmindfx/HelloApplication.java,5\8\58fdea409e385b7cf1daa7b8f96fd8125c9b06a9
 `
 0src/main/java/com/example/mysticmindfx/main.java,4\a\4a4672a239f4db071acc051130809c1bae2d8b9a
-I
-src/chatHistory/Chat1.txt,3\2\32d4c597b52dbc1eb8eadabfeaa7804068d6ed40
 j
 :src/main/java/com/example/mysticmindfx/HistoryHandler.java,a\9\a911b80f79e81d17710b88bb8f2efbe1a204bfd2
-I
-src/chatHistory/Chat2.txt,e\f\ef5849c9970895c0ed255ac5e76f8dac6272bd52
 j
 :src/main/java/com/example/mysticmindfx/MainController.java,9\7\97acad6c906e5039a1a3c98f4f4a13660efbd335
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+M
+src/chatHistory/ChatHello.txt,0\7\0720484d7b8e5868130c4f2c73d8ae42123dd954
+J
+src/chatHistory/Chat 2.txt,c\0\c04a631c044054b5810649611bd3e61dbb241540
+J
+src/chatHistory/Chat 3.txt,8\9\89a521aaa402794bb0e1115bbe5a8ee5c60bb03d
+J
+src/chatHistory/Chat 4.txt,1\8\18faaa1621d5963d8af3e67e04302af0cec1924e
+i
+9src/main/java/com/example/mysticmindfx/SceneSwitcher.java,4\8\480bb23dde72ba6cf0a835e74329fde999644db3
+l
+<src/main/java/com/example/mysticmindfx/RenameController.java,1\e\1ec774f266be1fefd15a30e3060e34ef65b2c443
+k
+;src/main/java/com/example/mysticmindfx/HelloController.java,a\6\a6b74f398542417098f066ca2bcea5f673e613cf
+N
+src/chatHistory/renametest.txt,a\6\a66911ac28654af3d50d39531a065666e8d986f7
+O
+src/chatHistory/HelloRename.txt,f\b\fbf1c1ba5bd7333d706efef28373d6aa2c101d72
+G
+src/chatHistory/cat.txt,5\5\55937fb5e02057d362a2e15f4ee2e3535d253025
+K
+src/chatHistory/tesging.txt,1\6\162cc3a31ba9162521bfa378684faf11ffa33a19
+H
+src/chatHistory/test.txt,7\1\71219fc10c03f62235117b54da97ef346b5f1657
