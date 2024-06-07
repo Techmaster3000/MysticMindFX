@@ -1,6 +1,7 @@
 package com.example.mysticmindfx;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -60,17 +61,18 @@ public class bundel {
             // Splits de invoer in afzonderlijke woorden
             String[] words = input.split(" ");
             ArrayList<String> category = es.determineCategoryEs(words, allKeywords);
-            if (category.contains("domain-model") && !category.contains("financial-system") && !category.contains("social platform application")){
+            if (category.contains("domain-model") && !category.contains("financial-system") && !category.contains("social-platform-application")){
                 System.out.println("Welk domain model wilt u zien?");
                 System.out.println("1. Financial-system");
-                System.out.println("2. Social platform application");
+                System.out.println("2. Social-platform-application");
                 String in = scanner.nextLine().toLowerCase();
                 switch (in){
                     case "1":
                         category.add("financial-system");
+                        category.remove(0);
                         break;
                     case "2":
-                        category.add("social platform application");
+                        category.add("social-platform-application");
                         break;
                     default:
                         return null;
@@ -83,6 +85,8 @@ public class bundel {
             }
         } catch (Exception e) {
             return null;
+        } finally {
+            scanner.close();
         }
     }
 }
