@@ -1,30 +1,22 @@
 package com.example.mysticmindfx;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.FillTransition;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
-import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
@@ -32,6 +24,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainController implements IController {
+    private static MainController instance = null;
     @FXML
     private ScrollPane sidebarScroll;
     @FXML
@@ -48,13 +41,12 @@ public class MainController implements IController {
     private Text ChatTitle;
     @FXML
     private Button RenameButton;
-
     private String selectedChat = null;
-    private static MainController instance = null;
 
     public MainController() {
         instance = this;
     }
+
     public static MainController getInstance() {
         return instance;
     }
@@ -97,6 +89,7 @@ public class MainController implements IController {
 
 
     }
+
     @FXML
     protected void showRenamePopUp() throws Exception {
         //create a Rename Popup
@@ -123,8 +116,8 @@ public class MainController implements IController {
                 File file = new File("src/chatHistory/" + selectedChat + ".txt");
                 file.renameTo(new File("src/chatHistory/" + newName + ".txt"));
                 selectedChat = newName;
-                historyHandler.saveHistory(selectedChat, ChatHistory);
                 ChatTitle.setText(newName);
+                historyHandler.saveHistory(selectedChat, ChatHistory);
                 break;
             }
 
@@ -151,13 +144,17 @@ public class MainController implements IController {
     private void loadChat(String chatName) {
         //highlight the chat that was clicked
         ChatHistory.getChildren().clear();
+
         for (int i = 0; i < ChatTabBox.getChildren().size(); i++) {
+
             Button chat = (Button) ChatTabBox.getChildren().get(i);
+
             if (chat.getText().equals(chatName)) {
                 chat.getStyleClass().add("selectedChat");
             } else {
                 chat.getStyleClass().remove("selectedChat");
             }
+
         }
 
         HistoryHandler historyHandler = new HistoryHandler();
@@ -215,19 +212,22 @@ public class MainController implements IController {
                 }
                 ChatHistory.getChildren().add(chatMessage);
             }
+            selectedChat = chatName;
             Platform.runLater(this::scrolltoBottom);
         }
-        selectedChat = chatName;
+
         ChatTitle.setText(chatName);
         //scroll to the bottom of the chat
 
     }
+
     private void scrolltoBottom() {
         ChatScroll.setVmin(0.0);
         ChatScroll.setVmax(1.0);
         ChatScroll.setVvalue(1.0);
 
     }
+
     private Button createAddButton() {
         SVGPath path = new SVGPath();
         path.setContent("M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z");

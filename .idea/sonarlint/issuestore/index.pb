@@ -43,3 +43,11 @@ K
 src/chatHistory/tesging.txt,1\6\162cc3a31ba9162521bfa378684faf11ffa33a19
 H
 src/chatHistory/test.txt,7\1\71219fc10c03f62235117b54da97ef346b5f1657
+I
+src/chatHistory/3test.txt,4\3\433a3ce932cdb302bc0ea95fa776dfe3b48c6eb9
+M
+src/chatHistory/workmaybe.txt,9\8\9845ea1619d890b4b2f48dbd23c1a70de723d45e
+I
+src/chatHistory/test4.txt,5\9\59435c86c0754d9f0aec1a12b79f55777509bd65
+H
+src/chatHistory/cat2.txt,f\4\f45571cf70cc7083a6b4bcb5b1d8a27e3b74651c
