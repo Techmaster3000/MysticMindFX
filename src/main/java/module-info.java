@@ -11,7 +11,6 @@ module com.example.mysticmindfx {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires com.fasterxml.jackson.databind;
-    requires json.simple;
 
     opens com.example.mysticmindfx to javafx.fxml;
     exports com.example.mysticmindfx;

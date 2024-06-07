@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.mysticmindfx.HelloController"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <center>
+        <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0">
+            <tabs>
+                <!-- Tabbladen met aangepaste weergave voor pluspictogram -->
+                <Tab closable="false">
+                    <graphic>
+                        <Button text="+"/>
+                    </graphic>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+
+    <!-- VBox toegevoegd om een TextField toe te voegen -->
+    <bottom>
+        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="800.0" spacing="10.0">
+        </VBox>
+    </bottom>
+
+</BorderPane>
