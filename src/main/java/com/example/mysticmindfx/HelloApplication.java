@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
         //make the window keep the same aspect ratio but keep the ability to resize
         Scene login = new Scene(loginLoader.load());
         //set logo
-        stage.getIcons().add(new javafx.scene.image.Image(HelloApplication.class.getResource("logo.png").toString()));
+        stage.getIcons().add(new javafx.scene.image.Image(HelloApplication.class.getResource("Images/logo.png").toString()));
         stage.setTitle("Login");
         stage.setScene(login);
         stage.show();

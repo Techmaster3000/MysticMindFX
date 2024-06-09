@@ -1,0 +1,6 @@
+test
+User: this is chat 4
+User: i cannot change the name yet.
+User: i rewrote
+User: so that the writing of the chat history entirely happens in theHistory Handler class.
+User: clever right?

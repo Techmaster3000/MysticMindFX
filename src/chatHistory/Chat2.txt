@@ -1,3 +1,0 @@
-ChatText
-User: this is the second chat.
-AI: it sure is!

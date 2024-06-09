@@ -75,7 +75,7 @@
             <Button fx:id="signUpLink" layoutX="288.0" layoutY="283.0" mnemonicParsing="false" onAction="#onSignUpLink" prefHeight="25.0" prefWidth="64.0" styleClass="switchButton" text="Sign Up" textAlignment="CENTER" textFill="WHITE" />
             <ImageView fx:id="logo" fitHeight="121.0" fitWidth="121.0" layoutX="260.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@logo.png" />
+                  <Image url="@Images/logo.png" />
                </image>
             </ImageView>
          </children>
