@@ -30,7 +30,7 @@ public class elasticSearch {
         return categories.isEmpty() ? null : categories;
     }
 
-    public static List<String> safastinkt(String filePath){
+    public static List<String> alleKeyWords(String filePath){
         List<String> allKeywords = new ArrayList<>();
 
         try (FileReader reader = new FileReader(filePath)) {
