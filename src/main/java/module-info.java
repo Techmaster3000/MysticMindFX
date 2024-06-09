@@ -13,6 +13,7 @@ module com.example.mysticmindfx {
     requires json.simple;
     requires org.apache.commons.codec;
     requires org.json;
+    requires java.desktop;
 
     opens com.example.mysticmindfx to javafx.fxml;
     exports com.example.mysticmindfx;

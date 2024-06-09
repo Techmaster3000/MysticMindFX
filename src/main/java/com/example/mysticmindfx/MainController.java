@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -99,6 +96,9 @@ public class MainController implements IController {
         //create a Rename Popup
         //create a new stage
         //create a new scene
+        if (selectedChat == null) {
+            return;
+        }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("RenamePopUp.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(loader.load());
@@ -109,7 +109,42 @@ public class MainController implements IController {
         //show the stage
         stage.show();
     }
+    @FXML
+    protected void onDeleteChat() {
 
+        //delete the selected chat but ask for confirmation first
+        if (selectedChat == null) {
+            return;
+        }
+        int toDeleteindex = -1;
+        for (int i = 0; i < ChatTabBox.getChildren().size(); i++) {
+            Button chat = (Button) ChatTabBox.getChildren().get(i);
+            if (chat.getText().equals(selectedChat)) {
+                toDeleteindex = i;
+
+                break;
+            }
+
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete " + selectedChat + " ?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            Path sourcePath = Paths.get("src/chatHistory/" + selectedChat + ".txt");
+            try {
+                Files.delete(sourcePath);
+            } catch (Exception e) {
+                System.out.println("Failed to delete file: " + e.getMessage());
+            }
+            selectedChat = null;
+            ChatHistory.getChildren().clear();
+            ChatTabBox.getChildren().remove(toDeleteindex);
+            ChatTitle.setText("Chat");
+        }
+
+
+
+    }
     public void renameChat(String newName) {
         //rename the selected chatbutton
         for (int i = 0; i < ChatTabBox.getChildren().size(); i++) {

@@ -46,7 +46,22 @@
             </Text>
          </children>
       </HBox>
-      <Button layoutX="581.0" layoutY="3.0" mnemonicParsing="false" onAction="#showRenamePopUp" prefHeight="29.0" prefWidth="65.0" styleClass="rename-button" text="Rename" />
+      <HBox layoutX="501.0" layoutY="3.0" prefHeight="29.0" prefWidth="146.0" spacing="5.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#showRenamePopUp" prefHeight="29.0" prefWidth="65.0" text="Rename">
+               <styleClass>
+                  <String fx:value="rename-button" />
+                  <String fx:value="chat-button" />
+               </styleClass>
+            </Button>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onDeleteChat" prefHeight="29.0" prefWidth="65.0" text="Delete">
+               <styleClass>
+                  <String fx:value="chat-button" />
+                  <String fx:value="delete-button" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
    </children>
    <styleClass>
       <String fx:value="background" />

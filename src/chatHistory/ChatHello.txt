@@ -1,2 +1,3 @@
 ChatHello
 User: this is chat 3
+User: this is now ChatHello
