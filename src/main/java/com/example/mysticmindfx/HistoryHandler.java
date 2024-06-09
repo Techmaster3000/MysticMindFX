@@ -16,6 +16,7 @@ public class HistoryHandler {
             while ((line = reader.readLine()) != null) {
                 chatHistory.add(line);
             }
+            reader.close();
         } catch (Exception e) {
             //create a new file if it doesn't exist
             try {

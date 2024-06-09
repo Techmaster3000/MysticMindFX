@@ -20,6 +20,10 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -113,8 +117,13 @@ public class MainController implements IController {
             if (chat.getText().equals(selectedChat)) {
                 chat.setText(newName);
                 HistoryHandler historyHandler = new HistoryHandler();
-                File file = new File("src/chatHistory/" + selectedChat + ".txt");
-                file.renameTo(new File("src/chatHistory/" + newName + ".txt"));
+                Path sourcePath = Paths.get("src/chatHistory/" + selectedChat + ".txt");
+                Path targetPath = Paths.get("src/chatHistory/" + newName + ".txt");
+                try {
+                    Files.move(sourcePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
+                } catch (Exception e) {
+                    System.out.println("Failed to rename file: " + e.getMessage());
+                }
                 selectedChat = newName;
                 ChatTitle.setText(newName);
                 historyHandler.saveHistory(selectedChat, ChatHistory);
