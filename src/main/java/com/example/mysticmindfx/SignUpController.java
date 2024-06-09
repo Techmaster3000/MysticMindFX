@@ -54,7 +54,7 @@ public class SignUpController implements IController{
     @FXML
     protected void onSignInLink() {
         System.out.println("Sign In Link Clicked");
-        SceneSwitcher.getInstance().switchScene("hello-view.fxml", "Sign In");
+        SceneSwitcher.getInstance().switchScene("hello-view.fxml", "Sign In", null);
 
     }
     @FXML
@@ -88,6 +88,7 @@ public class SignUpController implements IController{
         alert.setHeaderText("Welcome " + UsernameField.getText());
         alert.setContentText("You have successfully signed up!");
         alert.showAndWait();
+        SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind", EmailField.getText());
     }
     protected Boolean checkEmptyFields() {
         return UsernameField.getText().isEmpty() || EmailField.getText().isEmpty() || CheckEmailField.getText().isEmpty() || PasswordField.getText().isEmpty() || CheckPasswordField.getText().isEmpty();

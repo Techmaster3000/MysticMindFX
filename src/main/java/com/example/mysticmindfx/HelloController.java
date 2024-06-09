@@ -48,20 +48,22 @@ public class HelloController implements IController{
             alert.setHeaderText("Welcome " + user.getUsername());
             alert.setContentText("You have successfully logged in!");
             alert.showAndWait();
+            System.out.println(mailField.getText() + " has logged in");
+            SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind", mailField.getText());
         }
         else {
             errorText.setText("Incorrect Password");
             passwordField.clear();
             return;
         }
-        SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind");
+
 
 
     }
     @FXML
     protected void onSignUpLink() {
         System.out.println("Sign Up Link Clicked");
-            SceneSwitcher.getInstance().switchScene("SignUp.fxml", "Sign Up");
+            SceneSwitcher.getInstance().switchScene("SignUp.fxml", "Sign Up", null);
 
     }
 }
