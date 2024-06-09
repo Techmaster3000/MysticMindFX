@@ -16,7 +16,8 @@ public class MockAIService{
 
             "pandas", "Pandas is een krachtige bibliotheek voor gegevensmanipulatie en -analyse in Python.",
             "interpreted", "Python-code wordt regel voor regel uitgevoerd door de interpreter, wat snelle ontwikkeling en eenvoudige foutopsporing mogelijk maakt.",
-            "testing frameworks", "Python-ontwikkelaars gebruiken testframeworks zoals pytest, unittest en doctest om tests voor hun code te schrijven en uit te voeren. Deze frameworks helpen bij het waarborgen van de codekwaliteit, het opsporen van bugs en het faciliteren van codeonderhoud."
+            "testing frameworks", "Python-ontwikkelaars gebruiken testframeworks zoals pytest, unittest en doctest om tests voor hun code te schrijven en uit te voeren. Deze frameworks helpen bij het waarborgen van de codekwaliteit, het opsporen van bugs en het faciliteren van codeonderhoud.",
+            "1 + 1", "Het antwoord is 2"
     );
     public String question(String question, String documentation) {
         String lowerCaseQuestion = question.toLowerCase();
