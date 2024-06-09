@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class SceneSwitcher {
     //singleton pattern
@@ -25,7 +26,7 @@ public class SceneSwitcher {
         return instance;
     }
 
-    public void switchScene(String sceneName, String WindowTitle) {
+    public void switchScene(String sceneName, String WindowTitle, String email) {
         try {
             FXMLLoader loader = new FXMLLoader(HelloController.class.getResource(sceneName));
             Scene scene = new Scene(loader.load());
@@ -33,11 +34,22 @@ public class SceneSwitcher {
             mainStage.show();
            //initialize the controller of the new scene regardless of classtype
             IController controller = loader.getController();
+
+
+            //check if the controller is an instance of MainController
+            if (controller instanceof MainController) {
+                ((MainController) controller).setUser(email);
+            }
+            else {
+                System.out.println("Controller is not an instance of MainController");
+            }
             controller.initialize(null, null);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //set window title
+
+        //sset the email as user
+
         mainStage.setTitle(WindowTitle);
         //initialize the controller
 

@@ -15,7 +15,10 @@ import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -42,6 +45,9 @@ public class MainController implements IController {
     private Text ChatTitle;
     @FXML
     private Button RenameButton;
+
+    public String user = null;
+
     private String selectedChat = null;
 
     public MainController() {
@@ -62,15 +68,17 @@ public class MainController implements IController {
         loadHistory();
         ChatHistory.setSpacing(10);
     }
-
+    public void setUser(String user) {
+        this.user = user;
+    }
     private void loadHistory() {
         File historyFolder = new File("src/chatHistory");
 
         HistoryHandler historyHandler = new HistoryHandler();
         ChatTabBox.getChildren().clear();
         for (File file : historyFolder.listFiles()) {
-            ArrayList<String> chatHistory = historyHandler.retrieveHistory(file);
-            Boolean fromAI = null;
+            ArrayList<String> chatHistory = historyHandler.retrieveHistory(file, user);
+            //Boolean fromAI = null;
             Button chat;
             try {
                 chat = new Button(chatHistory.get(0));
@@ -92,7 +100,7 @@ public class MainController implements IController {
     }
 
     @FXML
-    protected void showRenamePopUp() throws Exception {
+    protected void showRenamePopUp() throws IOException {
         //create a Rename Popup
         //create a new stage
         //create a new scene
@@ -161,7 +169,7 @@ public class MainController implements IController {
                 }
                 selectedChat = newName;
                 ChatTitle.setText(newName);
-                historyHandler.saveHistory(selectedChat, ChatHistory);
+                historyHandler.saveHistory(selectedChat, ChatHistory, user);
                 break;
             }
 
@@ -180,6 +188,17 @@ public class MainController implements IController {
         newChat.setOnAction(event -> loadChat(newChat.getText()));
         //add the button to the scrollpane
         ChatTabBox.getChildren().add(newChat);
+        try {
+            File file = new File("src/chatHistory/" + newChat.getText() + ".txt");
+            file.createNewFile();
+            FileWriter writer = new FileWriter(file);
+            writer.write(user + "\n");
+            writer.write(newChat.getText() + "\n");
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Failed to create file: " + e.getMessage());
+        }
+        loadChat(newChat.getText());
 
 
     }
@@ -188,17 +207,20 @@ public class MainController implements IController {
     private void loadChat(String chatName) {
         //highlight the chat that was clicked
         ChatHistory.getChildren().clear();
+        Button chat = null;
 
         for (int i = 0; i < ChatTabBox.getChildren().size(); i++) {
+            chat = (Button) ChatTabBox.getChildren().get(i);
+            chat.getStyleClass().remove("selectedChat");
+        }
 
-            Button chat = (Button) ChatTabBox.getChildren().get(i);
-
-            if (chat.getText().equals(chatName)) {
+        // Add the selectedChat style class to the selected button
+        for (int i = 0; i < ChatTabBox.getChildren().size(); i++) {
+            chat = (Button) ChatTabBox.getChildren().get(i);
+            Boolean isSelected = chat.getText().equals(chatName);
+            if (isSelected) {
                 chat.getStyleClass().add("selectedChat");
-            } else {
-                chat.getStyleClass().remove("selectedChat");
             }
-
         }
 
         HistoryHandler historyHandler = new HistoryHandler();
@@ -206,7 +228,7 @@ public class MainController implements IController {
         File folder = new File("src/chatHistory");
         ArrayList<String> chatHistory = null;
         for (File file : folder.listFiles()) {
-            ArrayList<String> tempChatHistory = historyHandler.retrieveHistory(file);
+            ArrayList<String> tempChatHistory = historyHandler.retrieveHistory(file, user);
             try {
                 if (tempChatHistory.get(0).equals(chatName)) {
                     chatHistory = tempChatHistory;
@@ -325,11 +347,11 @@ public class MainController implements IController {
         //set the margin to 5
         chatMessage.setStyle("-fx-margin: 5 5 5 5;");
         //create a user icon
-        ImageView user = new ImageView();
-        user.setImage(new Image(getClass().getResource("/com/example/mysticmindfx/Images/profile-user.png").toString()));
-        user.setFitHeight(39);
-        user.setFitWidth(39);
-        user.getStyleClass().add("userIcon");
+        ImageView userimg = new ImageView();
+        userimg.setImage(new Image(getClass().getResource("/com/example/mysticmindfx/Images/profile-user.png").toString()));
+        userimg.setFitHeight(39);
+        userimg.setFitWidth(39);
+        userimg.getStyleClass().add("userIcon");
         chatMessage.setSpacing(10);
 
         Text messageText = new Text(message);
@@ -337,10 +359,10 @@ public class MainController implements IController {
         messageText.setStyle("-fx-fill: white;");
         messageText.getStyleClass().add("messageText");
         chatMessage.getChildren().add(messageText);
-        chatMessage.getChildren().add(user);
+        chatMessage.getChildren().add(userimg);
         ChatHistory.getChildren().add(chatMessage);
         HistoryHandler historyHandler = new HistoryHandler();
-        historyHandler.saveHistory(selectedChat, ChatHistory);
+        historyHandler.saveHistory(selectedChat, ChatHistory, user);
         Platform.runLater(this::scrolltoBottom);
     }
 

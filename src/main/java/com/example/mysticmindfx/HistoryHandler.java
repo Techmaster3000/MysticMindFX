@@ -8,11 +8,20 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class HistoryHandler {
-    public ArrayList<String> retrieveHistory(File file) {
+    public ArrayList<String> retrieveHistory(File file, String user) {
         ArrayList<String> chatHistory = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
+            //check if the first line is the user's name
+            line = reader.readLine();
+            if (line == null) {
+                return chatHistory;
+            }
+            if (!line.equals(user)) {
+                System.out.println(line + " " + user);
+                return chatHistory;
+            }
             while ((line = reader.readLine()) != null) {
                 chatHistory.add(line);
             }
@@ -29,8 +38,9 @@ public class HistoryHandler {
         }
         return chatHistory;
     }
-    public void saveHistory(String chatName, VBox ChatHistory) {
+    public void saveHistory(String chatName, VBox ChatHistory, String user) {
         ArrayList<String> HistoryList = new ArrayList<>();
+
         for (int i = 0; i < ChatHistory.getChildren().size(); i++) {
             HBox chatMessage = (HBox) ChatHistory.getChildren().get(i);
             Text messageText;
@@ -55,6 +65,7 @@ public class HistoryHandler {
                 file.createNewFile();
             }
             FileWriter writer = new FileWriter(file);
+            writer.write(user + "\n");
             writer.write(chatName + "\n");
             for (String line : HistoryList) {
                 writer.write(line + "\n");

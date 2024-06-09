@@ -29,9 +29,21 @@ k
 ;src/main/java/com/example/mysticmindfx/HelloController.java,a\6\a6b74f398542417098f066ca2bcea5f673e613cf
 N
 src/chatHistory/renametest.txt,a\6\a66911ac28654af3d50d39531a065666e8d986f7
-O
-src/chatHistory/HelloRename.txt,f\b\fbf1c1ba5bd7333d706efef28373d6aa2c101d72
-K
-src/chatHistory/tesging.txt,1\6\162cc3a31ba9162521bfa378684faf11ffa33a19
+l
+<src/main/java/com/example/mysticmindfx/SignUpController.java,0\3\033abd2342dbcf51a3c3c7a731a33bdbd8531178
+`
+0src/main/java/com/example/mysticmindfx/User.java,a\c\acebabc8dad36d1308825181cda8a5c7ffd0cb57
+g
+7src/main/java/com/example/mysticmindfx/IController.java,c\5\c5b2e6a0e451906e1f41b92640061b4862e91c4c
+J
+src/chatHistory/Chat 3.txt,8\9\89a521aaa402794bb0e1115bbe5a8ee5c60bb03d
+J
+src/chatHistory/Chat 5.txt,2\2\22ea2ac38794d4dc85ace91abe9de6681a1f2a14
+J
+src/chatHistory/Chat 4.txt,1\8\18faaa1621d5963d8af3e67e04302af0cec1924e
+P
+ src/chatHistory/renamed chat.txt,b\6\b6479fc6f1f1ad26dcadd08b95b91f797ae97b2d
 H
 src/chatHistory/test.txt,7\1\71219fc10c03f62235117b54da97ef346b5f1657
+G
+src/chatHistory/one.txt,a\5\a5bcfa81d8abb1be66de86f9151d7c7b5b9c3fdc
