@@ -416,6 +416,6 @@ public class MainController implements IController {
 
     @FXML
     protected void openSettings() {
-        System.out.println("Settings Clicked");
+        SceneSwitcher.getInstance().switchScene("Settings.fxml", "Settings", null);
     }
 }

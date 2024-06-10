@@ -17,8 +17,6 @@ i
 9src/main/java/com/example/mysticmindfx/MockAIService.java,3\b\3b4482ce546f2294db80c50d4c52b04e3452999c
 J
 src/chatHistory/Chat 4.txt,1\8\18faaa1621d5963d8af3e67e04302af0cec1924e
-M
-src/chatHistory/ChatHello.txt,0\7\0720484d7b8e5868130c4f2c73d8ae42123dd954
 H
 src/chatHistory/test.txt,7\1\71219fc10c03f62235117b54da97ef346b5f1657
 G
@@ -43,3 +41,7 @@ J
 src/chatHistory/Chat 9.txt,1\c\1c70fe48611be99eb308238fd0ffe7ca7c127292
 J
 src/chatHistory/Chat 7.txt,4\3\4361162b966612e97259358351c36c9958c4565e
+i
+9src/main/java/com/example/mysticmindfx/SceneSwitcher.java,4\8\480bb23dde72ba6cf0a835e74329fde999644db3
+n
+>src/main/java/com/example/mysticmindfx/SettingsController.java,2\a\2a36eef095827aa35a5a1d9cc71597a4e498d5dd

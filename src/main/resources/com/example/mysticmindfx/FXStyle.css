@@ -239,6 +239,13 @@
     -fx-border-radius: 4;
     -fx-text-fill: black;
 }
+.back-button:hover {
+    -fx-background-color: white;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+    -fx-text-fill: black;
+}
 
 .response {
     -fx-background-color: rgb(42, 46, 62);
