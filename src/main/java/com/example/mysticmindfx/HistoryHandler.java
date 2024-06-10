@@ -52,6 +52,8 @@ public class HistoryHandler {
             }
 
             String message = messageText.getText();
+            //ignore the text wrapping
+            message = message.replace("\n", "\\n");
             if (chatMessage.getStyleClass().contains("message")) {
                 HistoryList.add("User: " + message);
             } else {

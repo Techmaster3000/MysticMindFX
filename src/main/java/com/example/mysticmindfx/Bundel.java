@@ -4,20 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class bundel {
-    public static void bundelpakket() {
-        Scanner scanner = new Scanner(System.in);
+public class Bundel {
+    public static String bundelpakket(String input) {
         MockAIService ai = new MockAIService();
-        String input = scanner.nextLine().toLowerCase();
+
         String filename = "src/main/java/com/example/mysticmindfx/programmingLanguage.json";
         String resource = RSprocessDocumentation(input, filename);
         String elastic = ESprocessDocumentation(input, filename);
-        String antwoord = resource + " " + elastic;
+        String antwoord = resource + "\n" + elastic;
 
         if (resource == null && elastic == null) {
-            System.out.println("Geen documentatie gevonden.");
+            return "Geen documentatie gevonden.";
         } else {
-            System.out.println(ai.question(antwoord, input));
+            return ai.question(antwoord, input);
         }
     }
 

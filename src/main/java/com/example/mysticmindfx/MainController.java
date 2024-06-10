@@ -257,7 +257,10 @@ public class MainController implements IController {
                 }
                 Text messageText = new Text(line);
                 messageText.setStyle("-fx-fill: white;");
+                messageText.getStyleClass().add("messageText");
+                wrapText(messageText, line);
                 if (fromAI) {
+                    messageText.getText().replaceAll("\\n", "\n");
                     ImageView AILogo = new ImageView();
                     AILogo.setImage(new Image(MainController.class.getResource("/com/example/mysticmindfx/Images/logo.png").toString()));
                     AILogo.setFitHeight(39);
@@ -285,6 +288,12 @@ public class MainController implements IController {
         ChatTitle.setText(chatName);
         //scroll to the bottom of the chat
 
+    }
+    private Text wrapText(Text text, String line) {
+        if (line.length() > 50) {
+            text.setWrappingWidth(400);
+        }
+        return text;
     }
 
     private void scrolltoBottom() {
@@ -356,16 +365,54 @@ public class MainController implements IController {
 
         Text messageText = new Text(message);
         //make the text white
+        //set the max width of the text to 200
+        wrapText(messageText, message);
+
         messageText.setStyle("-fx-fill: white;");
         messageText.getStyleClass().add("messageText");
         chatMessage.getChildren().add(messageText);
         chatMessage.getChildren().add(userimg);
+        //make the text max width 200
+
         ChatHistory.getChildren().add(chatMessage);
         HistoryHandler historyHandler = new HistoryHandler();
         historyHandler.saveHistory(selectedChat, ChatHistory, user);
         Platform.runLater(this::scrolltoBottom);
-    }
+        generateResponse(message);
 
+    }
+    private void generateResponse(String message) {
+        //add the message to the chat
+        String response = Bundel.bundelpakket(message);
+        HBox chatMessage = new HBox();
+        chatMessage.setAlignment(Pos.CENTER_LEFT);
+        //make the message look like the other messages
+        chatMessage.getStyleClass().add("response");
+        //set the margin to 5
+        chatMessage.setStyle("-fx-margin: 5 5 5 5;");
+        //create a user icon
+        ImageView userimg = new ImageView();
+        userimg.setImage(new Image(getClass().getResource("/com/example/mysticmindfx/Images/logo.png").toString()));
+        userimg.setFitHeight(39);
+        userimg.setFitWidth(39);
+        userimg.getStyleClass().add("userIcon");
+        chatMessage.setSpacing(10);
+
+        Text responseText = new Text(response);
+        //make the text white
+        wrapText(responseText, response);
+
+        responseText.setStyle("-fx-fill: white;");
+        responseText.getStyleClass().add("messageText");
+        chatMessage.getChildren().add(userimg);
+        chatMessage.getChildren().add(responseText);
+        ChatHistory.getChildren().add(chatMessage);
+        HistoryHandler historyHandler = new HistoryHandler();
+        historyHandler.saveHistory(selectedChat, ChatHistory, user);
+        Platform.runLater(this::scrolltoBottom);
+
+
+    }
     @FXML
     protected void clicked() {
         System.out.println("Clicked");
