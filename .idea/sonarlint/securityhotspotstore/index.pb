@@ -37,3 +37,9 @@ l
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+M
+src/chatHistory/Chat Test.txt,b\d\bd2436d42ec21e42c69025164a1f6f1c994fa581
+J
+src/chatHistory/Chat 9.txt,1\c\1c70fe48611be99eb308238fd0ffe7ca7c127292
+J
+src/chatHistory/Chat 7.txt,4\3\4361162b966612e97259358351c36c9958c4565e

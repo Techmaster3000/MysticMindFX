@@ -14,8 +14,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -25,6 +23,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainController implements IController {
@@ -76,7 +75,7 @@ public class MainController implements IController {
 
         HistoryHandler historyHandler = new HistoryHandler();
         ChatTabBox.getChildren().clear();
-        for (File file : historyFolder.listFiles()) {
+        for (File file : Objects.requireNonNull(historyFolder.listFiles())) {
             ArrayList<String> chatHistory = historyHandler.retrieveHistory(file, user);
             //Boolean fromAI = null;
             Button chat;
@@ -190,7 +189,12 @@ public class MainController implements IController {
         ChatTabBox.getChildren().add(newChat);
         try {
             File file = new File("src/chatHistory/" + newChat.getText() + ".txt");
-            file.createNewFile();
+            if (!file.createNewFile()) {
+                //show a popup that the chat creation failed
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to create chat", ButtonType.OK);
+                //remove the button from the scrollpane
+                ChatTabBox.getChildren().remove(newChat);
+            }
             FileWriter writer = new FileWriter(file);
             writer.write(user + "\n");
             writer.write(newChat.getText() + "\n");
@@ -260,7 +264,7 @@ public class MainController implements IController {
                 messageText.getStyleClass().add("messageText");
                 wrapText(messageText, line);
                 if (fromAI) {
-                    messageText.getText().replaceAll("\\n", "\n");
+                    messageText.setText(messageText.getText().replaceAll("\\n", "\n"));
                     ImageView AILogo = new ImageView();
                     AILogo.setImage(new Image(MainController.class.getResource("/com/example/mysticmindfx/Images/logo.png").toString()));
                     AILogo.setFitHeight(39);
@@ -356,30 +360,45 @@ public class MainController implements IController {
         //set the margin to 5
         chatMessage.setStyle("-fx-margin: 5 5 5 5;");
         //create a user icon
+        createMessage(chatMessage, message, false);
+
+        generateResponse(message);
+
+    }
+    private void createMessage(HBox chatMessage, String message, Boolean fromAI) {
         ImageView userimg = new ImageView();
-        userimg.setImage(new Image(getClass().getResource("/com/example/mysticmindfx/Images/profile-user.png").toString()));
+        Text messageText = new Text(message);
+        messageText.setStyle("-fx-fill: white;");
+        messageText.getStyleClass().add("messageText");
+        if (fromAI) {
+            userimg.setImage(new Image(getClass().getResource("/com/example/mysticmindfx/Images/logo.png").toString()));
+            chatMessage.getChildren().add(userimg);
+            chatMessage.getChildren().add(messageText);
+
+        } else {
+            userimg.setImage(new Image(getClass().getResource("/com/example/mysticmindfx/Images/profile-user.png").toString()));
+            chatMessage.getChildren().add(messageText);
+            chatMessage.getChildren().add(userimg);
+        }
         userimg.setFitHeight(39);
         userimg.setFitWidth(39);
         userimg.getStyleClass().add("userIcon");
         chatMessage.setSpacing(10);
 
-        Text messageText = new Text(message);
+
         //make the text white
         //set the max width of the text to 200
         wrapText(messageText, message);
 
-        messageText.setStyle("-fx-fill: white;");
-        messageText.getStyleClass().add("messageText");
-        chatMessage.getChildren().add(messageText);
-        chatMessage.getChildren().add(userimg);
+
+
+
         //make the text max width 200
 
         ChatHistory.getChildren().add(chatMessage);
         HistoryHandler historyHandler = new HistoryHandler();
         historyHandler.saveHistory(selectedChat, ChatHistory, user);
         Platform.runLater(this::scrolltoBottom);
-        generateResponse(message);
-
     }
     private void generateResponse(String message) {
         //add the message to the chat
@@ -391,32 +410,9 @@ public class MainController implements IController {
         //set the margin to 5
         chatMessage.setStyle("-fx-margin: 5 5 5 5;");
         //create a user icon
-        ImageView userimg = new ImageView();
-        userimg.setImage(new Image(getClass().getResource("/com/example/mysticmindfx/Images/logo.png").toString()));
-        userimg.setFitHeight(39);
-        userimg.setFitWidth(39);
-        userimg.getStyleClass().add("userIcon");
-        chatMessage.setSpacing(10);
-
-        Text responseText = new Text(response);
-        //make the text white
-        wrapText(responseText, response);
-
-        responseText.setStyle("-fx-fill: white;");
-        responseText.getStyleClass().add("messageText");
-        chatMessage.getChildren().add(userimg);
-        chatMessage.getChildren().add(responseText);
-        ChatHistory.getChildren().add(chatMessage);
-        HistoryHandler historyHandler = new HistoryHandler();
-        historyHandler.saveHistory(selectedChat, ChatHistory, user);
-        Platform.runLater(this::scrolltoBottom);
-
-
+        createMessage(chatMessage, response, true);
     }
-    @FXML
-    protected void clicked() {
-        System.out.println("Clicked");
-    }
+
 
     @FXML
     protected void openSettings() {

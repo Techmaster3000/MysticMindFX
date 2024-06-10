@@ -3,6 +3,7 @@ package com.example.mysticmindfx;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -39,6 +40,26 @@ public class HistoryHandler {
         return chatHistory;
     }
     public void saveHistory(String chatName, VBox ChatHistory, String user) {
+        ArrayList<String> HistoryList = getStrings(ChatHistory);
+        try {
+            File file = new File("src/chatHistory/" + chatName + ".txt");
+            //clear the file
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter writer = new FileWriter(file);
+            writer.write(user + "\n");
+            writer.write(chatName + "\n");
+            for (String line : HistoryList) {
+                writer.write(line + "\n");
+            }
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static @NotNull ArrayList<String> getStrings(VBox ChatHistory) {
         ArrayList<String> HistoryList = new ArrayList<>();
 
         for (int i = 0; i < ChatHistory.getChildren().size(); i++) {
@@ -60,21 +81,6 @@ public class HistoryHandler {
                 HistoryList.add("AI: " + message);
             }
         }
-        try {
-            File file = new File("src/chatHistory/" + chatName + ".txt");
-            //clear the file
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            FileWriter writer = new FileWriter(file);
-            writer.write(user + "\n");
-            writer.write(chatName + "\n");
-            for (String line : HistoryList) {
-                writer.write(line + "\n");
-            }
-            writer.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        return HistoryList;
     }
 }
