@@ -15,6 +15,7 @@ module com.example.mysticmindfx {
     requires org.json;
     requires java.desktop;
     requires com.fasterxml.jackson.databind;
+    requires annotations;
 
     opens com.example.mysticmindfx to javafx.fxml;
     exports com.example.mysticmindfx;
