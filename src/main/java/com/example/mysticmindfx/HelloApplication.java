@@ -1,11 +1,14 @@
 package com.example.mysticmindfx;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javax.swing.*;
 import javax.xml.catalog.CatalogFeatures;
+
 import java.io.IOException;
 public class HelloApplication extends Application {
 
@@ -24,10 +27,8 @@ public class HelloApplication extends Application {
         stage.setResizable(true);
         stage.setMinWidth(640);
         stage.setMinHeight(400);
-
-        // Optionally, add UI elements to switch languages
-        // Example: add a menu or button to change language
     }
+
 
     public static void main(String[] args) {
         launch(args);
