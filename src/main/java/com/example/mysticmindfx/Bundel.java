@@ -1,23 +1,26 @@
 package com.example.mysticmindfx;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
-public class bundel {
-    public static void bundelpakket() {
-        Scanner scanner = new Scanner(System.in);
+public class Bundel {
+    public static String bundelpakket(String input) {
         MockAIService ai = new MockAIService();
-        String input = scanner.nextLine().toLowerCase();
+
         String filename = "src/main/java/com/example/mysticmindfx/programmingLanguage.json";
         String resource = RSprocessDocumentation(input, filename);
         String elastic = ESprocessDocumentation(input, filename);
-        String antwoord = resource + " " + elastic;
+        String antwoord = resource + "\n" + elastic;
 
         if (resource == null && elastic == null) {
-            System.out.println("Geen documentatie gevonden.");
+            return "Geen documentatie gevonden.";
         } else {
-            System.out.println(ai.question(antwoord, input));
+            return ai.question(antwoord, input);
         }
     }
 
@@ -62,8 +65,10 @@ public class bundel {
             ArrayList<String> category = es.determineCategoryEs(words, allKeywords);
             if (category.contains("domain-model") && !category.contains("financial-system") && !category.contains("social-platform-application")){
                 category = domainModel(category, scanner);
+
             }
-            if (filename == null || category == null){
+
+            if (filename == null){
                 return null;
             } else {
                 return es.parseJSONAndPrintDocumentationEs(filename, category);
@@ -75,21 +80,27 @@ public class bundel {
         }
     }
     public static ArrayList<String> domainModel(ArrayList<String> category, Scanner scanner){
-            System.out.println("Welk domain model wilt u zien?");
-            System.out.println("1. Financial-system");
-            System.out.println("2. Social-platform-application");
-            String in = scanner.nextLine().toLowerCase();
-            switch (in){
-                case "1":
-                    category.add("financial-system");
-                    category.remove(0);
-                    break;
-                case "2":
-                    category.add("social-platform-application");
-                    break;
-                default:
-                    break;
-            }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Welk domain model wilt u zien?");
+        alert.setTitle("Domain Model");
+        //change the button text
+        ButtonType financialSystem = new ButtonType("Financial System");
+        ButtonType socialPlatformApplication = new ButtonType("Social Platform Application");
+        alert.getButtonTypes().setAll(financialSystem, socialPlatformApplication);
+        alert.setContentText("Kies uw optie.");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        // Process the result
+        if (result.isPresent() && result.get() == financialSystem) {
+            category.add("financial-system");
+            category.remove(0);
+        } else if (result.isPresent() && result.get() == socialPlatformApplication) {
+            category.add("social-platform-application");
+        }
+        else {
+            // ... user chose CANCEL or closed the dialog
+            System.out.println("Geen keuze gemaakt.");
+        }
 
         return category;
     }

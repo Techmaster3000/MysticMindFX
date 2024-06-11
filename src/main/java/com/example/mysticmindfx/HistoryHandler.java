@@ -3,6 +3,7 @@ package com.example.mysticmindfx;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -39,25 +40,7 @@ public class HistoryHandler {
         return chatHistory;
     }
     public void saveHistory(String chatName, VBox ChatHistory, String user) {
-        ArrayList<String> HistoryList = new ArrayList<>();
-
-        for (int i = 0; i < ChatHistory.getChildren().size(); i++) {
-            HBox chatMessage = (HBox) ChatHistory.getChildren().get(i);
-            Text messageText;
-            try {
-                messageText = (Text) chatMessage.getChildren().get(1);
-            }
-            catch (Exception e) {
-                messageText = (Text) chatMessage.getChildren().get(0);
-            }
-
-            String message = messageText.getText();
-            if (chatMessage.getStyleClass().contains("message")) {
-                HistoryList.add("User: " + message);
-            } else {
-                HistoryList.add("AI: " + message);
-            }
-        }
+        ArrayList<String> HistoryList = getStrings(ChatHistory);
         try {
             File file = new File("src/chatHistory/" + chatName + ".txt");
             //clear the file
@@ -74,5 +57,30 @@ public class HistoryHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static @NotNull ArrayList<String> getStrings(VBox ChatHistory) {
+        ArrayList<String> HistoryList = new ArrayList<>();
+
+        for (int i = 0; i < ChatHistory.getChildren().size(); i++) {
+            HBox chatMessage = (HBox) ChatHistory.getChildren().get(i);
+            Text messageText;
+            try {
+                messageText = (Text) chatMessage.getChildren().get(1);
+            }
+            catch (Exception e) {
+                messageText = (Text) chatMessage.getChildren().get(0);
+            }
+
+            String message = messageText.getText();
+            //ignore the text wrapping
+            message = message.replace("\n", "\\n");
+            if (chatMessage.getStyleClass().contains("message")) {
+                HistoryList.add("User: " + message);
+            } else {
+                HistoryList.add("AI: " + message);
+            }
+        }
+        return HistoryList;
     }
 }
