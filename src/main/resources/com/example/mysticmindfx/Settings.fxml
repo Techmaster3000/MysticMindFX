@@ -14,7 +14,7 @@
             <Font size="37.0" />
          </font>
       </Text>
-      <VBox alignment="TOP_CENTER" layoutX="166.0" layoutY="84.0" prefHeight="250.0" prefWidth="268.0">
+      <VBox alignment="TOP_CENTER" layoutX="166.0" layoutY="84.0" prefHeight="250.0" prefWidth="268.0" spacing="10.0">
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Account">
                <font>
