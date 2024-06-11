@@ -1,0 +1,29 @@
+login
+one
+User: test
+User: java
+AI: java
+User: test
+User: java
+AI: Geen documentatie gevonden.
+User: test
+AI: Geen documentatie gevonden.
+User: java plugin
+AI: Geen documentatie gevonden.
+User: financial-system
+User: test
+AI: Geen documentatie gevonden.
+User: financial-system
+User: financial-system
+User: financial-system 1 + 1
+AI: Het antwoord is 2\nFinancial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.
+User: java tools build tools domain-model
+AI: Build tools zoals Apache Maven en Gradle worden gebruikt om het proces van het compileren, testen en verpakken van Java-applicaties te automatiseren. Ze beheren afhankelijkheden, verwerken projectconfiguraties en faciliteren continue integratie.
+User: financial-system java tools
+AI: Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.
+User: financial-system java tools build tools
+AI: Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.\nBuild tools zoals Apache Maven en Gradle worden gebruikt om het proces van het compileren, testen en verpakken van Java-applicaties te automatiseren. Ze beheren afhankelijkheden, verwerken projectconfiguraties en faciliteren continue integratie.
+User: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+AI: Geen documentatie gevonden.
+User: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+AI: Geen documentatie gevonden.

@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+.gruppo-regular {
+    -fx-font-family: "Gruppo", sans-serif;
+    -fx-font-weight: 400;
+    -fx-font-style: normal;
+    -fx-src: url("https://fonts.googleapis.com/css2?family=Gruppo&display=swap");
+}
+
+.titleText {
+    -fx-font-family: "forma-djr-mono", sans-serif;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+}
+
+.ChatBox {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgb(42, 46, 62);
+    -fx-border-width: 2;
+    -fx-background-color: rgb(42, 46, 62);
+    -fx-text-fill: white;
+    -fx-font-family: "forma-djr-mono", sans-serif;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+}
+
+.toolbar {
+    -fx-background-color: rgb(17, 20, 31);
+    -fx-text-fill: white;
+}
+
+#SignUpText {
+    font-family: "forma-djr-mono", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    src: url("https://use.typekit.net/mms7jgi.css");
+}
+
+.root {
+    -fx-alignment: center;
+}
+
+.hyperlink:visited {
+    -fx-text-fill: white;
+}
+
+.background {
+    -fx-background-color: rgb(28, 30, 48);
+}
+
+.switchButton {
+    -fx-background-color: transparent;
+}
+
+.MenuItem {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-background-radius: 0;
+    -fx-border-width: 2px;
+    -fx-border-radius: 1;
+    -fx-pref-height: 36;
+    -fx-pref-width: 127;
+    -fx-margin: 5;
+    -fx-font-family: Dubai;
+    -fx-font-size: 16;
+    -fx-text-alignment: center;
+    -fx-graphic-text-gap: 4;
+    -fx-padding: 0 0 0 0;
+    -fx-alignment: center;
+
+
+}
+
+.MenuItem:hover {
+    -fx-background-color: rgb(32, 35, 53);
+}
+
+.toolButton {
+    -fx-background-color: transparent;
+
+}
+
+.toolButton:hover {
+    -fx-background-color: rgb(32, 35, 53);
+    -fx-border-color: rgb(32, 35, 53);
+}
+
+@keyframes spin {
+    0% {
+        -fx-rotate: 0;
+    }
+    50% {
+        -fx-rotate: 180;
+    }
+    75% {
+        -fx-rotate: 270;
+    }
+    100% {
+        -fx-rotate: 360;
+    }
+}
+
+
+.toolButton:pressed {
+    -fx-background-color: rgb(41, 41, 62);
+    -fx-border-color: rgb(32, 35, 53);
+    -fx-animated: spin 2s linear infinite;
+}
+
+.message {
+    -fx-background-color: rgb(42, 46, 62);
+    -fx-border-radius: 10;
+    -fx-alignment: center-right;
+    -fx-background-radius: 10;
+    -fx-border-color: rgb(42, 46, 62);
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+    -fx-margin: 0px 5px 0px 5px;
+    -fx-pref-height: 50;
+    -fx-pref-width: 512;
+    -fx-padding: 5px;
+     margin: 5px;
+
+
+
+}
+.selectedChat {
+    -fx-background-color: rgb(35, 35, 35);
+
+}
+.response {
+    -fx-background-color: rgb(42, 46, 62);
+    -fx-border-radius: 10;
+    -fx-alignment: center-left;
+    -fx-background-radius: 10;
+    -fx-border-color: rgb(42, 46, 62);
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+    -fx-margin: 0px 5px 0px 5px;
+    -fx-pref-height: 50;
+    -fx-pref-width: 512;
+    -fx-padding: 5px;
+    margin: 5px;
+
+}
+
+.messageText {
+    -fx-font-family: "forma-djr-mono", sans-serif;
+    -fx-font-weight: 300;
+    -fx-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-style: normal;
+    -fx-margin: 5 5 5 5;
+    -fx-hbox-margin: 0 5 0 5;
+
+}
+
+.sidebar {
+    -fx-background-color: rgb(17, 20, 31);
+    -fx-text-fill: white;
+}
+
+.icon-button .button-icon {
+    -fx-fill: #888888;
+}
+.userIcon {
+    -fx-margin: 0 5 0 5;
+}
+/* set default fill of svg path */
+.icon-button:focused {
+    -fx-background-color: rgb(17, 20, 31);
+    -fx-background-radius: 0;
+}
+
+.icon-button {
+    -fx-background-color: transparent, transparent, transparent, transparent, transparent;
+    -fx-pref-height: 27;
+    -fx-pref-width: 27;
+    -fx-max-height: 27;
+    -fx-max-width: 27;
+    -fx-min-height: 27;
+    -fx-min-width: 27;
+}
+.icon-button:hover .button-icon {
+    -fx-fill: #444444;
+}
+
+.icon-button:pressed .button-icon {
+    -fx-fill: #222222;
+    -fx-animated: spin 2s linear infinite;
+}
+.chatTitlebox {
+    -fx-background-color: rgb(17, 20, 31);
+    -fx-z-index: 1;
+}
+.chatTitle {
+
+}
+.sign-in-button {
+    -fx-background-color: linear-gradient(to right, #3700ff, #9900ff);
+    -fx-border-radius: 8px;
+    -fx-color: #FFFFFF;
+    -fx-cursor: pointer;
+    -fx-font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    -fx-font-size: 12px;
+    -fx-font-weight: 500;
+    -fx-text-fill: white;
+    -fx-text-align: center;
+    -fx-text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    -fx-transition: all .5s;
+}
+.sign-in-button:hover {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+    transition-duration: .1s;
+
+}
+.chat-button {
+    -fx-background-color: rgb(10, 13, 17);
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+    -fx-text-fill: white;
+}
+.rename-button:hover {
+    -fx-background-color: white;
+    -fx-border-color: rgb(10, 13, 17);
+    -fx-border-width: 0;
+    -fx-border-radius: 4;
+    -fx-text-fill: black;
+}
+.back-button:hover {
+    -fx-background-color: white;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+    -fx-text-fill: black;
+}
+
+.response {
+    -fx-background-color: rgb(42, 46, 62);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: rgb(42, 46, 62);
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+    -fx-margin: 10;
+    -fx-font-family: "forma-djr-mono", sans-serif;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+    -fx-alignment: center-left;
+    -fx-src: url("https://use.typekit.net/mms7jgi.css");
+
+}
+
+.chatList {
+    -fx-background-color: rgb(17, 20, 31);
+}
+.scrollpane {
+
+}
+.increment-arrow, .decrement-arrow {
+    -fx-background-color: transparent;
+
+}
+.increment-button, .decrement-button {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color: rgb(17, 20, 31);
+
+}
+.delete-button {
+    -fx-border-color: red;
+}
+.delete-button:hover {
+    -fx-background-color: rgb(255, 0, 0);
+    -fx-text-fill: black;
+    -fx-border-color: red;
+}
+.track-background {
+    -fx-background-color: rgb(17, 20, 31);
+    -fx-border-color: rgb(17, 20, 31);
+}
+.thumb {
+    -fx-background-color: rgb(91, 92, 105);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgb(91, 92, 105);
+    -fx-border-width: 2;
+}

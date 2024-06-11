@@ -1,0 +1,19 @@
+login
+test
+User: test
+User: hello
+AI: Geen documentatie gevonden.
+User: login
+AI: Geen documentatie gevonden.
+User: financial-system
+User: test
+AI: Geen documentatie gevonden.
+User: financial-system
+User: financial-system
+User: apache commons
+AI: Geen documentatie gevonden.
+User: apache commons
+AI: Geen documentatie gevonden.
+User: apache commons
+AI: Geen documentatie gevonden.
+User: financial-system apache commons
