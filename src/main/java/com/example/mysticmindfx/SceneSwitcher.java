@@ -56,22 +56,22 @@ public class SceneSwitcher {
                 ((MainController) controller).setUser(user);
                 if (user != null) {
                     ((MainController) controller).setUser(user);
-                }
-                else {
+                } else {
                     ((MainController) controller).setUser(email);
                 }
-            }
-            else {
-              
-            // Check if the controller is an instance of MainController
-            if (controller instanceof MainController) {
-                ((MainController) controller).setUser(email);
             } else {
-                System.out.println("Controller is not an instance of MainController");
-            }
-            // set user to email if null
-            if (user == null) {
-                user = email;
+
+                // Check if the controller is an instance of MainController
+                if (controller instanceof MainController) {
+                    ((MainController) controller).setUser(email);
+                } else {
+                    System.out.println("Controller is not an instance of MainController");
+                }
+                // set user to email if null
+                if (user == null) {
+                    user = email;
+                }
+
             }
             controller.initialize(null, null);
         } catch (IOException e) {
