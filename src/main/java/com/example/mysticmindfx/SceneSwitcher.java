@@ -14,7 +14,9 @@ public class SceneSwitcher {
     // Singleton pattern
     private static SceneSwitcher instance = null;
     private static Stage mainStage;
+    private static String user = null;
     private Language currentLanguage = Language.ENGLISH;
+
 
     private SceneSwitcher() {}
 
@@ -48,11 +50,28 @@ public class SceneSwitcher {
             // Initialize the controller of the new scene regardless of classtype
             IController controller = loader.getController();
 
+
+            //check if the controller is an instance of MainController
+            if (controller instanceof MainController && email != null) {
+                ((MainController) controller).setUser(user);
+                if (user != null) {
+                    ((MainController) controller).setUser(user);
+                }
+                else {
+                    ((MainController) controller).setUser(email);
+                }
+            }
+            else {
+              
             // Check if the controller is an instance of MainController
             if (controller instanceof MainController) {
                 ((MainController) controller).setUser(email);
             } else {
                 System.out.println("Controller is not an instance of MainController");
+            }
+            // set user to email if null
+            if (user == null) {
+                user = email;
             }
             controller.initialize(null, null);
         } catch (IOException e) {
@@ -68,5 +87,8 @@ public class SceneSwitcher {
 
     public Stage getMainStage() {
         return mainStage;
+    }
+    public void removeUser() {
+        user = null;
     }
 }
