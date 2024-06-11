@@ -10,15 +10,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
-
 public class SceneSwitcher {
-    //singleton pattern
+    // Singleton pattern
     private static SceneSwitcher instance = null;
     private static Stage mainStage;
     private static String user = null;
+    private Language currentLanguage = Language.ENGLISH;
 
-    private SceneSwitcher() {
-    }
+
+    private SceneSwitcher() {}
 
     public static SceneSwitcher getInstance() {
         if (instance == null) {
@@ -27,13 +27,27 @@ public class SceneSwitcher {
         return instance;
     }
 
-    public void switchScene(String sceneName, String WindowTitle, String email) {
+    public void setLanguage(Language language) {
+        this.currentLanguage = language;
+    }
+
+    public Language getLanguage() {
+        return currentLanguage;
+    }
+
+    public void switchScene(String sceneName, String windowTitle, String email) {
         try {
-            FXMLLoader loader = new FXMLLoader(HelloController.class.getResource(sceneName));
+            String sceneFile = sceneName;
+            if (currentLanguage == Language.DUTCH) {
+                sceneFile = sceneFile.replace(".fxml", "-NL.fxml");
+            }
+
+            FXMLLoader loader = new FXMLLoader(HelloController.class.getResource(sceneFile));
             Scene scene = new Scene(loader.load());
             mainStage.setScene(scene);
             mainStage.show();
-           //initialize the controller of the new scene regardless of classtype
+
+            // Initialize the controller of the new scene regardless of classtype
             IController controller = loader.getController();
 
 
@@ -48,6 +62,11 @@ public class SceneSwitcher {
                 }
             }
             else {
+              
+            // Check if the controller is an instance of MainController
+            if (controller instanceof MainController) {
+                ((MainController) controller).setUser(email);
+            } else {
                 System.out.println("Controller is not an instance of MainController");
             }
             // set user to email if null
@@ -59,17 +78,13 @@ public class SceneSwitcher {
             e.printStackTrace();
         }
 
-        //sset the email as user
-
-        mainStage.setTitle(WindowTitle);
-        //initialize the controller
-
-
+        mainStage.setTitle(windowTitle);
     }
 
     public void setMainStage(Stage stage) {
         mainStage = stage;
     }
+
     public Stage getMainStage() {
         return mainStage;
     }

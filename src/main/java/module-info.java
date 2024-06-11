@@ -14,6 +14,7 @@ module com.example.mysticmindfx {
     requires org.apache.commons.codec;
     requires org.json;
     requires java.desktop;
+
     requires com.fasterxml.jackson.databind;
     requires annotations;
 
