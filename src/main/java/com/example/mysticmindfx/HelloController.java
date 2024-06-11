@@ -39,31 +39,61 @@ public class HelloController implements IController{
         System.out.println(mailField.getText());
         User user = JSONHandler.getInstance().findUser(mailField.getText());
         if (user == null) {
-            errorText.setText("Email not found");
+            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
+                errorText.setText("Email niet gevonden");
+            } else {
+                errorText.setText("Email not found");
+            }
             return;
         }
         if (user.checkPassword(org.apache.commons.codec.digest.DigestUtils.sha256Hex(passwordField.getText()))) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Login Successful");
-            alert.setHeaderText("Welcome " + user.getUsername());
-            alert.setContentText("You have successfully logged in!");
+            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
+                alert.setTitle("Succesvolle login");
+                alert.setHeaderText("Welkom " + user.getUsername());
+                alert.setContentText("Je bent succesvol ingelogd!");
+            } else {
+                alert.setTitle("Login Successful");
+                alert.setHeaderText("Welcome " + user.getUsername());
+                alert.setContentText("You have successfully logged in!");
+            }
             alert.showAndWait();
             System.out.println(mailField.getText() + " has logged in");
             SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind", mailField.getText());
-        }
-        else {
-            errorText.setText("Incorrect Password");
+        } else {
+            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
+                errorText.setText("Onjuist wachtwoord");
+            } else {
+                errorText.setText("Incorrect Password");
+            }
             passwordField.clear();
             return;
         }
-
-
-
     }
     @FXML
     protected void onSignUpLink() {
-        System.out.println("Sign Up Link Clicked");
-            SceneSwitcher.getInstance().switchScene("SignUp.fxml", "Sign Up", null);
+        String language = SceneSwitcher.getInstance().getLanguage() == Language.DUTCH ? "NL" : "EN";
 
+        if (language.equals("NL")) {
+            System.out.println("Aanmeldlink aangeklikt");
+        } else {
+            System.out.println("Sign Up Link Clicked");
+        }
+
+        String sceneTitle = language.equals("NL") ? "Aanmelden" : "Sign Up";
+
+        SceneSwitcher.getInstance().switchScene("SignUp.fxml", sceneTitle, null);
+    }
+
+    @FXML
+    protected void switchToEnglish() {
+        SceneSwitcher.getInstance().setLanguage(Language.ENGLISH);
+        SceneSwitcher.getInstance().switchScene("hello-view.fxml", "Login", null);
+    }
+
+    @FXML
+    protected void switchToDutch() {
+        SceneSwitcher.getInstance().setLanguage(Language.DUTCH);
+        SceneSwitcher.getInstance().switchScene("hello-view.fxml", "Inloggen", null);
     }
 }
