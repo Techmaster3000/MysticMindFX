@@ -46,6 +46,6 @@
             <Button fx:id="signUpLink" mnemonicParsing="false" onAction="#onSignUpLink" prefHeight="25.0" prefWidth="79.0" styleClass="switchButton" text="Registreren" textAlignment="CENTER" textFill="WHITE" />
          </children>
       </VBox>
-      <Button layoutX="48.0" layoutY="37.0" mnemonicParsing="false" onAction="#switchToEnglish" prefHeight="35.0" prefWidth="39.0" text="EN" textFill="#1f1f1f" />
+      <Button layoutX="48.0" layoutY="37.0" mnemonicParsing="false" onAction="#switchToEnglish" prefHeight="35.0" prefWidth="39.0" styleClass="LanguageButton" text="EN" textFill="#1f1f1f" />
    </children>
 </AnchorPane>

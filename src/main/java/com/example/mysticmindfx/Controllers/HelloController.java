@@ -68,7 +68,6 @@ public class HelloController implements IController {
                 errorText.setText("Incorrect Password");
             }
             passwordField.clear();
-            return;
         }
     }
     @FXML

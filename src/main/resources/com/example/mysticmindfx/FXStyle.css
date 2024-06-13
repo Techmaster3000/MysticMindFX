@@ -246,7 +246,17 @@
     -fx-border-radius: 4;
     -fx-text-fill: black;
 }
-
+.LanguageButton {
+    -fx-background-color: linear-gradient(to bottom, #ff0000, #cc00ff);
+    -fx-border-radius: 8px;
+    -fx-border-width: 0;
+    -fx-border-color: #FFFFFF;
+    -fx-text-fill: #000000;
+}
+.LanguageButton:hover {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
 .response {
     -fx-background-color: rgb(42, 46, 62);
     -fx-border-radius: 10;
