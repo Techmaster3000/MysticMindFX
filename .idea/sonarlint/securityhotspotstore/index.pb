@@ -63,3 +63,6 @@ g
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 w
 Gsrc/main/java/com/example/mysticmindfx/ChangeAccountInfoController.java,c\9\c965f54cc0afe364f3d4e99771c601c673543f85
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
