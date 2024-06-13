@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.SettingsController">
    <children>
-      <Text fill="WHITE" layoutX="200.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gruppo-regular" text="Settings" textAlignment="CENTER" wrappingWidth="203.29840087890625">
+      <Text fill="WHITE" layoutX="200.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gruppo-regular" text="Instellingen" textAlignment="CENTER" wrappingWidth="203.29840087890625">
          <font>
             <Font size="37.0" />
          </font>
@@ -21,20 +21,21 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" onAction="#onChange" text="Change Account Information">
+            <Button mnemonicParsing="false" onAction="#onChange" text="Verander account informatie">
                <styleClass>
                   <String fx:value="back-button" />
                   <String fx:value="chat-button" />
-               </styleClass></Button>
+               </styleClass>
+            </Button>
          </children>
       </VBox>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBack" text="Back">
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBack" text="Terug">
          <styleClass>
             <String fx:value="back-button" />
             <String fx:value="chat-button" />
          </styleClass>
       </Button>
-      <Button layoutX="264.0" layoutY="356.0" mnemonicParsing="false" onAction="#onSignOut" prefHeight="29.0" prefWidth="75.0" text="Sign Out">
+      <Button layoutX="264.0" layoutY="356.0" mnemonicParsing="false" onAction="#onSignOut" prefHeight="29.0" prefWidth="75.0" text="Uitloggen">
          <styleClass>
             <String fx:value="chat-button" />
             <String fx:value="delete-button" />

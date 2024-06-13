@@ -7,14 +7,16 @@ public class RenameController {
     private javafx.scene.control.TextField RenameField;
 
     @FXML
-    protected void sendnewName() throws Exception{
-        //send the new name to the existing MainController
-        //return if the field is empty
-        if (RenameField.getText().equals("")) {
+    protected void sendnewName() {
+        // Return if the field is empty
+        if (RenameField.getText().trim().isEmpty()) {
             return;
         }
-        MainController.getInstance().renameChat(RenameField.getText());
-        //close the window
+
+        // Send the new name to the existing MainController
+        MainController.getInstance().renameChat(RenameField.getText().trim());
+
+        // Close the window
         RenameField.getScene().getWindow().hide();
     }
 }
