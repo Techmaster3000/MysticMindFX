@@ -1,6 +1,4 @@
-package com.example.mysticmindfx;
-
-import javafx.fxml.FXML;
+package com.example.mysticmindfx.Controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;

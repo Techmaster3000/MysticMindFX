@@ -6,15 +6,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="195.0" prefWidth="400.0" styleClass="background" stylesheets="@FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.Controllers.RenameController">
    <children>
-      <TextField fx:id="RenameField" alignment="CENTER" layoutX="125.0" layoutY="106.0" promptText="New Chat Name" />
-      <Text fill="WHITE" layoutX="110.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the new chat name:">
+      <TextField fx:id="RenameField" alignment="CENTER" layoutX="125.0" layoutY="106.0" promptText="Nieuwe Chat Naam" />
+      <Text fill="WHITE" layoutX="92.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voer een nieuwe chat naam in:">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Button layoutX="326.0" layoutY="155.0" mnemonicParsing="false" onAction="#sendnewName" text="Rename" />
+      <Button layoutX="309.0" layoutY="155.0" mnemonicParsing="false" onAction="#sendnewName" text="Hernoemen" />
    </children>
 </AnchorPane>
