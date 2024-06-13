@@ -1,4 +1,4 @@
-package com.example.mysticmindfx;
+package com.example.mysticmindfx.AIService;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

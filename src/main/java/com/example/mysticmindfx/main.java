@@ -1,4 +1,6 @@
 package com.example.mysticmindfx;
+import com.example.mysticmindfx.AIService.Bundel;
+
 import java.util.Scanner;
 public class main {
     public static void main(String[] args) {

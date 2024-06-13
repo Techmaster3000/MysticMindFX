@@ -20,4 +20,8 @@ module com.example.mysticmindfx {
 
     opens com.example.mysticmindfx to javafx.fxml;
     exports com.example.mysticmindfx;
+    exports com.example.mysticmindfx.Controllers;
+    opens com.example.mysticmindfx.Controllers to javafx.fxml;
+    exports com.example.mysticmindfx.AIService;
+    opens com.example.mysticmindfx.AIService to javafx.fxml;
 }

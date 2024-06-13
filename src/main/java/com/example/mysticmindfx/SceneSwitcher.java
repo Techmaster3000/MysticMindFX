@@ -1,15 +1,14 @@
 package com.example.mysticmindfx;
 
-import javafx.animation.AnimationTimer;
-import javafx.animation.Transition;
-import javafx.event.ActionEvent;
+import com.example.mysticmindfx.Controllers.HelloController;
+import com.example.mysticmindfx.Controllers.IController;
+import com.example.mysticmindfx.Controllers.MainController;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ResourceBundle;
+
 public class SceneSwitcher {
     // Singleton pattern
     private static SceneSwitcher instance = null;
@@ -42,12 +41,12 @@ public class SceneSwitcher {
                 sceneFile = sceneFile.replace(".fxml", "-NL.fxml");
             }
 
-            FXMLLoader loader = new FXMLLoader(HelloController.class.getResource(sceneFile));
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(sceneFile));
             Scene scene = new Scene(loader.load());
             mainStage.setScene(scene);
             mainStage.show();
 
-            // Initialize the controller of the new scene regardless of classtype
+            //Initialize the controller of the new scene regardless of classtype
             IController controller = loader.getController();
 
 
@@ -56,7 +55,8 @@ public class SceneSwitcher {
                 ((MainController) controller).setUser(user);
                 if (user != null) {
                     ((MainController) controller).setUser(user);
-                } else {
+                }
+                else {
                     ((MainController) controller).setUser(email);
                 }
             } else {

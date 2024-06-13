@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.SettingsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.Controllers.SettingsController">
    <children>
       <Text fill="WHITE" layoutX="200.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gruppo-regular" text="Settings" textAlignment="CENTER" wrappingWidth="203.29840087890625">
          <font>

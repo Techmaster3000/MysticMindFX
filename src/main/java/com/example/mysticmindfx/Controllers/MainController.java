@@ -1,5 +1,7 @@
-package com.example.mysticmindfx;
+package com.example.mysticmindfx.Controllers;
 
+import com.example.mysticmindfx.*;
+import com.example.mysticmindfx.AIService.Bundel;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -54,6 +57,13 @@ public class MainController implements IController {
 
     public static MainController getInstance() {
         return instance;
+    }
+
+    public static Text wrapText(Text text, String line) {
+        if (line.length() > 50) {
+            text.setWrappingWidth(400);
+        }
+        return text;
     }
 
     @FXML
@@ -236,55 +246,13 @@ public class MainController implements IController {
         if (chatHistory != null && !chatHistory.isEmpty()) {
             chatHistory.remove(0);
             for (String line : chatHistory) {
-                HBox chatMessage = new HBox();
-                if (line.startsWith("User: ")) {
-                    chatMessage.setAlignment(Pos.CENTER_RIGHT);
-                    chatMessage.getStyleClass().add("message");
-                    line = line.substring(6);
-                    fromAI = false;
-                } else {
-                    chatMessage.setAlignment(Pos.CENTER_LEFT);
-                    chatMessage.getStyleClass().add("response");
-                    line = line.substring(4);
-                    fromAI = true;
-                }
-                Text messageText = new Text(line);
-                messageText.setStyle("-fx-fill: white;");
-                messageText.getStyleClass().add("messageText");
-                wrapText(messageText, line);
-                if (fromAI) {
-                    messageText.setText(messageText.getText().replaceAll("\\n", "\n"));
-                    ImageView AILogo = new ImageView();
-                    AILogo.setImage(new Image(MainController.class.getResource("/com/example/mysticmindfx/Images/logo.png").toString()));
-                    AILogo.setFitHeight(39);
-                    AILogo.setFitWidth(39);
-                    AILogo.getStyleClass().add("userIcon");
-                    chatMessage.getChildren().add(AILogo);
-                    chatMessage.setSpacing(10);
-                    chatMessage.getChildren().add(messageText);
-                } else {
-                    ImageView user = new ImageView();
-                    user.setImage(new Image(MainController.class.getResource("/com/example/mysticmindfx/Images/profile-user.png").toString()));
-                    user.setFitHeight(39);
-                    user.setFitWidth(39);
-                    user.getStyleClass().add("userIcon");
-                    chatMessage.setSpacing(10);
-                    chatMessage.getChildren().add(messageText);
-                    chatMessage.getChildren().add(user);
-                }
+                HBox chatMessage = ChatHandler.loadMessage(line);
                 ChatHistory.getChildren().add(chatMessage);
             }
             selectedChat = chatName;
             Platform.runLater(this::scrolltoBottom);
         }
-
         ChatTitle.setText(chatName);
-    }
-    private Text wrapText(Text text, String line) {
-        if (line.length() > 50) {
-            text.setWrappingWidth(400);
-        }
-        return text;
     }
 
     private void scrolltoBottom() {
@@ -341,7 +309,7 @@ public class MainController implements IController {
         generateResponse(message);
 
     }
-  
+
     private void createMessage(HBox chatMessage, String message, Boolean fromAI) {
         ImageView userimg = new ImageView();
         Text messageText = new Text(message);
@@ -362,13 +330,7 @@ public class MainController implements IController {
         userimg.getStyleClass().add("userIcon");
         chatMessage.setSpacing(10);
 
-
-
-        //make the text white
-        //set the max width of the text to 200
         wrapText(messageText, message);
-
-
 
 
         //make the text max width 200
@@ -377,6 +339,7 @@ public class MainController implements IController {
         historyHandler.saveHistory(selectedChat, ChatHistory, user);
         Platform.runLater(this::scrolltoBottom);
     }
+
     private void generateResponse(String message) {
         //add the message to the chat
         String response = Bundel.bundelpakket(message);

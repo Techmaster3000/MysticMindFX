@@ -1,6 +1,5 @@
-package com.example.mysticmindfx;
+package com.example.mysticmindfx.AIService;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 

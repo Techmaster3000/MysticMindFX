@@ -1,4 +1,4 @@
-package com.example.mysticmindfx;
+package com.example.mysticmindfx.AIService;
 
 import java.util.ArrayList;
 import java.util.List;
