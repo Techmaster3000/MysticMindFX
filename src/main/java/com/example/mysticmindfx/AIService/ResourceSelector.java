@@ -1,4 +1,4 @@
-package com.example.mysticmindfx;
+package com.example.mysticmindfx.AIService;
 
 public class ResourceSelector {
 

@@ -1,4 +1,4 @@
-package com.example.mysticmindfx;
+package com.example.mysticmindfx.Controllers;
 
 import javafx.fxml.FXML;
 

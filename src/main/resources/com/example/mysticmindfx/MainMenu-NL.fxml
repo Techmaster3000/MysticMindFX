@@ -24,7 +24,7 @@
          </styleClass>
       </ScrollPane>
       <ToolBar fx:id="ToolBar" layoutY="365.0" prefHeight="41.0" prefWidth="146.0" styleClass="toolbar" />
-      <TextField fx:id="ChatField" focusTraversable="false" layoutX="146.0" layoutY="371.0" onAction="#onChatMessage" prefHeight="25.0" prefWidth="512.0" promptText="Ask me anything!" styleClass="ChatBox" />
+      <TextField fx:id="ChatField" focusTraversable="false" layoutX="146.0" layoutY="371.0" onAction="#onChatMessage" prefHeight="25.0" prefWidth="512.0" promptText="Vraag mij alles!" styleClass="ChatBox" />
       <ScrollPane fx:id="ChatScroll" hbarPolicy="NEVER" layoutX="146.0" layoutY="32.0" prefHeight="337.0" prefWidth="512.0" styleClass="background" vvalue="1.0">
          <content>
             <VBox fx:id="ChatHistory" alignment="BOTTOM_CENTER" prefHeight="375.0" prefWidth="501.0">
@@ -34,12 +34,13 @@
                </styleClass>
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </padding></VBox>
+               </padding>
+            </VBox>
          </content>
       </ScrollPane>
       <HBox alignment="CENTER_LEFT" layoutX="145.0" layoutY="-7.0" prefHeight="41.0" prefWidth="504.0" styleClass="chatTitlebox">
          <children>
-            <Text fx:id="ChatTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="chatTitle" text="ChatName" wrappingWidth="504.1365966796875">
+            <Text fx:id="ChatTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="chatTitle" text="ChatNaam" wrappingWidth="504.1365966796875">
                <font>
                   <Font size="22.0" />
                </font>
@@ -49,15 +50,15 @@
             </Text>
          </children>
       </HBox>
-      <HBox layoutX="510.0" layoutY="3.0" prefHeight="29.0" prefWidth="137.0" spacing="5.0">
+      <HBox layoutX="472.0" layoutY="3.0" prefHeight="29.0" prefWidth="181.0" spacing="5.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#showRenamePopUp" prefHeight="29.0" prefWidth="65.0" text="Rename">
+            <Button mnemonicParsing="false" onAction="#showRenamePopUp" prefHeight="29.0" prefWidth="85.0" text="Hernoemen">
                <styleClass>
                   <String fx:value="rename-button" />
                   <String fx:value="chat-button" />
                </styleClass>
             </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onDeleteChat" prefHeight="29.0" prefWidth="65.0" text="Delete">
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onDeleteChat" prefHeight="29.0" prefWidth="87.0" text="Verwijderen">
                <styleClass>
                   <String fx:value="chat-button" />
                   <String fx:value="delete-button" />

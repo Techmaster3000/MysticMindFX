@@ -7,15 +7,16 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import javax.xml.catalog.CatalogFeatures;
 import java.io.IOException;
-
 public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        SceneSwitcher sceneSwitcher = SceneSwitcher.getInstance();
+        sceneSwitcher.setMainStage(stage);
+        sceneSwitcher.setLanguage(Language.ENGLISH); // Set the default language
+
         FXMLLoader loginLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        //make the window keep the same aspect ratio but keep the ability to resize
         Scene login = new Scene(loginLoader.load());
-        //set logo
         stage.getIcons().add(new javafx.scene.image.Image(HelloApplication.class.getResource("Images/logo.png").toString()));
         stage.setTitle("Login");
         stage.setScene(login);
@@ -23,9 +24,12 @@ public class HelloApplication extends Application {
         stage.setResizable(true);
         stage.setMinWidth(640);
         stage.setMinHeight(400);
-        SceneSwitcher.getInstance().setMainStage(stage);
 
+        // Optionally, add UI elements to switch languages
+        // Example: add a menu or button to change language
     }
 
-
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
