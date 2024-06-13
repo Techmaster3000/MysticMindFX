@@ -1,0 +1,20 @@
+login
+Chat 6
+User: test
+AI: Geen documentatie gevonden.
+User: ok
+AI: Geen documentatie gevonden.
+User: thank you
+AI: Geen documentatie gevonden.
+User: domain-model
+AI: 
+User: domain-model
+AI: 
+User: domain-model
+AI: 
+User: domain-model financial-system
+AI: Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.
+User: java tools build tools
+AI: Geen documentatie gevonden.
+User: domain-model financial-system
+AI: Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.
