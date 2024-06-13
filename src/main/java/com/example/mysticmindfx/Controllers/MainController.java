@@ -116,11 +116,7 @@ public class MainController implements IController {
         Stage stage = new Stage();
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
-        if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
-            stage.setTitle("Chat hernoemen");
-        } else {
-            stage.setTitle("Rename Chat");
-        }
+        stage.setTitle(SceneSwitcher.getInstance().getLocalizedMessage(Message.RENAME_CHAT));
         stage.show();
     }
 
@@ -139,11 +135,10 @@ public class MainController implements IController {
         }
 
         Alert alert;
-        if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
-            alert = new Alert(Alert.AlertType.CONFIRMATION, "Verwijder " + selectedChat + " ?", ButtonType.YES, ButtonType.NO);
-        } else {
-            alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete " + selectedChat + " ?", ButtonType.YES, ButtonType.NO);
-        }
+        alert = new Alert(Alert.AlertType.CONFIRMATION, SceneSwitcher.getInstance().getLocalizedMessage(Message.DELETE_CHAT_CONFIRMATION), ButtonType.YES, ButtonType.NO);
+        alert.setTitle(SceneSwitcher.getInstance().getLocalizedMessage(Message.REMOVE_CHAT_TITLE));
+        alert.setHeaderText(SceneSwitcher.getInstance().getLocalizedMessage(Message.REMOVE_CHAT));
+
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES) {
@@ -187,27 +182,51 @@ public class MainController implements IController {
 
     @FXML
     protected void addChat() {
-        Button newChat = new Button("Chat " + (ChatTabBox.getChildren().size() + 1));
+        String chatName = SceneSwitcher.getInstance().getLanguage() == Language.DUTCH ? "Chat " + (ChatTabBox.getChildren().size() + 1) : "Chat " + (ChatTabBox.getChildren().size() + 1);
+        Button newChat = new Button(chatName);
         newChat.getStyleClass().add("MenuItem");
         newChat.setStyle("-fx-text-fill: white;");
-        newChat.setOnAction(event -> loadChat(newChat.getText()));
+        newChat.setOnAction(event -> loadChat(chatName));
         ChatTabBox.getChildren().add(newChat);
+
         try {
-            File file = new File("src/chatHistory/" + newChat.getText() + ".txt");
-            if (!file.createNewFile()) {
-                //show a popup that the chat creation failed
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to create chat", ButtonType.OK);
-                //remove the button from the scrollpane
-                ChatTabBox.getChildren().remove(newChat);
+            // Zorg ervoor dat de map bestaat
+            File dir = new File("src/chatHistory");
+            if (!dir.exists()) {
+                dir.mkdirs();
             }
-            FileWriter writer = new FileWriter(file);
-            writer.write(user + "\n");
-            writer.write(newChat.getText() + "\n");
-            writer.close();
-        } catch (Exception e) {
-            System.out.println("Failed to create file: " + e.getMessage());
+
+            // Creëer het nieuwe chatbestand
+            File file = new File("src/chatHistory/" + chatName + ".txt");
+            if (file.createNewFile()) {
+                FileWriter writer = new FileWriter(file);
+                writer.write(user + "\n");
+                writer.write(chatName + "\n");
+                writer.close();
+            } else {
+                throw new IOException("Bestand bestaat al: " + file.getAbsolutePath());
+            }
+
+        } catch (IOException e) {
+            System.err.println("Failed to create file: " + e.getMessage());
+            // Toon een foutmelding aan de gebruiker
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
+                alert.setTitle("Fout bij aanmaken van chat");
+                alert.setHeaderText("Kan chat niet aanmaken");
+                alert.setContentText("Er is een fout opgetreden bij het aanmaken van de chat. Probeer het opnieuw.");
+            } else {
+                alert.setTitle("Error creating chat");
+                alert.setHeaderText("Failed to create chat");
+                alert.setContentText("An error occurred while creating the chat. Please try again.");
+            }
+            alert.showAndWait();
+            // Verwijder de knop uit de ChatTabBox
+            ChatTabBox.getChildren().remove(newChat);
+            return;
         }
-        loadChat(newChat.getText());
+
+        loadChat(chatName);
     }
 
     private void loadChat(String chatName) {
@@ -252,6 +271,13 @@ public class MainController implements IController {
             Platform.runLater(this::scrolltoBottom);
         }
         ChatTitle.setText(chatName);
+    }
+
+    private Text wrapText(Text text, String line) {
+        if (line.length() > 50) {
+            text.setWrappingWidth(400);
+        }
+        return text;
     }
 
     private void scrolltoBottom() {
@@ -309,7 +335,7 @@ public class MainController implements IController {
 
     }
 
-    public void createMessage(HBox chatMessage, String message, Boolean fromAI) {
+    private void createMessage(HBox chatMessage, String message, Boolean fromAI) {
         ImageView userimg = new ImageView();
         Text messageText = new Text(message);
         messageText.setStyle("-fx-fill: white;");
@@ -329,6 +355,8 @@ public class MainController implements IController {
         userimg.getStyleClass().add("userIcon");
         chatMessage.setSpacing(10);
 
+        //make the text white
+        //set the max width of the text to 200
         wrapText(messageText, message);
 
         //make the text max width 200
@@ -337,7 +365,6 @@ public class MainController implements IController {
         historyHandler.saveHistory(selectedChat, ChatHistory, user);
         Platform.runLater(this::scrolltoBottom);
     }
-
 
 
     @FXML

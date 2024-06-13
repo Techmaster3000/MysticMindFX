@@ -2,14 +2,14 @@ package com.example.mysticmindfx.Controllers;
 
 import com.example.mysticmindfx.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
 
 public class HelloController implements IController {
     @FXML
@@ -27,62 +27,44 @@ public class HelloController implements IController {
     @FXML
     private VBox sceneRoot;
 
-    public HelloController() {
-    }
+    public HelloController() {}
+
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorText.setText("");
+        if (sceneRoot != null) {
+            sceneRoot.setAlignment(javafx.geometry.Pos.CENTER);
+        }
     }
 
     @FXML
-    protected void onSignIn(){
+    protected void onSignIn() {
         errorText.setText("");
         System.out.println(mailField.getText());
         User user = JSONHandler.getInstance().findUser(mailField.getText());
         if (user == null) {
-            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
-                errorText.setText("Email niet gevonden");
-            } else {
-                errorText.setText("Email not found");
-            }
+            errorText.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.EMAIL_NOT_FOUND));
             return;
         }
         if (user.checkPassword(org.apache.commons.codec.digest.DigestUtils.sha256Hex(passwordField.getText()))) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
-                alert.setTitle("Succesvolle login");
-                alert.setHeaderText("Welkom " + user.getUsername());
-                alert.setContentText("Je bent succesvol ingelogd!");
-            } else {
-                alert.setTitle("Login Successful");
-                alert.setHeaderText("Welcome " + user.getUsername());
-                alert.setContentText("You have successfully logged in!");
-            }
+            alert.setTitle(SceneSwitcher.getInstance().getLocalizedMessage(Message.LOGIN_SUCCESS_TITLE));
+            alert.setHeaderText(SceneSwitcher.getInstance().getLocalizedMessage(Message.LOGIN_SUCCESS_HEADER) + user.getUsername());
+            alert.setContentText(SceneSwitcher.getInstance().getLocalizedMessage(Message.LOGIN_SUCCESS_CONTENT));
             alert.showAndWait();
             System.out.println(mailField.getText() + " has logged in");
+            SceneSwitcher.getInstance().setUser(user);
             SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind", mailField.getText());
         } else {
-            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
-                errorText.setText("Onjuist wachtwoord");
-            } else {
-                errorText.setText("Incorrect Password");
-            }
+            errorText.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.INCORRECT_PASSWORD));
             passwordField.clear();
         }
     }
+
     @FXML
     protected void onSignUpLink() {
-        String language = SceneSwitcher.getInstance().getLanguage() == Language.DUTCH ? "NL" : "EN";
-
-        if (language.equals("NL")) {
-            System.out.println("Aanmeldlink aangeklikt");
-        } else {
-            System.out.println("Sign Up Link Clicked");
-        }
-
-        String sceneTitle = language.equals("NL") ? "Aanmelden" : "Sign Up";
-
-        SceneSwitcher.getInstance().switchScene("SignUp.fxml", sceneTitle, null);
+        System.out.println(SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_UP_LINK));
+        SceneSwitcher.getInstance().switchScene("SignUp.fxml", SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_UP_LINK), null);
     }
 
     @FXML
