@@ -12,7 +12,7 @@ public class Bundel {
     public static String bundelpakket(String input) {
         MockAIService ai = new MockAIService();
 
-        String filename = "src/main/java/com/example/mysticmindfx/programmingLanguage.json";
+        String filename = "src/main/java/com/example/mysticmindfx/AIService/programmingLanguage.json";
         String resource = RSprocessDocumentation(input, filename);
         String elastic = ESprocessDocumentation(input, filename);
         String antwoord = resource + "\n" + elastic;

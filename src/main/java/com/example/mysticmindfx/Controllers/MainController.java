@@ -1,7 +1,6 @@
 package com.example.mysticmindfx.Controllers;
 
 import com.example.mysticmindfx.*;
-import com.example.mysticmindfx.AIService.Bundel;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -306,22 +305,22 @@ public class MainController implements IController {
         //create a user icon
         createMessage(chatMessage, message, false);
 
-        generateResponse(message);
+        ChatHandler.getInstance().generateResponse(message);
 
     }
 
-    private void createMessage(HBox chatMessage, String message, Boolean fromAI) {
+    public void createMessage(HBox chatMessage, String message, Boolean fromAI) {
         ImageView userimg = new ImageView();
         Text messageText = new Text(message);
         messageText.setStyle("-fx-fill: white;");
         messageText.getStyleClass().add("messageText");
         if (fromAI) {
-            userimg.setImage(new Image(getClass().getResource("/com/example/mysticmindfx/Images/logo.png").toString()));
+            userimg.setImage(new Image(MainController.class.getResource("/com/example/mysticmindfx/Images/logo.png").toString()));
             chatMessage.getChildren().add(userimg);
             chatMessage.getChildren().add(messageText);
 
         } else {
-            userimg.setImage(new Image(getClass().getResource("/com/example/mysticmindfx/Images/profile-user.png").toString()));
+            userimg.setImage(new Image(MainController.class.getResource("/com/example/mysticmindfx/Images/profile-user.png").toString()));
             chatMessage.getChildren().add(messageText);
             chatMessage.getChildren().add(userimg);
         }
@@ -332,7 +331,6 @@ public class MainController implements IController {
 
         wrapText(messageText, message);
 
-
         //make the text max width 200
         ChatHistory.getChildren().add(chatMessage);
         HistoryHandler historyHandler = new HistoryHandler();
@@ -340,18 +338,6 @@ public class MainController implements IController {
         Platform.runLater(this::scrolltoBottom);
     }
 
-    private void generateResponse(String message) {
-        //add the message to the chat
-        String response = Bundel.bundelpakket(message);
-        HBox chatMessage = new HBox();
-        chatMessage.setAlignment(Pos.CENTER_LEFT);
-        //make the message look like the other messages
-        chatMessage.getStyleClass().add("response");
-        //set the margin to 5
-        chatMessage.setStyle("-fx-margin: 5 5 5 5;");
-        //create a user icon
-        createMessage(chatMessage, response, true);
-    }
 
 
     @FXML

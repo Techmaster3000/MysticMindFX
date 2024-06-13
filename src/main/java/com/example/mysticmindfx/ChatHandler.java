@@ -1,5 +1,6 @@
 package com.example.mysticmindfx;
 
+import com.example.mysticmindfx.AIService.Bundel;
 import com.example.mysticmindfx.Controllers.MainController;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
@@ -8,6 +9,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 public class ChatHandler {
+    private static ChatHandler instance;
+    private ChatHandler() {
+
+    }
+    public static ChatHandler getInstance() {
+        if (instance == null) {
+            instance = new ChatHandler();
+        }
+        return instance;
+    }
+
     public static HBox loadMessage(String line) {
         Boolean fromAI;
         HBox chatMessage = new HBox();
@@ -47,6 +59,18 @@ public class ChatHandler {
             chatMessage.getChildren().add(userimg);
         }
         return chatMessage;
+    }
+    public void generateResponse(String message) {
+        //add the message to the chat
+        String response = Bundel.bundelpakket(message);
+        HBox chatMessage = new HBox();
+        chatMessage.setAlignment(Pos.CENTER_LEFT);
+        //make the message look like the other messages
+        chatMessage.getStyleClass().add("response");
+        //set the margin to 5
+        chatMessage.setStyle("-fx-margin: 5 5 5 5;");
+        //create a user icon
+        MainController.getInstance().createMessage(chatMessage, response, true);
     }
 
 }

@@ -20,7 +20,7 @@ public class elasticSearch {
         }
         return true;
     }
-    public static ArrayList<String> determineCategoryEs(String[] words, List<String> keywords) {
+    public static List<String> determineCategoryEs(String[] words, List<String> keywords) {
         ArrayList<String> categories = new ArrayList<>();
         for (String word : words) {
             if (keywords.contains(word)){
