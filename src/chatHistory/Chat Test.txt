@@ -1,0 +1,9 @@
+login
+Chat Test
+User: this is chat 3
+User: this is now ChatHello
+User: financial-system cats
+AI: Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.
+User: financial-system 1 + 1
+AI: Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.
+AI: antwoord is 2
