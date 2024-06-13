@@ -72,6 +72,7 @@ public class MainController implements IController {
         Button plusButton = createAddButton();
         ToolBar.getItems().add(settingsButton);
         ToolBar.getItems().add(plusButton);
+        setUser(SceneSwitcher.getInstance().getUser().getEmail());
         loadHistory();
         ChatHistory.setSpacing(10);
     }
@@ -273,12 +274,6 @@ public class MainController implements IController {
         ChatTitle.setText(chatName);
     }
 
-    private Text wrapText(Text text, String line) {
-        if (line.length() > 50) {
-            text.setWrappingWidth(400);
-        }
-        return text;
-    }
 
     private void scrolltoBottom() {
         ChatScroll.setVmin(0.0);
@@ -335,7 +330,7 @@ public class MainController implements IController {
 
     }
 
-    private void createMessage(HBox chatMessage, String message, Boolean fromAI) {
+    public void createMessage(HBox chatMessage, String message, Boolean fromAI) {
         ImageView userimg = new ImageView();
         Text messageText = new Text(message);
         messageText.setStyle("-fx-fill: white;");
