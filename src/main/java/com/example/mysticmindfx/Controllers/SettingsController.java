@@ -1,6 +1,7 @@
 package com.example.mysticmindfx.Controllers;
 
 import com.example.mysticmindfx.SceneSwitcher;
+import com.example.mysticmindfx.User;
 import javafx.fxml.FXML;
 import java.net.URL;
 import java.util.ResourceBundle;
