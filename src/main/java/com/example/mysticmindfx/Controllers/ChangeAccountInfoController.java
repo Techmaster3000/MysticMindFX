@@ -1,7 +1,8 @@
-package com.example.mysticmindfx;
+package com.example.mysticmindfx.Controllers;
 
 import com.example.mysticmindfx.Controllers.IController;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Alert;
@@ -55,6 +56,7 @@ public class ChangeAccountInfoController implements IController {
             alert.showAndWait();
             return;
         }
+        String oldMail = currentUser.getEmail();
 
         String newUsername = newUsernameField.getText();
         String newEmail = newEmailField.getText();
@@ -73,13 +75,16 @@ public class ChangeAccountInfoController implements IController {
         }
 
         // Update the user's information in the JSON
-        JSONHandler.updateUser(currentUser.getEmail(), newEmail, newUsername, newPassword);
+        JSONHandler.getInstance().updateUser(currentUser.getEmail(), newEmail, newUsername, newPassword);
 
         // Update the currentUser object
         currentUser = new User(newUsername, DigestUtils.sha256Hex(newPassword), newEmail);
 
         // Switch back to the settings screen
-        SceneSwitcher.getInstance().switchScene("Settings.fxml", "Settings", currentUser.getEmail());
+        HistoryHandler.userRename(oldMail, newEmail);
+        SceneSwitcher.getInstance().setUser(currentUser);
+
+        SceneSwitcher.getInstance().switchScene("Settings.fxml", "Settings", newEmail);
 
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Information Changed");
