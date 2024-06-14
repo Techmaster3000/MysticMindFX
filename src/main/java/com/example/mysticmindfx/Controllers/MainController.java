@@ -199,6 +199,9 @@ public class MainController implements IController {
 
             // Creëer het nieuwe chatbestand
             File file = new File("src/chatHistory/" + chatName + ".txt");
+            if (file.exists()) {
+                file = new File("src/chatHistory/" + chatName + "new" + ".txt");
+            }
             if (file.createNewFile()) {
                 FileWriter writer = new FileWriter(file);
                 writer.write(user + "\n");

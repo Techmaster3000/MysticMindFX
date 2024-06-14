@@ -1,6 +1,5 @@
 package com.example.mysticmindfx;
 
-import com.example.mysticmindfx.Controllers.HelloController;
 import com.example.mysticmindfx.Controllers.IController;
 import com.example.mysticmindfx.Controllers.MainController;
 import javafx.fxml.FXMLLoader;
@@ -59,18 +58,15 @@ public class SceneSwitcher {
 
             //check if the controller is an instance of MainController
             if (controller instanceof MainController && email != null) {
+                ((MainController) controller).setUser(email);
+            } else if (controller instanceof MainController) {
                 ((MainController) controller).setUser(user);
-                if (user != null) {
-                    ((MainController) controller).setUser(user);
-                } else {
-                    ((MainController) controller).setUser(email);
-                }
             }
 
             // Check if the controller is an instance of ChangeAccountInfoController
             if (controller instanceof ChangeAccountInfoController) {
-                User user = JSONHandler.getInstance().findUser(email);
-                ((ChangeAccountInfoController) controller).setCurrentUser(user);
+                User userSet = JSONHandler.getInstance().findUser(email);
+                ((ChangeAccountInfoController) controller).setCurrentUser(userSet);
             }
 
             // Initialize the controller

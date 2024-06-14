@@ -48,7 +48,6 @@ public class HistoryHandler {
                 }
                 if (line.equals(oldName)) {
                     //replace the first line with the newName
-                    reader.close();
                     FileWriter writer = new FileWriter(file);
                     writer.write(newName + "\n");
                     while ((line = reader.readLine()) != null) {
@@ -70,9 +69,11 @@ public class HistoryHandler {
             String line;
             //check if the first line is the user's name
             line = reader.readLine();
+
             if (line == null) {
                 return chatHistory;
             }
+
             if (!line.equals(user)) {
                 System.out.println(line + " " + user);
                 return chatHistory;

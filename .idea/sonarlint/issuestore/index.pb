@@ -59,3 +59,17 @@ Csrc/main/java/com/example/mysticmindfx/AIService/MockAIService.java,2\1\2151bb
 Lsrc/main/java/com/example/mysticmindfx/AIService/DocumentationProcessor.java,4\5\45a1718e0125c4db387eb49a7e3b0fdc79d0e5c9
 g
 7src/main/java/com/example/mysticmindfx/JSONHandler.java,3\7\37425eca635e021099d5341afcc58156b4bc7f1d
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+w
+Gsrc/main/java/com/example/mysticmindfx/ChangeAccountInfoController.java,c\9\c965f54cc0afe364f3d4e99771c601c673543f85
+N
+src/chatHistory/renametest.txt,a\6\a66911ac28654af3d50d39531a065666e8d986f7
+J
+src/chatHistory/Chat 1.txt,f\2\f27fbbd3ffce90593ff4ac3eee07908b32008db7
+`
+0src/main/java/com/example/mysticmindfx/User.java,a\c\acebabc8dad36d1308825181cda8a5c7ffd0cb57
+k
+;src/main/java/com/example/mysticmindfx/LanguageHandler.java,1\9\197daee65020928df7d8190cabdd3cd78f7c86e0
+M
+src/chatHistory/Chat 1new.txt,4\1\4181ba8fa5b35b9b1013f3d84ef2b95ed546a670
