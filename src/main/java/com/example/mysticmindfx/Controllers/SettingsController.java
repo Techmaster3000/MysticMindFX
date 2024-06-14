@@ -1,6 +1,7 @@
 package com.example.mysticmindfx.Controllers;
 
 import com.example.mysticmindfx.SceneSwitcher;
+import com.example.mysticmindfx.User;
 import javafx.fxml.FXML;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +16,7 @@ public class SettingsController implements IController {
     @FXML
     protected void onBack() {
         // Go back to the previous scene
-        SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind", null);
+        SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind", SceneSwitcher.getInstance().getUser().getEmail());
     }
 
     @FXML

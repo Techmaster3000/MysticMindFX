@@ -1,5 +1,6 @@
 package com.example.mysticmindfx;
 
+import com.example.mysticmindfx.Controllers.IController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
@@ -54,6 +55,7 @@ public class ChangeAccountInfoController implements IController {
             alert.showAndWait();
             return;
         }
+        String oldMail = currentUser.getEmail();
 
         String newUsername = newUsernameField.getText();
         String newEmail = newEmailField.getText();
@@ -78,6 +80,7 @@ public class ChangeAccountInfoController implements IController {
         currentUser = new User(newUsername, DigestUtils.sha256Hex(newPassword), newEmail);
 
         // Switch back to the settings screen
+        HistoryHandler.userRename(oldMail, newEmail);
         SceneSwitcher.getInstance().switchScene("Settings.fxml", "Settings", currentUser.getEmail());
 
         Alert alert = new Alert(AlertType.INFORMATION);

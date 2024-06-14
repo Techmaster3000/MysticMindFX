@@ -74,6 +74,7 @@ public class MainController implements IController {
         ToolBar.getItems().add(plusButton);
         loadHistory();
         ChatHistory.setSpacing(10);
+        user = SceneSwitcher.getInstance().getUser().getEmail();
     }
 
     public void setUser(String user) {
@@ -109,14 +110,14 @@ public class MainController implements IController {
             return;
         }
         String renamePopUpFile = "RenamePopUp.fxml";
-        if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
+        if (LanguageHandler.getInstance().getLanguage() == Language.DUTCH) {
             renamePopUpFile = renamePopUpFile.replace(".fxml", "-NL.fxml");
         }
         FXMLLoader loader = new FXMLLoader(getClass().getResource(renamePopUpFile));
         Stage stage = new Stage();
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
-        stage.setTitle(SceneSwitcher.getInstance().getLocalizedMessage(Message.RENAME_CHAT));
+        stage.setTitle(LanguageHandler.getInstance().getLocalizedMessage(Message.RENAME_CHAT));
         stage.show();
     }
 
@@ -135,9 +136,9 @@ public class MainController implements IController {
         }
 
         Alert alert;
-        alert = new Alert(Alert.AlertType.CONFIRMATION, SceneSwitcher.getInstance().getLocalizedMessage(Message.DELETE_CHAT_CONFIRMATION), ButtonType.YES, ButtonType.NO);
-        alert.setTitle(SceneSwitcher.getInstance().getLocalizedMessage(Message.REMOVE_CHAT_TITLE));
-        alert.setHeaderText(SceneSwitcher.getInstance().getLocalizedMessage(Message.REMOVE_CHAT));
+        alert = new Alert(Alert.AlertType.CONFIRMATION, LanguageHandler.getInstance().getLocalizedMessage(Message.DELETE_CHAT_CONFIRMATION), ButtonType.YES, ButtonType.NO);
+        alert.setTitle(LanguageHandler.getInstance().getLocalizedMessage(Message.REMOVE_CHAT_TITLE));
+        alert.setHeaderText(LanguageHandler.getInstance().getLocalizedMessage(Message.REMOVE_CHAT));
 
         alert.showAndWait();
 
@@ -151,7 +152,7 @@ public class MainController implements IController {
             selectedChat = null;
             ChatHistory.getChildren().clear();
             ChatTabBox.getChildren().remove(toDeleteIndex);
-            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
+            if (LanguageHandler.getInstance().getLanguage() == Language.DUTCH) {
                 ChatTitle.setText("Chat");
             } else {
                 ChatTitle.setText("Chat");
@@ -182,7 +183,7 @@ public class MainController implements IController {
 
     @FXML
     protected void addChat() {
-        String chatName = SceneSwitcher.getInstance().getLanguage() == Language.DUTCH ? "Chat " + (ChatTabBox.getChildren().size() + 1) : "Chat " + (ChatTabBox.getChildren().size() + 1);
+        String chatName = LanguageHandler.getInstance().getLanguage() == Language.DUTCH ? "Chat " + (ChatTabBox.getChildren().size() + 1) : "Chat " + (ChatTabBox.getChildren().size() + 1);
         Button newChat = new Button(chatName);
         newChat.getStyleClass().add("MenuItem");
         newChat.setStyle("-fx-text-fill: white;");
@@ -211,7 +212,7 @@ public class MainController implements IController {
             System.err.println("Failed to create file: " + e.getMessage());
             // Toon een foutmelding aan de gebruiker
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
+            if (LanguageHandler.getInstance().getLanguage() == Language.DUTCH) {
                 alert.setTitle("Fout bij aanmaken van chat");
                 alert.setHeaderText("Kan chat niet aanmaken");
                 alert.setContentText("Er is een fout opgetreden bij het aanmaken van de chat. Probeer het opnieuw.");
@@ -273,12 +274,6 @@ public class MainController implements IController {
         ChatTitle.setText(chatName);
     }
 
-    private Text wrapText(Text text, String line) {
-        if (line.length() > 50) {
-            text.setWrappingWidth(400);
-        }
-        return text;
-    }
 
     private void scrolltoBottom() {
         ChatScroll.setVmin(0.0);
@@ -335,7 +330,7 @@ public class MainController implements IController {
 
     }
 
-    private void createMessage(HBox chatMessage, String message, Boolean fromAI) {
+    public void createMessage(HBox chatMessage, String message, Boolean fromAI) {
         ImageView userimg = new ImageView();
         Text messageText = new Text(message);
         messageText.setStyle("-fx-fill: white;");
