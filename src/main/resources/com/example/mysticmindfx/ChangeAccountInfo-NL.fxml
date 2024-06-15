@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.ChangeAccountInfoController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.Controllers.ChangeAccountInfoController">
    <children>
       <Text fill="WHITE" layoutX="99.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gruppo-regular" text="Verander profiel informatie" textAlignment="CENTER" wrappingWidth="402.6317443847656">
          <font>
@@ -19,13 +19,13 @@
       <VBox alignment="TOP_CENTER" layoutX="166.0" layoutY="75.0" prefHeight="250.0" prefWidth="268.0" spacing="10.0">
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nieuwe Gebruikersnaam" />
-            <TextField />
+            <TextField fx:id="newUsernameField" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nieuwe Email" />
-            <TextField />
+            <TextField fx:id="newEmailField" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Oud Wachtwoord" />
-            <PasswordField />
+            <PasswordField fx:id="oldPasswordField" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nieuw Wachtwoord" />
-            <PasswordField />
+            <PasswordField fx:id="newPasswordField" />
          </children>
       </VBox>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#ToSettings" text="Terug" />

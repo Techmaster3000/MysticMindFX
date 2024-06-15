@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.ChangeAccountInfoController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@FXStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mysticmindfx.Controllers.ChangeAccountInfoController">
    <children>
       <Text fill="WHITE" layoutX="99.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gruppo-regular" text="Change Account Information" textAlignment="CENTER" wrappingWidth="402.6317443847656">
          <font>
