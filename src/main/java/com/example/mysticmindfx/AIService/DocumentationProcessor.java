@@ -1,4 +1,5 @@
 package com.example.mysticmindfx.AIService;
+import org.apache.commons.io.FilenameUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -24,7 +25,8 @@ public class DocumentationProcessor {
 
     public static String parseJSONAndPrintDescription(String filename, String found, String category, String input) {
         try {
-            Object o = new JSONParser().parse(new FileReader(filename));
+            String sanitizedFileName = FilenameUtils.getName(filename);
+            Object o = new JSONParser().parse(new FileReader(sanitizedFileName));
             JSONObject j = (JSONObject) o;
 
             JSONArray foundDocumentation = (JSONArray) j.get(found);

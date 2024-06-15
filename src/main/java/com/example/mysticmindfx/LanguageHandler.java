@@ -3,21 +3,31 @@ package com.example.mysticmindfx;
 public class LanguageHandler {
     private static Language language;
     private static Language currentLanguage = Language.ENGLISH;
-    private static LanguageHandler instance = null;
-    private LanguageHandler() {}
-     public static LanguageHandler getInstance() {
-         if (instance == null) {
-             instance = new LanguageHandler();
-         }
-         return instance;
-     }
+    private static volatile LanguageHandler instance = null;
 
-    public void setLanguage(Language language) {
-        this.currentLanguage = language;
+    private LanguageHandler() {
+    }
+
+    public static LanguageHandler getInstance() {
+        if (instance == null) {
+            synchronized (LanguageHandler.class) {
+
+                if (instance == null) {
+
+                    instance = new LanguageHandler();
+
+                }
+            }
+        }
+        return instance;
     }
 
     public static Language getLanguage() {
         return currentLanguage;
+    }
+
+    public void setLanguage(Language language) {
+        currentLanguage = language;
     }
 
     public static String getLocalizedMessage(Message message) {
