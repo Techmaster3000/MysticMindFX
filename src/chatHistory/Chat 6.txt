@@ -18,3 +18,7 @@ User: java tools build tools
 AI: Geen documentatie gevonden.
 User: domain-model financial-system
 AI: Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.
+User: test
+AI: Geen documentatie gevonden.
+User: java tools build tools
+AI: Build tools zoals Apache Maven en Gradle worden gebruikt om het proces van het compileren, testen en verpakken van Java-applicaties te automatiseren. Ze beheren afhankelijkheden, verwerken projectconfiguraties en faciliteren continue integratie.
