@@ -25,8 +25,7 @@ public class DocumentationProcessor {
 
     public static String parseJSONAndPrintDescription(String filename, String found, String category, String input) {
         try {
-            String sanitizedFileName = FilenameUtils.getName(filename);
-            Object o = new JSONParser().parse(new FileReader(sanitizedFileName));
+            Object o = new JSONParser().parse(new FileReader(filename));
             JSONObject j = (JSONObject) o;
 
             JSONArray foundDocumentation = (JSONArray) j.get(found);

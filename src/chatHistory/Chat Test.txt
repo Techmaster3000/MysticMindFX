@@ -11,3 +11,5 @@ User: test
 AI: Geen documentatie gevonden.
 User: 1 + 1
 AI: Geen documentatie gevonden.
+User: java tools build tools 1 + 1
+AI: Build tools zoals Apache Maven en Gradle worden gebruikt om het proces van het compileren, testen en verpakken van Java-applicaties te automatiseren. Ze beheren afhankelijkheden, verwerken projectconfiguraties en faciliteren continue integratie.\nHet antwoord is 2

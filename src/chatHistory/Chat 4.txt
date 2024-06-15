@@ -12,3 +12,5 @@ User: financial-system 1 + 1
 AI: Het antwoord is 2Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.
 User: financial-system 1 + 1
 AI: Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage. Het antwoord is 2
+User: java tools build tools 1 + 1
+AI: Geen documentatie gevonden.
