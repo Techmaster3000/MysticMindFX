@@ -2,6 +2,7 @@ package com.example.mysticmindfx.Controllers;
 
 import com.example.mysticmindfx.JSONHandler;
 import com.example.mysticmindfx.Language;
+import com.example.mysticmindfx.Message;
 import com.example.mysticmindfx.SceneSwitcher;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -58,72 +59,41 @@ public class SignUpController implements IController {
 
     @FXML
     protected void onSignInLink() {
-        if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
-            System.out.println("Inloglink aangeklikt");
-            SceneSwitcher.getInstance().switchScene("hello-view.fxml", "Inloggen", null);
-        } else {
-            System.out.println("Sign In Link Clicked");
-            SceneSwitcher.getInstance().switchScene("hello-view.fxml", "Sign In", null);
-        }
+        System.out.println(SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_IN_LINK));
+        SceneSwitcher.getInstance().switchScene("hello-view.fxml", SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_IN_LINK), null);
     }
 
     @FXML
     protected void onSignUp() {
         resetText();
         if (checkEmptyFields()) {
-            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
-                SignUpText.setText("Vul alle velden in.");
-            } else {
-                SignUpText.setText("Please fill in all fields.");
-            }
+            SignUpText.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.FILL_ALL_FIELDS));
             return;
         }
         if (JSONHandler.getInstance().findUser(EmailField.getText()) != null) {
-            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
-                emailExistsTxt.setText("Email bestaat al.");
-            } else {
-                emailExistsTxt.setText("Email already exists.");
-            }
+            emailExistsTxt.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.EMAIL_EXISTS));
             return;
         }
         // Check if password contains at least 4 characters and 1 number
         if (PasswordField.getText().length() < 4 || !PasswordField.getText().matches(".*\\d.*")) {
-            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
-                PasswordReqsText.setText("Wachtwoord moet minimaal 4 tekens en 1 cijfer bevatten.");
-            } else {
-                PasswordReqsText.setText("Password must contain at least 4 characters and 1 number.");
-            }
+            PasswordReqsText.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.PASSWORD_REQS));
             return;
         }
 
         if (!EmailField.getText().equals(CheckEmailField.getText())) {
-            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
-                EmailDupeText.setText("Emails komen niet overeen.");
-            } else {
-                EmailDupeText.setText("Emails do not match.");
-            }
+            EmailDupeText.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.EMAILS_DO_NOT_MATCH));
             return;
         }
         if (!PasswordField.getText().equals(CheckPasswordField.getText())) {
-            if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
-                PasswordDupeText.setText("Wachtwoorden komen niet overeen.");
-            } else {
-                PasswordDupeText.setText("Passwords do not match.");
-            }
+            PasswordDupeText.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.PASSWORDS_DO_NOT_MATCH));
             return;
         }
         String hashedPassword = org.apache.commons.codec.digest.DigestUtils.sha256Hex(PasswordField.getText());
         JSONHandler.getInstance().addJson(EmailField.getText(), UsernameField.getText(), hashedPassword);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        if (SceneSwitcher.getInstance().getLanguage() == Language.DUTCH) {
-            alert.setTitle("Succesvolle aanmelding");
-            alert.setHeaderText("Welkom " + UsernameField.getText());
-            alert.setContentText("Je bent succesvol aangemeld!");
-        } else {
-            alert.setTitle("Sign Up Successful");
-            alert.setHeaderText("Welcome " + UsernameField.getText());
-            alert.setContentText("You have successfully signed up!");
-        }
+        alert.setTitle(SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_UP_SUCCESS_TITLE));
+        alert.setHeaderText(SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_UP_SUCCESS_HEADER) + UsernameField.getText());
+        alert.setContentText(SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_UP_SUCCESS_CONTENT));
         alert.showAndWait();
         SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind", EmailField.getText());
     }

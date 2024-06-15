@@ -21,7 +21,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" onAction="#changeAccountInfo" text="Change Account Information">
+            <Button mnemonicParsing="false" onAction="#onChange" text="Change Account Information">
                <styleClass>
                   <String fx:value="back-button" />
                   <String fx:value="chat-button" />

@@ -1,4 +1,5 @@
 package com.example.mysticmindfx;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 
@@ -76,6 +77,35 @@ public class JSONHandler {
         } catch (IOException e) {
             e.printStackTrace();
             readJSON();
+        }
+    }
+    public static void updateUser(String oldEmail, String newEmail, String newUsername, String newPassword) {
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).getEmail().equals(oldEmail)) {
+                String encryptedPassword = DigestUtils.sha256Hex(newPassword);
+                userList.set(i, new User(newUsername, encryptedPassword, newEmail));
+                writeJSON();
+                return;
+            }
+        }
+    }
+//org.apache.commons.codec.digest.DigestUtils.sha256Hex()
+    private static void writeJSON() {
+        JSONArray users = new JSONArray();
+        for (User user : userList) {
+            JSONObject userObject = new JSONObject();
+            userObject.put(emailFieldName, user.getEmail());
+            userObject.put(usernameFieldName, user.getUsername());
+            userObject.put(passwordFieldName, user.getPassword());
+            users.add(userObject);
+        }
+        JSONObject root = new JSONObject();
+        root.put("users", users);
+        try (FileWriter file = new FileWriter("src/main/resources/com/example/mysticmindfx/userdata.json")) {
+            file.write(root.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
