@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class JSONHandler {
-    static String emailFieldName = "email";
-    static String usernameFieldName = "username";
-    static String passwordFieldName = "password";
+    String emailFieldName = "email";
+    String usernameFieldName = "username";
+    String passwordFieldName = "password";
     //read a JSON file
-    static ArrayList<User> userList = new ArrayList<>();
+    ArrayList<User> userList = new ArrayList<>();
     //singleton pattern
     private static JSONHandler instance = null;
     private JSONHandler() {
@@ -25,7 +25,7 @@ public class JSONHandler {
         }
         return instance;
     }
-    public static void readJSON() {
+    public void readJSON() {
         JSONParser parser = new JSONParser();
         //read a json file with e-mail, username and password
         try {
@@ -45,7 +45,7 @@ public class JSONHandler {
 
         }
     }
-    public static User findUser(String email) {
+    public User findUser(String email) {
         //find a user in the JSON file
         for (User user : userList) {
             if (user.getEmail().equals(email)) {
@@ -54,20 +54,14 @@ public class JSONHandler {
         }
         return null;
     }
-    public static void addJson(String email, String username, String password) {
+    public void addJson(String email, String username, String password) {
         JSONArray users = new JSONArray();
         JSONObject newuser = new JSONObject();
         newuser.put(emailFieldName, email);
         newuser.put(usernameFieldName, username);
         newuser.put(passwordFieldName, password);
         users.add(newuser);
-        for (User user : userList) {
-            JSONObject user1 = new JSONObject();
-            user1.put(emailFieldName, user.getEmail());
-            user1.put(usernameFieldName, user.getUsername());
-            user1.put(passwordFieldName, user.getPassword());
-            users.add(user1);
-        }
+        loadUsers(users);
         JSONObject root = new JSONObject();
         //write to a json file
         root.put("users", users);
@@ -79,7 +73,17 @@ public class JSONHandler {
             readJSON();
         }
     }
-    public static void updateUser(String oldEmail, String newEmail, String newUsername, String newPassword) {
+    private JSONArray loadUsers(JSONArray users) {
+        for (User user : userList) {
+            JSONObject user1 = new JSONObject();
+            user1.put(emailFieldName, user.getEmail());
+            user1.put(usernameFieldName, user.getUsername());
+            user1.put(passwordFieldName, user.getPassword());
+            users.add(user1);
+        }
+        return users;
+    }
+    public void updateUser(String oldEmail, String newEmail, String newUsername, String newPassword) {
         for (int i = 0; i < userList.size(); i++) {
             if (userList.get(i).getEmail().equals(oldEmail)) {
                 String encryptedPassword = DigestUtils.sha256Hex(newPassword);
@@ -90,15 +94,9 @@ public class JSONHandler {
         }
     }
 //org.apache.commons.codec.digest.DigestUtils.sha256Hex()
-    private static void writeJSON() {
+    private void writeJSON() {
         JSONArray users = new JSONArray();
-        for (User user : userList) {
-            JSONObject userObject = new JSONObject();
-            userObject.put(emailFieldName, user.getEmail());
-            userObject.put(usernameFieldName, user.getUsername());
-            userObject.put(passwordFieldName, user.getPassword());
-            users.add(userObject);
-        }
+        loadUsers(users);
         JSONObject root = new JSONObject();
         root.put("users", users);
         try (FileWriter file = new FileWriter("src/main/resources/com/example/mysticmindfx/userdata.json")) {
