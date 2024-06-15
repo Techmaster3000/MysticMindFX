@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -110,17 +111,19 @@ public class MainController implements IController {
         if (selectedChat == null) {
             return;
         }
-        String renamePopUpFile = "RenamePopUp.fxml";
-        if (LanguageHandler.getInstance().getLanguage() == Language.DUTCH) {
+        String renamePopUpFile = "/com/example/mysticmindfx/RenamePopUp.fxml";
+        if (LanguageHandler.getLanguage() == Language.DUTCH) {
             renamePopUpFile = renamePopUpFile.replace(".fxml", "-NL.fxml");
         }
         FXMLLoader loader = new FXMLLoader(getClass().getResource(renamePopUpFile));
+        Parent root = loader.load();
         Stage stage = new Stage();
-        Scene scene = new Scene(loader.load());
+        Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle(LanguageHandler.getInstance().getLocalizedMessage(Message.RENAME_CHAT));
+        stage.setTitle(LanguageHandler.getLocalizedMessage(Message.RENAME_CHAT));
         stage.show();
     }
+
 
     @FXML
     protected void onDeleteChat() {
@@ -184,8 +187,7 @@ public class MainController implements IController {
 
     @FXML
     protected void addChat() {
-        String chatName = LanguageHandler.getInstance().getLanguage() == Language.DUTCH ? "Chat " + (ChatTabBox.getChildren().size() + 1) : "Chat " + (ChatTabBox.getChildren().size() + 1);
-        Button newChat = new Button(chatName);
+        String chatName = "Chat " + (ChatTabBox.getChildren().size() + 1);Button newChat = new Button(chatName);
         newChat.getStyleClass().add("MenuItem");
         newChat.setStyle("-fx-text-fill: white;");
         newChat.setOnAction(event -> loadChat(chatName));
