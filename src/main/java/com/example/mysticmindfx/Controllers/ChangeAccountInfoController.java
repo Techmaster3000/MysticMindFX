@@ -1,6 +1,10 @@
 package com.example.mysticmindfx.Controllers;
 
 import com.example.mysticmindfx.Controllers.IController;
+import com.example.mysticmindfx.HistoryHandler;
+import com.example.mysticmindfx.JSONHandler;
+import com.example.mysticmindfx.SceneSwitcher;
+import com.example.mysticmindfx.User;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;

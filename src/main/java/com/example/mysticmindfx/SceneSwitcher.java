@@ -1,8 +1,10 @@
 package com.example.mysticmindfx;
 
+import com.example.mysticmindfx.Controllers.ChangeAccountInfoController;
 import com.example.mysticmindfx.Controllers.IController;
 import com.example.mysticmindfx.Controllers.MainController;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -49,7 +51,8 @@ public class SceneSwitcher {
 
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneFile));
-            Scene scene = new Scene(loader.load());
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
             mainStage.setScene(scene);
 
             //Initialize the controller of the new scene regardless of classtype
