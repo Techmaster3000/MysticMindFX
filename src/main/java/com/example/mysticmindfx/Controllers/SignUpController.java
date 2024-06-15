@@ -1,9 +1,7 @@
 package com.example.mysticmindfx.Controllers;
 
-import com.example.mysticmindfx.JSONHandler;
-import com.example.mysticmindfx.Language;
-import com.example.mysticmindfx.Message;
-import com.example.mysticmindfx.SceneSwitcher;
+
+import com.example.mysticmindfx.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -59,41 +57,41 @@ public class SignUpController implements IController {
 
     @FXML
     protected void onSignInLink() {
-        System.out.println(SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_IN_LINK));
-        SceneSwitcher.getInstance().switchScene("hello-view.fxml", SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_IN_LINK), null);
+        System.out.println(LanguageHandler.getInstance().getLocalizedMessage(Message.SIGN_IN_LINK));
+        SceneSwitcher.getInstance().switchScene("hello-view.fxml", LanguageHandler.getInstance().getLocalizedMessage(Message.SIGN_IN_LINK), null);
     }
 
     @FXML
     protected void onSignUp() {
         resetText();
         if (checkEmptyFields()) {
-            SignUpText.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.FILL_ALL_FIELDS));
+            SignUpText.setText(LanguageHandler.getInstance().getLocalizedMessage(Message.FILL_ALL_FIELDS));
             return;
         }
         if (JSONHandler.getInstance().findUser(EmailField.getText()) != null) {
-            emailExistsTxt.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.EMAIL_EXISTS));
+            emailExistsTxt.setText(LanguageHandler.getInstance().getLocalizedMessage(Message.EMAIL_EXISTS));
             return;
         }
         // Check if password contains at least 4 characters and 1 number
         if (PasswordField.getText().length() < 4 || !PasswordField.getText().matches(".*\\d.*")) {
-            PasswordReqsText.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.PASSWORD_REQS));
+            PasswordReqsText.setText(LanguageHandler.getInstance().getLocalizedMessage(Message.PASSWORD_REQS));
             return;
         }
 
         if (!EmailField.getText().equals(CheckEmailField.getText())) {
-            EmailDupeText.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.EMAILS_DO_NOT_MATCH));
+            EmailDupeText.setText(LanguageHandler.getInstance().getLocalizedMessage(Message.EMAILS_DO_NOT_MATCH));
             return;
         }
         if (!PasswordField.getText().equals(CheckPasswordField.getText())) {
-            PasswordDupeText.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.PASSWORDS_DO_NOT_MATCH));
+            PasswordDupeText.setText(LanguageHandler.getInstance().getLocalizedMessage(Message.PASSWORDS_DO_NOT_MATCH));
             return;
         }
         String hashedPassword = org.apache.commons.codec.digest.DigestUtils.sha256Hex(PasswordField.getText());
         JSONHandler.getInstance().addJson(EmailField.getText(), UsernameField.getText(), hashedPassword);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_UP_SUCCESS_TITLE));
-        alert.setHeaderText(SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_UP_SUCCESS_HEADER) + UsernameField.getText());
-        alert.setContentText(SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_UP_SUCCESS_CONTENT));
+        alert.setTitle(LanguageHandler.getInstance().getLocalizedMessage(Message.SIGN_UP_SUCCESS_TITLE));
+        alert.setHeaderText(LanguageHandler.getInstance().getLocalizedMessage(Message.SIGN_UP_SUCCESS_HEADER) + UsernameField.getText());
+        alert.setContentText(LanguageHandler.getInstance().getLocalizedMessage(Message.SIGN_UP_SUCCESS_CONTENT));
         alert.showAndWait();
         SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind", EmailField.getText());
     }

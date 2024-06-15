@@ -16,7 +16,7 @@ public class SettingsController implements IController {
     @FXML
     protected void onBack() {
         // Go back to the previous scene
-        SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind", null);
+        SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind", SceneSwitcher.getInstance().getUser().getEmail());
     }
 
     @FXML

@@ -43,39 +43,39 @@ public class HelloController implements IController {
         System.out.println(mailField.getText());
         User user = JSONHandler.getInstance().findUser(mailField.getText());
         if (user == null) {
-            errorText.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.EMAIL_NOT_FOUND));
+            errorText.setText(LanguageHandler.getInstance().getLocalizedMessage(Message.EMAIL_NOT_FOUND));
             return;
         }
         if (user.checkPassword(org.apache.commons.codec.digest.DigestUtils.sha256Hex(passwordField.getText()))) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle(SceneSwitcher.getInstance().getLocalizedMessage(Message.LOGIN_SUCCESS_TITLE));
-            alert.setHeaderText(SceneSwitcher.getInstance().getLocalizedMessage(Message.LOGIN_SUCCESS_HEADER) + user.getUsername());
-            alert.setContentText(SceneSwitcher.getInstance().getLocalizedMessage(Message.LOGIN_SUCCESS_CONTENT));
+            alert.setTitle(LanguageHandler.getInstance().getLocalizedMessage(Message.LOGIN_SUCCESS_TITLE));
+            alert.setHeaderText(LanguageHandler.getInstance().getLocalizedMessage(Message.LOGIN_SUCCESS_HEADER) + user.getUsername());
+            alert.setContentText(LanguageHandler.getInstance().getLocalizedMessage(Message.LOGIN_SUCCESS_CONTENT));
             alert.showAndWait();
             System.out.println(mailField.getText() + " has logged in");
             SceneSwitcher.getInstance().setUser(user);
             SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind", mailField.getText());
         } else {
-            errorText.setText(SceneSwitcher.getInstance().getLocalizedMessage(Message.INCORRECT_PASSWORD));
+            errorText.setText(LanguageHandler.getInstance().getLocalizedMessage(Message.INCORRECT_PASSWORD));
             passwordField.clear();
         }
     }
 
     @FXML
     protected void onSignUpLink() {
-        System.out.println(SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_UP_LINK));
-        SceneSwitcher.getInstance().switchScene("SignUp.fxml", SceneSwitcher.getInstance().getLocalizedMessage(Message.SIGN_UP_LINK), null);
+        System.out.println(LanguageHandler.getInstance().getLocalizedMessage(Message.SIGN_UP_LINK));
+        SceneSwitcher.getInstance().switchScene("SignUp.fxml", LanguageHandler.getInstance().getLocalizedMessage(Message.SIGN_UP_LINK), null);
     }
 
     @FXML
     protected void switchToEnglish() {
-        SceneSwitcher.getInstance().setLanguage(Language.ENGLISH);
-        SceneSwitcher.getInstance().switchScene("hello-view.fxml", "Login", null);
+        LanguageHandler.getInstance().setLanguage(Language.ENGLISH);
+        SceneSwitcher.getInstance().switchLanguage();
     }
 
     @FXML
     protected void switchToDutch() {
-        SceneSwitcher.getInstance().setLanguage(Language.DUTCH);
-        SceneSwitcher.getInstance().switchScene("hello-view.fxml", "Inloggen", null);
+        LanguageHandler.getInstance().setLanguage(Language.DUTCH);
+        SceneSwitcher.getInstance().switchLanguage();
     }
 }
