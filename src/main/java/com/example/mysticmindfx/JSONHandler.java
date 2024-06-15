@@ -1,4 +1,5 @@
 package com.example.mysticmindfx;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
@@ -9,25 +10,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class JSONHandler {
-    String emailFieldName = "email";
-    String usernameFieldName = "username";
-    String passwordFieldName = "password";
-    //read a JSON file
-    ArrayList<User> userList = new ArrayList<>();
-    //singleton pattern
+    private String emailFieldName = "email";
+    private String usernameFieldName = "username";
+    private String passwordFieldName = "password";
+    private ArrayList<User> userList = new ArrayList<>();
     private static JSONHandler instance = null;
+
     private JSONHandler() {
         readJSON();
     }
+
     public static JSONHandler getInstance() {
         if (instance == null) {
             instance = new JSONHandler();
         }
         return instance;
     }
+
     public void readJSON() {
         JSONParser parser = new JSONParser();
-        //read a json file with e-mail, username and password
         try {
             Object obj = parser.parse(new FileReader("src/main/resources/com/example/mysticmindfx/userdata.json"));
             JSONObject jsonObject = (JSONObject) obj;
@@ -38,15 +39,13 @@ public class JSONHandler {
                 String username = (String) userObject.get(usernameFieldName);
                 String password = (String) userObject.get(passwordFieldName);
                 userList.add(new User(username, password, email));
-
             }
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
+
     public User findUser(String email) {
-        //find a user in the JSON file
         for (User user : userList) {
             if (user.getEmail().equals(email)) {
                 return user;
@@ -54,17 +53,26 @@ public class JSONHandler {
         }
         return null;
     }
+
     public void addJson(String email, String username, String password) {
         JSONArray users = new JSONArray();
+        JSONObject newuser = createUserJson(email, username, password);
+        users.add(newuser);
+        loadUsers(users);
+        JSONObject root = new JSONObject();
+        root.put("users", users);
+        writeToJsonFile(root);
+    }
+
+    private JSONObject createUserJson(String email, String username, String password) {
         JSONObject newuser = new JSONObject();
         newuser.put(emailFieldName, email);
         newuser.put(usernameFieldName, username);
         newuser.put(passwordFieldName, password);
-        users.add(newuser);
-        loadUsers(users);
-        JSONObject root = new JSONObject();
-        //write to a json file
-        root.put("users", users);
+        return newuser;
+    }
+
+    private void writeToJsonFile(JSONObject root) {
         try (FileWriter file = new FileWriter("src/main/resources/com/example/mysticmindfx/userdata.json")) {
             file.write(root.toJSONString());
             file.flush();
@@ -73,16 +81,15 @@ public class JSONHandler {
             readJSON();
         }
     }
+
     private JSONArray loadUsers(JSONArray users) {
         for (User user : userList) {
-            JSONObject user1 = new JSONObject();
-            user1.put(emailFieldName, user.getEmail());
-            user1.put(usernameFieldName, user.getUsername());
-            user1.put(passwordFieldName, user.getPassword());
-            users.add(user1);
+            JSONObject userJson = createUserJson(user.getEmail(), user.getUsername(), user.getPassword());
+            users.add(userJson);
         }
         return users;
     }
+
     public void updateUser(String oldEmail, String newEmail, String newUsername, String newPassword) {
         for (int i = 0; i < userList.size(); i++) {
             if (userList.get(i).getEmail().equals(oldEmail)) {
@@ -93,17 +100,13 @@ public class JSONHandler {
             }
         }
     }
-//org.apache.commons.codec.digest.DigestUtils.sha256Hex()
+
     private void writeJSON() {
         JSONArray users = new JSONArray();
         loadUsers(users);
         JSONObject root = new JSONObject();
         root.put("users", users);
-        try (FileWriter file = new FileWriter("src/main/resources/com/example/mysticmindfx/userdata.json")) {
-            file.write(root.toJSONString());
-            file.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        writeToJsonFile(root);
     }
 }
+
