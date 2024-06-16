@@ -1,10 +1,14 @@
 package com.example.mysticmindfx.Controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class RenameController {
+
     @FXML
-    private javafx.scene.control.TextField RenameField;
+    private TextField RenameField;
 
     @FXML
     protected void sendnewName() {
@@ -20,3 +24,6 @@ public class RenameController {
         RenameField.getScene().getWindow().hide();
     }
 }
+
+
+

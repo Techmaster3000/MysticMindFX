@@ -9,6 +9,7 @@ module com.example.mysticmindfx {
     requires org.json;
     requires annotations;
     requires org.apache.commons.codec;
+    requires org.apache.commons.io;
 
 
     opens com.example.mysticmindfx to javafx.fxml;

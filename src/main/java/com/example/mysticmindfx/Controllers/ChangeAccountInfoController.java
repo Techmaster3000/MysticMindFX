@@ -78,7 +78,6 @@ public class ChangeAccountInfoController implements IController {
             return;
         }
 
-        // Update the user's information in the JSON
         JSONHandler.getInstance().updateUser(currentUser.getEmail(), newEmail, newUsername, newPassword);
 
         // Update the currentUser object

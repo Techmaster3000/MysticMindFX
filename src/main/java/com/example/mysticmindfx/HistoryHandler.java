@@ -39,7 +39,7 @@ public class HistoryHandler {
         File[] listOfFiles = folder.listFiles();
         for (File file : listOfFiles) {
             try {
-                BufferedReader reader = new BufferedReader(new FileReader(file));
+                BufferedReader reader =     new BufferedReader(new FileReader(file));
                 String line;
                 //check if the first line is the user's name
                 line = reader.readLine();
@@ -85,7 +85,9 @@ public class HistoryHandler {
         } catch (Exception e) {
             //create a new file if it doesn't exist
             try {
-                file.createNewFile();
+                if (!file.createNewFile()) {
+                    throw new Exception("File could not be created");
+                }
                 //add an empty entry to the chatHistory
                 chatHistory.add("");
             } catch (Exception ex) {
@@ -100,8 +102,9 @@ public class HistoryHandler {
         try {
             File file = new File("src/chatHistory/" + chatName + ".txt");
             //clear the file
-            if (!file.exists()) {
-                file.createNewFile();
+            if (!file.exists() && !file.createNewFile()) {
+                System.out.println("Historyfile could not be created");
+
             }
             FileWriter writer = new FileWriter(file);
             writer.write(user + "\n");

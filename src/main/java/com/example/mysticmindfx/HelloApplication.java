@@ -25,8 +25,6 @@ public class HelloApplication extends Application {
         stage.setMinWidth(640);
         stage.setMinHeight(400);
 
-        // Optionally, add UI elements to switch languages
-        // Example: add a menu or button to change language
     }
 
     public static void main(String[] args) {
