@@ -1,3 +1,4 @@
+
 package com.example.mysticmindfx.Controllers;
 
 import com.example.mysticmindfx.*;
@@ -294,6 +295,9 @@ public class MainController implements IController {
         button.setOnAction(event -> addChat());
         return button;
     }
+
+
+
 
     private Button createSettingsButton() {
         SVGPath path = new SVGPath();

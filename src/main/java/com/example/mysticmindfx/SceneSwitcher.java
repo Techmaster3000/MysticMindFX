@@ -1,3 +1,5 @@
+
+
 package com.example.mysticmindfx;
 
 import com.example.mysticmindfx.Controllers.ChangeAccountInfoController;

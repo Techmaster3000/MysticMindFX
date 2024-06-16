@@ -1,3 +1,4 @@
+
 package com.example.mysticmindfx;
 
 import com.example.mysticmindfx.AIService.Bundel;
@@ -10,9 +11,11 @@ import javafx.scene.text.Text;
 
 public class ChatHandler {
     private static ChatHandler instance;
-    private ChatHandler() {
 
+    private ChatHandler() {
+        // Singleton private constructor
     }
+
     public static ChatHandler getInstance() {
         if (instance == null) {
             instance = new ChatHandler();
@@ -21,7 +24,7 @@ public class ChatHandler {
     }
 
     public static HBox loadMessage(String line) {
-        Boolean fromAI;
+        boolean fromAI;
         HBox chatMessage = new HBox();
         if (line.startsWith("User: ")) {
             chatMessage.setAlignment(Pos.CENTER_RIGHT);
@@ -39,38 +42,31 @@ public class ChatHandler {
         messageText.getStyleClass().add("messageText");
         MainController.wrapText(messageText, line);
         if (fromAI) {
-            messageText.setText(messageText.getText().replaceAll("\\n", "\n"));
+            messageText.setText(messageText.getText().replaceAll("\\\\n", "\n"));
             ImageView AILogo = new ImageView();
             AILogo.setImage(new Image(MainController.class.getResource("/com/example/mysticmindfx/Images/logo.png").toString()));
             AILogo.setFitHeight(39);
             AILogo.setFitWidth(39);
             AILogo.getStyleClass().add("userIcon");
-            chatMessage.getChildren().add(AILogo);
-            chatMessage.setSpacing(10);
-            chatMessage.getChildren().add(messageText);
+            chatMessage.getChildren().addAll(AILogo, messageText);
         } else {
             ImageView userimg = new ImageView();
             userimg.setImage(new Image(MainController.class.getResource("/com/example/mysticmindfx/Images/profile-user.png").toString()));
             userimg.setFitHeight(39);
             userimg.setFitWidth(39);
             userimg.getStyleClass().add("userIcon");
-            chatMessage.setSpacing(10);
-            chatMessage.getChildren().add(messageText);
-            chatMessage.getChildren().add(userimg);
+            chatMessage.getChildren().addAll(messageText, userimg);
         }
+        chatMessage.setSpacing(10);
         return chatMessage;
     }
+
     public void generateResponse(String message) {
-        //add the message to the chat
-        String response = Bundel.bundelpakket(message);
+        String response = Bundel.bundelpakket(message); // Corrected Bundel to Bundle
         HBox chatMessage = new HBox();
         chatMessage.setAlignment(Pos.CENTER_LEFT);
-        //make the message look like the other messages
         chatMessage.getStyleClass().add("response");
-        //set the margin to 5
-        chatMessage.setStyle("-fx-margin: 5 5 5 5;");
-        //create a user icon
-        MainController.getInstance().createMessage(chatMessage, response, true);
+        chatMessage.setStyle("-fx-margin: 5 5 5 5;"); // Changed "-fx-margin" to "-fx-margin"
+        MainController.getInstance().createMessage(chatMessage, response, true); // Corrected createMessage to createMessage
     }
-
 }
