@@ -104,6 +104,10 @@ public class SignUpController implements IController {
         String hashedPassword = org.apache.commons.codec.digest.DigestUtils.sha256Hex(PasswordField.getText());
         JSONHandler.getInstance().addJson(EmailField.getText(), UsernameField.getText(), hashedPassword);
         showSignUpSuccessAlert();
+
+        User newUser = new User(UsernameField.getText(), hashedPassword, EmailField.getText());
+        SceneSwitcher.getInstance().setUser(newUser);
+
         SceneSwitcher.getInstance().switchScene("MainMenu.fxml", "MysticMind", EmailField.getText());
     }
 

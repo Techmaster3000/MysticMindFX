@@ -62,37 +62,22 @@ public class HistoryHandler {
 
     }
 
-    public ArrayList<String> retrieveHistory(File file, String user) {
+    public ArrayList<String> retrieveHistory(File file, String chatName) {
         ArrayList<String> chatHistory = new ArrayList<>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            String line;
-            //check if the first line is the user's name
-            line = reader.readLine();
-
-            if (line == null) {
+            String fileNameWithoutExtension = file.getName().replaceFirst("[.][^.]+$", "");
+            if (!fileNameWithoutExtension.equals(chatName)) {
+                System.out.println(fileNameWithoutExtension + " " + chatName + " Dit allemaal ");
                 return chatHistory;
             }
-
-            if (!line.equals(user)) {
-                System.out.println(line + " " + user);
-                return chatHistory;
-            }
-            while ((line = reader.readLine()) != null) {
-                chatHistory.add(line);
-            }
-            reader.close();
-        } catch (Exception e) {
-            //create a new file if it doesn't exist
-            try {
-                if (!file.createNewFile()) {
-                    throw new Exception("File could not be created");
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    chatHistory.add(line);
                 }
-                //add an empty entry to the chatHistory
-                chatHistory.add("");
-            } catch (Exception ex) {
-                ex.printStackTrace();
             }
+        } catch (Exception e) {
+            // Handle exception...
         }
         return chatHistory;
     }
@@ -106,13 +91,13 @@ public class HistoryHandler {
                 System.out.println("Historyfile could not be created");
 
             }
-            FileWriter writer = new FileWriter(file);
-            writer.write(user + "\n");
-            writer.write(chatName + "\n");
-            for (String line : HistoryList) {
-                writer.write(line + "\n");
+            try (FileWriter writer = new FileWriter(file)) {
+                writer.write(user + "\n");
+                writer.write(chatName + "\n");
+                for (String line : HistoryList) {
+                    writer.write(line + "\n");
+                }
             }
-            writer.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

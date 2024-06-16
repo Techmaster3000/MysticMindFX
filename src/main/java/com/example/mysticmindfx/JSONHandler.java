@@ -108,5 +108,9 @@ public class JSONHandler {
         root.put("users", users);
         writeToJsonFile(root);
     }
+    public void saveUser(User user){
+        userList.add(user);
+        writeJSON();
+    }
 }
 

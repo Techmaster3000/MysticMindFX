@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -60,6 +61,13 @@ public class MainController implements IController {
         return instance;
     }
 
+    public void setSelectedChat(String selectedChat) {
+        this.selectedChat = selectedChat;
+    }
+    public String getSelectedChat() {
+        return selectedChat;
+    }
+
     public static Text wrapText(Text text, String line) {
         if (line.length() > 50) {
             text.setWrappingWidth(400);
@@ -86,21 +94,19 @@ public class MainController implements IController {
 
     private void loadHistory() {
         File historyFolder = new File("src/chatHistory");
-
         HistoryHandler historyHandler = new HistoryHandler();
         ChatTabBox.getChildren().clear();
         for (File file : Objects.requireNonNull(historyFolder.listFiles())) {
             ArrayList<String> chatHistory = historyHandler.retrieveHistory(file, user);
-            Button chat;
             try {
-                chat = new Button(chatHistory.get(0));
+                Button chat = (Button) ChatTabBox.getChildren().get(0);
+                System.out.println(chat.getText() + " loaded");
                 chat.setOnAction(event -> loadChat(chat.getText()));
                 chat.getStyleClass().add("MenuItem");
                 ChatTabBox.getChildren().add(chat);
             } catch (Exception e) {
                 System.out.println("Empty file found");
             }
-
             if (!chatHistory.isEmpty()) {
                 chatHistory.clear();
             }
@@ -110,6 +116,7 @@ public class MainController implements IController {
     @FXML
     protected void showRenamePopUp() throws IOException {
         if (selectedChat == null) {
+            System.out.println("No chat selected");
             return;
         }
         String renamePopUpFile = "/com/example/mysticmindfx/RenamePopUp.fxml";
@@ -131,13 +138,20 @@ public class MainController implements IController {
         if (selectedChat == null) {
             return;
         }
+        System.out.println("Deze chat: " + selectedChat);
         int toDeleteIndex = -1;
         for (int i = 0; i < ChatTabBox.getChildren().size(); i++) {
             Button chat = (Button) ChatTabBox.getChildren().get(i);
+            System.out.println("Checking chat: " + chat.getText());
             if (chat.getText().equals(selectedChat)) {
                 toDeleteIndex = i;
                 break;
             }
+        }
+
+        if (toDeleteIndex == -1) {
+            System.out.println("Chat not found: " + selectedChat);
+            return;
         }
 
         Alert alert;
@@ -157,15 +171,17 @@ public class MainController implements IController {
             selectedChat = null;
             ChatHistory.getChildren().clear();
             ChatTabBox.getChildren().remove(toDeleteIndex);
-            if (LanguageHandler.getInstance().getLanguage() == Language.DUTCH) {
-                ChatTitle.setText("Chat");
-            } else {
-                ChatTitle.setText("Chat");
-            }
+            ChatTitle.setText("Chat");
+
         }
     }
 
     public void renameChat(String newName) {
+        if (selectedChat == null) {
+            System.out.println("No chat selected");
+            return;
+        }
+        System.out.println("Nieuwe chatnaam: " + newName);
         for (int i = 0; i < ChatTabBox.getChildren().size(); i++) {
             Button chat = (Button) ChatTabBox.getChildren().get(i);
             if (chat.getText().equals(selectedChat)) {
@@ -173,14 +189,26 @@ public class MainController implements IController {
                 HistoryHandler historyHandler = new HistoryHandler();
                 Path sourcePath = Paths.get("src/chatHistory/" + selectedChat + ".txt");
                 Path targetPath = Paths.get("src/chatHistory/" + newName + ".txt");
+                // Ensure all file streams are closed before renaming
                 try {
+                    // Temporarily save the current chat history to ensure the file is closed
+                    historyHandler.saveHistory(selectedChat, ChatHistory, user);
+
+                    // Attempt to rename the file
                     Files.move(sourcePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
+
+                    // Update selectedChat and ChatTitle
+                    selectedChat = newName;
+                    ChatTitle.setText(newName);
+
+                    // Save the history under the new chat name
+                    historyHandler.saveHistory(selectedChat, ChatHistory, user);
+
+                    // Update the chat name in the chat history files
+                    historyHandler.userRename(selectedChat, newName);
                 } catch (Exception e) {
                     System.out.println("Failed to rename file: " + e.getMessage());
                 }
-                selectedChat = newName;
-                ChatTitle.setText(newName);
-                historyHandler.saveHistory(selectedChat, ChatHistory, user);
                 break;
             }
         }
@@ -188,7 +216,8 @@ public class MainController implements IController {
 
     @FXML
     protected void addChat() {
-        String chatName = "Chat " + (ChatTabBox.getChildren().size() + 1);Button newChat = new Button(chatName);
+        String chatName = "Chat " + (ChatTabBox.getChildren().size() + 1);
+        Button newChat = new Button(chatName);
         newChat.getStyleClass().add("MenuItem");
         newChat.setStyle("-fx-text-fill: white;");
         newChat.setOnAction(event -> loadChat(chatName));
@@ -200,17 +229,26 @@ public class MainController implements IController {
             if (!dir.exists()) {
                 dir.mkdirs();
             }
-
-            // Creëer het nieuwe chatbestand
             File file = new File("src/chatHistory/" + chatName + ".txt");
             if (file.exists()) {
                 file = new File("src/chatHistory/" + chatName + "new" + ".txt");
             }
             if (file.createNewFile()) {
-                FileWriter writer = new FileWriter(file);
-                writer.write(user + "\n");
-                writer.write(chatName + "\n");
-                writer.close();
+                FileWriter writer = null;
+                try {
+                    writer = new FileWriter(file);
+                    // Schrijf naar het bestand...
+                } catch (IOException e) {
+                    // Behandel de uitzondering...
+                } finally {
+                    if (writer != null) {
+                        try {
+                            writer.close();
+                        } catch (IOException e) {
+                            // Behandel de uitzondering...
+                        }
+                    }
+                }
             } else {
                 throw new IOException("Bestand bestaat al: " + file.getAbsolutePath());
             }
@@ -234,23 +272,22 @@ public class MainController implements IController {
             return;
         }
 
-        loadChat(chatName);
+//        loadChat(chatName);
     }
 
     private void loadChat(String chatName) {
         ChatHistory.getChildren().clear();
+        System.out.println("Dit is de chat naam: " + chatName);
         Button chat = null;
 
         for (int i = 0; i < ChatTabBox.getChildren().size(); i++) {
             chat = (Button) ChatTabBox.getChildren().get(i);
-            chat.getStyleClass().remove("selectedChat");
-        }
-
-        for (int i = 0; i < ChatTabBox.getChildren().size(); i++) {
-            chat = (Button) ChatTabBox.getChildren().get(i);
-            Boolean isSelected = chat.getText().equals(chatName);
+            boolean isSelected = chat.getText().equals(chatName);
             if (isSelected) {
                 chat.getStyleClass().add("selectedChat");
+                System.out.println(chatName + " loaded");
+            } else {
+                chat.getStyleClass().remove("selectedChat");
             }
         }
 
@@ -268,7 +305,6 @@ public class MainController implements IController {
                 System.out.println("Empty file found");
             }
         }
-        Boolean fromAI = null;
         if (chatHistory != null && !chatHistory.isEmpty()) {
             chatHistory.remove(0);
             for (String line : chatHistory) {
@@ -295,8 +331,6 @@ public class MainController implements IController {
         button.setOnAction(event -> addChat());
         return button;
     }
-
-
 
 
     private Button createSettingsButton() {
