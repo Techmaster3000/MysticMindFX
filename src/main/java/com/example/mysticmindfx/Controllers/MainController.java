@@ -203,8 +203,14 @@ public class MainController implements IController {
 
             // Creëer het nieuwe chatbestand
             File file = new File("src/chatHistory/" + chatName + ".txt");
-            if (file.exists()) {
-                file = new File("src/chatHistory/" + chatName + "new" + ".txt");
+            Boolean exists = file.exists();
+            while (true) {
+                //add a random number to the filename
+                if (!exists) {
+                    break;
+                }
+                file = new File("src/chatHistory/" + chatName + (int) (Math.random() * 100) + ".txt");
+                exists = file.exists();
             }
             if (file.createNewFile()) {
                 FileWriter writer = new FileWriter(file);

@@ -8,8 +8,8 @@ module com.example.mysticmindfx {
     requires json.simple;
     requires org.json;
     requires annotations;
-    requires org.apache.commons.codec;
     requires org.apache.commons.io;
+    requires org.apache.commons.codec;
 
 
     opens com.example.mysticmindfx to javafx.fxml;
