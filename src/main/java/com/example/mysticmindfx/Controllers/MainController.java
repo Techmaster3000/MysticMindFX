@@ -180,7 +180,7 @@ public class MainController implements IController {
                 }
                 selectedChat = newName;
                 ChatTitle.setText(newName);
-                historyHandler.saveHistory(String.valueOf(new File(selectedChat)), ChatHistory, user);
+                historyHandler.saveHistory(selectedChat, ChatHistory, user);
                 break;
             }
         }
@@ -367,7 +367,7 @@ public class MainController implements IController {
         //make the text max width 200
         ChatHistory.getChildren().add(chatMessage);
         HistoryHandler historyHandler = new HistoryHandler();
-        historyHandler.saveHistory(String.valueOf(new File(selectedChat)), ChatHistory, user);
+        historyHandler.saveHistory(selectedChat, ChatHistory, user);
         Platform.runLater(this::scrolltoBottom);
     }
 
