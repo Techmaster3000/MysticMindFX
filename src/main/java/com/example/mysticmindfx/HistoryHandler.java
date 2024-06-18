@@ -55,6 +55,7 @@ public class HistoryHandler {
                     }
                     writer.close();
                 }
+                reader.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -76,6 +77,7 @@ public class HistoryHandler {
 
             if (!line.equals(user)) {
                 System.out.println(line + " " + user);
+                reader.close();
                 return chatHistory;
             }
             while ((line = reader.readLine()) != null) {

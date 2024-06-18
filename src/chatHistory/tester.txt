@@ -1,0 +1,4 @@
+test
+tester
+User: financial-system
+AI: Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.

@@ -1,0 +1,6 @@
+login
+helloworld
+User: financial-system
+AI: Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.
+User: financial-system 1 + 1
+AI: Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.\nHet antwoord is 2

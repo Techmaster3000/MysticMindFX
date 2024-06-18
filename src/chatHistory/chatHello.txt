@@ -1,5 +1,5 @@
 login
-Chat 6
+chatHello
 User: test
 AI: Geen documentatie gevonden.
 User: ok

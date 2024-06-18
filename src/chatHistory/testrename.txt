@@ -1,2 +1,6 @@
 login
 testrename
+User: java tools build tools
+AI: Build tools zoals Apache Maven en Gradle worden gebruikt om het proces van het compileren, testen en verpakken van Java-applicaties te automatiseren. Ze beheren afhankelijkheden, verwerken projectconfiguraties en faciliteren continue integratie.
+User: financial-system 1 + 1
+AI: Het antwoord is 2\nFinancial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.

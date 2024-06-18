@@ -188,7 +188,8 @@ public class MainController implements IController {
 
     @FXML
     protected void addChat() {
-        String chatName = "Chat " + (ChatTabBox.getChildren().size() + 1);Button newChat = new Button(chatName);
+        String chatName = "Chat " + (ChatTabBox.getChildren().size() + 1);
+        Button newChat = new Button(chatName);
         newChat.getStyleClass().add("MenuItem");
         newChat.setStyle("-fx-text-fill: white;");
         newChat.setOnAction(event -> loadChat(chatName));

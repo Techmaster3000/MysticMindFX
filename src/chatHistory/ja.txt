@@ -1,0 +1,4 @@
+ja
+ja
+User: wat is een financial-system
+AI: Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.

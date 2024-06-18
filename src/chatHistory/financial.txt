@@ -1,0 +1,6 @@
+test
+financial
+User: financial-system
+AI: Financial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.
+User: financial-system 1 + 1
+AI: Het antwoord is 2\nFinancial System bevat kernfunctionaliteiten zoals transactie verwerking, accountbeheer en rapportage.
